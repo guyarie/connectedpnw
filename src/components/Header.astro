@@ -45,6 +45,39 @@ const navLinks = [
         aria-label="Toggle color theme"
         data-theme-toggle
       >◐</button>
+      <button
+        class="nav-hamburger"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-hamburger
+      >
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a href="/contact" class="btn btn-primary" style="margin-top:var(--space-2);">Get on the list</a>
+  </nav>
 </header>
+
+<script>
+  const btn = document.querySelector('[data-hamburger]') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-nav') as HTMLElement;
+  btn?.addEventListener('click', () => {
+    const open = menu.hidden;
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.classList.toggle('is-open', open);
+  });
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.classList.remove('is-open');
+    });
+  });
+</script>
