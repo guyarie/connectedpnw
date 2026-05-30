@@ -1,0 +1,264 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const home    = await getEntry('site', 'home');
+const model   = await getEntry('site', 'model');
+const gains   = await getEntry('site', 'gains');
+const journey = await getEntry('site', 'journey');
+const about   = await getEntry('site', 'about');
+const team    = await getEntry('site', 'team');
+const faq     = await getEntry('site', 'faq');
+
+const h = home.data;
+const m = model.data;
+const g = gains.data;
+const j = journey.data;
+const a = about.data;
+const t = team.data;
+const f = faq.data;
+---
+
+<Base title={h.title} description={h.description}>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        {h.eyebrow && <div class="eyebrow">{h.eyebrow}</div>}
+        {h.hero_heading && <h1>{h.hero_heading}</h1>}
+        {h.hero_lead && <p class="lead">{h.hero_lead}</p>}
+        {h.hero_note && <p class="muted">{h.hero_note}</p>}
+        <div class="actions">
+          {h.cta_primary_label && (
+            <a class="btn btn-primary" href={h.cta_primary_url}>
+              {h.cta_primary_label}
+            </a>
+          )}
+          {h.cta_secondary_label && (
+            <a class="btn btn-secondary" href={h.cta_secondary_url}>
+              {h.cta_secondary_label}
+            </a>
+          )}
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Connected PNW difference overview">
+        <p class="mini">The Connected PNW difference</p>
+        {h.difference_heading && <h3>{h.difference_heading}</h3>}
+        {h.difference_bullets && (
+          <div class="bullet-list">
+            {h.difference_bullets.map((item) => (
+              <div class="bullet-item">
+                <div class="dot" aria-hidden="true"></div>
+                <div>
+                  <strong>{item.strong}</strong>
+                  <br />
+                  <span class="muted">{item.text}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </aside>
+    </div>
+  </section>
+
+  <!-- ── Coaching model ── -->
+  <section id="model">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {m.kicker && <p class="kicker">{m.kicker}</p>}
+          {m.section_heading && <h2>{m.section_heading}</h2>}
+        </div>
+        {m.section_intro && <p>{m.section_intro}</p>}
+      </div>
+      {m.model_steps && (
+        <div class="model" aria-label="Coaching model steps">
+          {m.model_steps.map((step) => (
+            <article class="model-step">
+              <strong>{step.title}</strong>
+              <span class="muted">{step.body}</span>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ── What participants gain ── -->
+  <section id="difference">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {g.kicker && <p class="kicker">{g.kicker}</p>}
+          {g.section_heading && <h2>{g.section_heading}</h2>}
+        </div>
+        {g.section_intro && <p>{g.section_intro}</p>}
+      </div>
+      {g.cards && (
+        <div class="cards-3">
+          {g.cards.map((card) => (
+            <article class="card">
+              <h3>{card.heading}</h3>
+              <p class="muted">{card.body}</p>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ── Program journey ── -->
+  <section id="journey">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {j.kicker && <p class="kicker">{j.kicker}</p>}
+          {j.section_heading && <h2>{j.section_heading}</h2>}
+        </div>
+        {j.section_intro && <p>{j.section_intro}</p>}
+      </div>
+      {j.steps && (
+        <div class="timeline">
+          {j.steps.map((step) => (
+            <article class={`timeline-step${step.highlight ? ' highlight' : ''}`}>
+              <div class="timeline-num" aria-hidden="true">{step.num}</div>
+              <div>
+                <h3>{step.heading}</h3>
+                <p class="muted">{step.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {a.kicker && <p class="kicker">{a.kicker}</p>}
+          {a.section_heading && <h2>{a.section_heading}</h2>}
+        </div>
+        {a.section_intro && <p>{a.section_intro}</p>}
+      </div>
+      {a.cards && (
+        <div class="two-col">
+          {a.cards.map((card) => (
+            <article class="card">
+              <h3>{card.heading}</h3>
+              <p class="muted">{card.body}</p>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ── Team ── -->
+  <section id="team">
+    <div class="container">
+      <div style="padding:clamp(3.5rem,7vw,6rem) 0 var(--space-10);">
+        {t.kicker && <div class="label-pill">{t.kicker}</div>}
+        {t.section_heading && <h2 style="font-size:var(--text-xl);max-width:none;">{t.section_heading}</h2>}
+        {t.section_intro && <p class="lead" style="margin-top:var(--space-4);">{t.section_intro}</p>}
+      </div>
+
+      {/* Founders overview */}
+      {t.founders_heading && (
+        <div style="margin-bottom:var(--space-10);">
+          <p class="kicker">{t.founders_heading}</p>
+          {t.founders_intro && <h3 style="font-size:var(--text-lg);max-width:28rem;margin-bottom:var(--space-6);">{t.founders_intro}</h3>}
+          <div class="team-grid">
+            {t.founders_narrative && (
+              <div class="team-narrative">
+                {t.founders_narrative.map((p) => <p>{p}</p>)}
+              </div>
+            )}
+            {t.founders_combined_note && (
+              <aside class="founder-overview-card">
+                <h3>Nina Helms &amp; Miri Arie</h3>
+                <p class="muted">{t.founders_combined_note}</p>
+                <p class="founder-overview-note">Individual bios below.</p>
+              </aside>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Individual bios */}
+      {t.founders && t.founders.length > 0 && (
+        <div style="margin-bottom:var(--space-10);">
+          {t.bios_heading && <p class="kicker">{t.bios_heading}</p>}
+          {t.bios_intro && <h3 style="font-size:var(--text-lg);max-width:36rem;margin-bottom:var(--space-6);">{t.bios_intro}</h3>}
+          <div class="two-col-bios">
+            {t.founders.map((founder) => (
+              <article class="bio-block">
+                <h3 class="bio-name">{founder.name}</h3>
+                <div class="bio-role">{founder.role}</div>
+                <div class="bio-body">
+                  {founder.sections.map((section) => (
+                    <div class="bio-section">
+                      {section.heading && <h4 class="bio-section-heading">{section.heading}</h4>}
+                      {section.paragraphs.map((p) => <p>{p}</p>)}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Values */}
+      {t.values && t.values.length > 0 && (
+        <div style="padding-bottom:clamp(3.5rem,7vw,6rem);">
+          {t.values_heading && <p class="kicker">{t.values_heading}</p>}
+          {t.values_intro && <h3 style="font-size:var(--text-lg);max-width:36rem;margin-bottom:var(--space-6);">{t.values_intro}</h3>}
+          <div class="values-grid">
+            {t.values.map((v) => (
+              <article class="value-card">
+                <h3>{v.heading}</h3>
+                <p>{v.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {f.kicker && <p class="kicker">{f.kicker}</p>}
+          {f.section_heading && <h2>{f.section_heading}</h2>}
+        </div>
+        {f.section_intro && <p>{f.section_intro}</p>}
+      </div>
+      {f.faqs && (
+        <div class="faq-grid">
+          {f.faqs.map((item) => (
+            <details class="faq-item">
+              <summary>
+                <h3>{item.question}</h3>
+                <span class="faq-chevron" aria-hidden="true">▾</span>
+              </summary>
+              <div class="faq-answer">{item.answer}</div>
+            </details>
+          ))}
+        </div>
+      )}
+      <div class="actions" style="margin-top:var(--space-10);">
+        <a class="btn btn-primary" href="/contact">Get on the interest list</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

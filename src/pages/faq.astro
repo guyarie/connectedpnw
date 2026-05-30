@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const faq = await getEntry('site', 'faq');
+const f = faq.data;
+---
+
+<Base title={`${f.title} — Connected PNW`} description={f.section_intro}>
+
+  <div class="page-hero">
+    <div class="container">
+      {f.kicker && <p class="kicker">{f.kicker}</p>}
+      {f.section_heading && <h1 style="max-width:none;font-size:var(--text-xl);">{f.section_heading}</h1>}
+      {f.section_intro && <p class="lead" style="margin-top:var(--space-4);">{f.section_intro}</p>}
+    </div>
+  </div>
+
+  <section>
+    <div class="container" style="max-width:720px;">
+      {f.faqs && (
+        <div class="faq-grid">
+          {f.faqs.map((item) => (
+            <details class="faq-item">
+              <summary>
+                <h3>{item.question}</h3>
+                <span class="faq-chevron" aria-hidden="true">▾</span>
+              </summary>
+              <div class="faq-answer">{item.answer}</div>
+            </details>
+          ))}
+        </div>
+      )}
+      <div class="actions" style="margin-top:var(--space-10);">
+        <a class="btn btn-primary" href="/contact">Get on the interest list</a>
+        <a class="btn btn-secondary" href="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

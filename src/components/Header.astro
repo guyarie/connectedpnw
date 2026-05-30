@@ -1,0 +1,50 @@
+---
+const navLinks = [
+  { label: 'Coaching model', href: '/#model' },
+  { label: 'What you gain', href: '/#difference' },
+  { label: 'Program journey', href: '/#journey' },
+  { label: 'About', href: '/#about' },
+  { label: 'Team', href: '/#team' },
+  { label: 'FAQ', href: '/faq' },
+];
+---
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="/" aria-label="Connected PNW home">
+      <div class="brand-mark" aria-hidden="true">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M7 7h5a5 5 0 0 1 0 10H7"></path>
+          <path d="M17 17h-5a5 5 0 0 1 0-10h5"></path>
+        </svg>
+      </div>
+      <span>Connected PNW</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a class="btn btn-primary" href="/contact" style="min-height:40px;padding:0.6rem 1rem;font-size:var(--text-xs);">
+        Get on the list
+      </a>
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle color theme"
+        data-theme-toggle
+      >◐</button>
+    </div>
+  </div>
+</header>

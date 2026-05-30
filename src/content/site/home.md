@@ -1,0 +1,20 @@
+---
+title: "Connected PNW — Build the skills that support real connection"
+description: "Connected PNW is a guided dating and interpersonal skills program for adults who want to understand their patterns, communicate authentically, and practice building real connection."
+eyebrow: "Guided dating and relational skills program"
+hero_heading: "Build the skills that support real connection."
+hero_lead: "Connected PNW is a guided dating and interpersonal skills program for adults who want to understand their patterns, communicate authentically, and practice building real connection in a supportive group setting."
+hero_note: "This is not therapy. This is not a dating service. It is a skills-based learning experience — part workshop, part practice space, part social community — where people learn how to show up in relationships with more awareness, intention, and confidence."
+cta_primary_label: "See how it works"
+cta_primary_url: "#journey"
+cta_secondary_label: "Get on the interest list"
+cta_secondary_url: "/contact"
+difference_heading: "Most dating advice tells you what to do. Connected PNW shows you how."
+difference_bullets:
+  - strong: "Practice, not just talk."
+    text: "Every skill you learn gets tested in real interaction, with support."
+  - strong: "Feedback you can use."
+    text: "Facilitators and peers help you see what is working and what gets in the way."
+  - strong: "A real community."
+    text: "Social Nights and group sessions create a lower-pressure place to try new ways of relating before the stakes feel high."
+---
