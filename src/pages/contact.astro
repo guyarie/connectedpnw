@@ -20,12 +20,12 @@ const c = contact.data;
     <div class="container" style="max-width:640px;">
       <div class="panel">
         <form
+          id="contact-form"
           method="POST"
           action={c.contact_form_action ?? '#'}
+          data-redirect={c.contact_redirect_url ?? '/thanks'}
         >
-          {/* Formspree config — keep hidden */}
           <input type="hidden" name="_subject" value="New interest list submission — Connected PNW" />
-          {c.contact_redirect_url && <input type="hidden" name="_next" value={c.contact_redirect_url} />}
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div style="display:grid;gap:var(--space-5);">
@@ -80,3 +80,31 @@ const c = contact.data;
   </section>
 
 </Base>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        window.location.href = form.dataset.redirect ?? '/thanks';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Join the interest list';
+        alert('Something went wrong — please try again.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Join the interest list';
+      alert('Something went wrong — please try again.');
+    }
+  });
+</script>

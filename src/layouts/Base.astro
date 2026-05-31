@@ -38,9 +38,8 @@ const {
     <script>
       (function () {
         const root = document.documentElement;
-        let dark =
-          window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        let dark = false;
+        root.setAttribute('data-theme', 'light');
 
         document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
           btn.addEventListener('click', function () {
