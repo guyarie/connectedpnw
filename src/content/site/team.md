@@ -1,17 +1,13 @@
 ---
 title: "About the Team"
 kicker: "About the team"
-section_heading: "The people behind Connected PNW."
+section_heading: "The people behind Connected PNW"
 section_intro: "Connected PNW was created by co-founders Nina Helms and Miri Arie to give adults in the Pacific Northwest a supported place to learn, practice, and grow in how they show up in dating and relationships."
-founders_heading: "Founders & facilitators."
-founders_intro: "We bring together deep training in relational psychology, group work, and community building with a grounded, human approach to dating and connection."
+founders_heading: "Founders & Facilitators"
 founders_narrative:
-  - "Connected PNW grew out of years of listening to what people actually struggle with in early dating: anxiety, confusion about boundaries, repeating patterns, and a lack of places to practice new ways of relating in real time."
-  - "Rather than offering quick fixes or abstract advice, we wanted a space where people could experiment, reflect, and try again with support from thoughtful facilitators and peers."
-  - "Our work is grounded in attachment theory, trauma-informed practice, and a deep respect for people's lived experience. It is also playful, honest, and oriented toward real-world relationships — not perfection."
-founders_combined_note: "Together, Nina and Miri designed Connected PNW as a structured, skills-based environment where people can bring their full selves into the dating process, learn how they impact others, and build the capacity for more grounded, mutual, and satisfying relationships."
-bios_heading: "Meet the founders."
-bios_intro: "Each founder brings a distinct lens and set of skills to Connected PNW, while sharing a commitment to honest, supportive learning spaces."
+  - "Connected PNW was created by Nina Helms and Miri Arie after years of listening to clients describe the challenges of dating and building meaningful relationships. Again and again, they heard a similar need: a place to practice relationship skills, receive feedback, and grow in connection with others."
+  - "Drawing on their expertise in relational psychology, group facilitation, and community building, they designed Connected PNW as a supportive, skills-based environment where participants can deepen self-awareness, strengthen communication, and develop healthier, more satisfying relationships."
+  - "Their work is grounded in attachment theory, trauma-informed practice, and a deep respect for each person's unique experience."
 founders:
   - name: "Dr. Miri Arie"
     role: "Co-founder & facilitator"

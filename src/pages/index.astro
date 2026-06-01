@@ -84,6 +84,11 @@ const f = faq.data;
           ))}
         </div>
       )}
+      <img
+        src="/images/people-at-table.png"
+        alt="People gathered around a table"
+        class="model-photo"
+      />
     </div>
   </section>
 
@@ -101,6 +106,26 @@ const f = faq.data;
         <div class="cards-3">
           {g.cards.map((card) => (
             <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                {card.heading === 'Insight' && (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
+                    <path d="M10 21h4"/>
+                    <path d="M9.5 17h5"/>
+                  </svg>
+                )}
+                {card.heading === 'Skill' && (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                  </svg>
+                )}
+                {card.heading === 'Confidence' && (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M6 20v-2a6 6 0 0 1 12 0v2"/>
+                  </svg>
+                )}
+              </div>
               <h3>{card.heading}</h3>
               <p class="muted">{card.body}</p>
             </article>
@@ -162,10 +187,10 @@ const f = faq.data;
   <!-- ── Team ── -->
   <section id="team">
     <div class="container">
-      <div style="padding:clamp(3.5rem,7vw,6rem) 0 var(--space-10);">
+      <div style="padding:0 0 var(--space-10);">
         {t.kicker && <div class="label-pill">{t.kicker}</div>}
         {t.section_heading && <h2 style="font-size:var(--text-xl);max-width:none;">{t.section_heading}</h2>}
-        {t.section_intro && <p class="lead" style="margin-top:var(--space-4);">{t.section_intro}</p>}
+        {t.section_intro && <p class="lead" style="margin-top:var(--space-4);max-width:none;">{t.section_intro}</p>}
       </div>
 
       {/* Founders overview */}
@@ -173,7 +198,7 @@ const f = faq.data;
         <div style="margin-bottom:var(--space-10);">
           <p class="kicker">{t.founders_heading}</p>
           {t.founders_intro && <h3 style="font-size:var(--text-lg);max-width:28rem;margin-bottom:var(--space-6);">{t.founders_intro}</h3>}
-          <div class="team-grid">
+          <div class={t.founders_combined_note ? "team-grid" : ""}>
             {t.founders_narrative && (
               <div class="team-narrative">
                 {t.founders_narrative.map((p) => <p>{p}</p>)}

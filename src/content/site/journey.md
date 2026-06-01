@@ -13,7 +13,6 @@ steps:
   - num: "03"
     heading: "Paired practice"
     body: "A central part of the program is a deeper paired-practice phase. Participants are paired with another participant, with meaningful input into who they are paired with, and practice dating that individual over a three-month period. This creates a much deeper kind of relational practice than a one-time interaction."
-    highlight: true
   - num: "04"
     heading: "Regular coaching along the way"
     body: "During the paired-practice phase, participants receive ongoing coaching and reflection so they can understand what is happening in real time, make more intentional choices, and integrate what they are learning as the relationship develops."

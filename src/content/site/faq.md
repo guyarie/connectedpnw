@@ -1,8 +1,6 @@
 ---
 title: "Frequently Asked Questions"
 kicker: "FAQ"
-section_heading: "Questions a future participant might ask."
-section_intro: "This section helps clarify the most important public-facing questions around boundaries, fit, and the structure of the program."
 faqs:
   - question: "Is Connected PNW therapy?"
     answer: "No. Connected PNW is a structured, skills-based dating and interpersonal learning program rather than therapy."
@@ -15,5 +13,7 @@ faqs:
   - question: "Who is this program for?"
     answer: "Connected PNW is for adults who are actively dating or want to be, and who want to understand themselves better, build communication skills, and practice in a supported environment before higher-stakes dating."
   - question: "How long is the program?"
-    answer: "The program includes an initial group learning phase followed by a three-month paired-practice phase. Total duration varies by cohort — reach out to learn more about the current schedule."
+    answer: "The program takes approximately six months to complete. It includes an initial group learning phase followed by a three-month paired-practice phase, allowing participants to build skills, receive feedback, and apply what they are learning in real-life interactions. Specific start and end dates may vary by cohort. Reach out to learn more about the current schedule."
+  - question: "How are groups organized?"
+    answer: "Groups are generally organized by age and life stage to create a more relevant and comfortable experience for participants. Our typical age ranges are 26–35, 35–45, and 45+. These ranges are guidelines rather than strict cutoffs. We also consider factors such as personality, life experience, and overall group fit when determining placement. As a result, there may be some flexibility around the age boundaries to help create groups that work well together."
 ---
