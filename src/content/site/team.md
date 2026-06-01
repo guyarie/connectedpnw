@@ -31,7 +31,7 @@ founders:
     role: "Co-founder & facilitator"
     sections:
       - paragraphs:
-          - "[Placeholder for Nina's intro — 1–2 sentences describing her background and focus area.]"
+          - "[testing Placeholder for Nina's intro — 1–2 sentences describing her background and focus area.]"
       - heading: "Professional Background"
         paragraphs:
           - "[Nina's clinical or professional background, training, and areas of expertise.]"
