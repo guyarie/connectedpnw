@@ -27,20 +27,25 @@ founders:
         paragraphs:
           - "Dr. Arie brings the same values that guide her professional work into her personal life. She is an avid climber, dancer, pianist, language learner, and reader, and she regularly participates in social justice and community-based initiatives."
           - "She values time outdoors, meaningful relationships, and collaborative work with colleagues and community. These experiences continue to reinforce her belief that growth is an ongoing, lived process—shaped not only in structured programs, but in everyday engagement with life."
-  - name: "Nina Helms"
+  - name: "Nina Helms, MA, LMHC"
     role: "Co-founder & facilitator"
     sections:
       - paragraphs:
-          - "[Placeholder for Nina's intro — 1–2 sentences describing her background and focus area.]"
+          - "Nina is a master's-level relational expert with more than a decade of experience helping people build lives rooted in authenticity, connection, and belonging. She is passionate about helping individuals understand themselves more deeply so they can create healthier relationships, stronger communities, and a greater sense of fulfillment in their everyday lives."
       - heading: "Professional Background"
         paragraphs:
-          - "[Nina's clinical or professional background, training, and areas of expertise.]"
+          - "Nina's professional foundation is in psychology, with specialized expertise in relational trauma, attachment, and neurodivergence. Throughout her career, she has worked with adults, couples, and families, helping them navigate life's challenges while strengthening their capacity for connection and emotional wellbeing."
+          - "Her clinical work is grounded in an attachment-based framework that recognizes the powerful role relationships play in shaping how we view ourselves and others. Nina is trained in Eye Movement Desensitization and Reprocessing (EMDR), Dialectical Behavior Therapy (DBT), and is Level 3 Gottman Method trained. She is also a Certified Trauma Professional (CTP)."
+          - "As a relational coach and facilitator, Nina brings together evidence-based knowledge, clinical experience, and a practical understanding of everyday relationships to help people develop stronger connections, healthier communication patterns, and a more secure sense of self."
       - heading: "A Relational Philosophy"
         paragraphs:
-          - "[What guides Nina's approach to this work — her core beliefs about connection, practice, and growth.]"
+          - "Nina believes that the quality of our lives is deeply influenced by the quality of our relationships. Whether with a partner, family member, friend, or community, meaningful connection begins with understanding ourselves and showing up authentically with others."
+          - "She views healthy relationships as living systems that require care, attention, and intention to thrive. Much like a garden, connection grows when nurtured through vulnerability, honest communication, trust, healthy boundaries, and shared joy. Nina believes friendship is one of the most important foundations of lasting relationships and that fun, laughter, and genuine enjoyment of one another are often overlooked ingredients in creating a connected life."
+          - "At the heart of her work is a belief in people's capacity to grow, heal, and create new patterns. She encourages others to embrace both the complexity and beauty of being human while building relationships that support a meaningful and connected life."
       - heading: "Beyond the Work"
         paragraphs:
-          - "[Personal interests, community involvement, or other dimensions that inform who she is as a facilitator.]"
+          - "Nina's commitment to relationships extends far beyond her professional role. She is a wife, mother, friend, aunt, and active member of her community who believes that connection is built through everyday acts of care and presence. Family and community are central to who she is. Whether volunteering at her son's school, supporting neighbors, gathering friends around a table for a meal, or spending time with loved ones, she believes that strong communities are built through generosity, service, and meaningful relationships."
+          - "Outside of work, Nina enjoys cooking, skiing, hiking, reading, and creating opportunities to connect with family and friends. These experiences continually reinforce her belief that a rich and fulfilling life is built not through achievement alone, but through the relationships we cultivate along the way."
 values_heading: "How we hold the space."
 values_intro: "Our values shape how we design the program, how we facilitate, and how we invite participants to relate to one another."
 values:
