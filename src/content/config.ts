@@ -8,6 +8,7 @@ const timelineStep = z.object({
   heading: z.string(),
   body: z.string(),
   highlight: z.boolean().optional(),
+  image: z.string().optional(),
 });
 const faqItem = z.object({ question: z.string(), answer: z.string() });
 const founderSection = z.object({

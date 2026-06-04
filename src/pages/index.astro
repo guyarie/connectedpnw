@@ -85,7 +85,7 @@ const f = faq.data;
         </div>
       )}
       <img
-        src="/images/people-at-table.png"
+        src="/images/new-hero-image.png"
         alt="People gathered around a table"
         class="model-photo"
       />
@@ -149,10 +149,17 @@ const f = faq.data;
         <div class="timeline">
           {j.steps.map((step) => (
             <article class={`timeline-step${step.highlight ? ' highlight' : ''}`}>
-              <div class="timeline-num" aria-hidden="true">{step.num}</div>
-              <div>
-                <h3>{step.heading}</h3>
-                <p class="muted">{step.body}</p>
+              {step.image && (
+                <div class="timeline-img">
+                  <img src={step.image} alt={step.heading} loading="lazy" />
+                </div>
+              )}
+              <div class="timeline-body">
+                <div class="timeline-num" aria-hidden="true">{step.num}</div>
+                <div>
+                  <h3>{step.heading}</h3>
+                  <p class="muted">{step.body}</p>
+                </div>
               </div>
             </article>
           ))}

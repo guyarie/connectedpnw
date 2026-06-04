@@ -6,14 +6,18 @@ section_intro: "Connected PNW is designed as a progression from insight to pract
 steps:
   - num: "01"
     heading: "Group learning"
+    image: "/images/journey-group-learning-wide.png"
     body: "Participants begin in a structured group setting focused on communication, relational patterns, emotional attunement, boundaries, expectations, sexuality, and the interpersonal skills that support healthy early dating."
   - num: "02"
     heading: "Social Nights"
+    image: "/images/journey-social-bowling.png"
     body: "Lower-pressure social outings help participants practice new skills, notice habits in action, and build confidence in settings that feel more natural than a classroom or workshop."
   - num: "03"
     heading: "Paired practice"
+    image: "/images/journey-practice-walk-wide.png"
     body: "A central part of the program is a deeper paired-practice phase. Participants are paired with another participant, with meaningful input into who they are paired with, and practice dating that individual over a three-month period. This creates a much deeper kind of relational practice than a one-time interaction."
   - num: "04"
     heading: "Regular coaching along the way"
+    image: "/images/journey-coaching-therapy.png"
     body: "During the paired-practice phase, participants receive ongoing coaching and reflection so they can understand what is happening in real time, make more intentional choices, and integrate what they are learning as the relationship develops."
 ---
