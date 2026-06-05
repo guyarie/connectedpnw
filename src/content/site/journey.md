@@ -2,7 +2,7 @@
 title: "Program Journey"
 kicker: "Program journey"
 section_heading: "From structured learning to deeper paired practice."
-section_intro: "Connected PNW is designed as a progression from insight to practice to more immersive relational learning. The goal is not just to discuss dating, but to create a supported path where people can actually experience how connection unfolds over time."
+section_intro: "Connected is designed as a progression from insight to practice to more immersive relational learning. The goal is not just to discuss dating, but to create a supported path where people can actually experience how connection unfolds over time."
 steps:
   - num: "01"
     heading: "Group learning"
