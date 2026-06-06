@@ -205,19 +205,15 @@ const f = faq.data;
         <div style="margin-bottom:var(--space-10);">
           <p class="kicker">{t.founders_heading}</p>
           {t.founders_intro && <h3 style="font-size:var(--text-lg);max-width:28rem;margin-bottom:var(--space-6);">{t.founders_intro}</h3>}
-          <div class={t.founders_combined_note ? "team-grid" : ""}>
+          <div class="team-grid">
             {t.founders_narrative && (
               <div class="team-narrative">
                 {t.founders_narrative.map((p) => <p>{p}</p>)}
               </div>
             )}
-            {t.founders_combined_note && (
-              <aside class="founder-overview-card">
-                <h3>Nina Helms &amp; Miri Arie</h3>
-                <p class="muted">{t.founders_combined_note}</p>
-                <p class="founder-overview-note">Individual bios below.</p>
-              </aside>
-            )}
+            <div class="founders-pic">
+              <img src="/images/team-pic.jpeg" alt="Founders" loading="lazy" />
+            </div>
           </div>
         </div>
       )}
@@ -230,8 +226,15 @@ const f = faq.data;
           <div class="two-col-bios">
             {t.founders.map((founder) => (
               <article class="bio-block">
-                <h3 class="bio-name">{founder.name}</h3>
-                <div class="bio-role">{founder.role}</div>
+                <div class="bio-header">
+                  <div>
+                    <h3 class="bio-name">{founder.name}</h3>
+                    <div class="bio-role">{founder.role}</div>
+                  </div>
+                  {founder.image && (
+                    <img class="bio-headshot" src={founder.image} alt={founder.name} loading="lazy" />
+                  )}
+                </div>
                 <div class="bio-body">
                   {founder.sections.map((section) => (
                     <div class="bio-section">

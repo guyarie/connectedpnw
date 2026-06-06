@@ -18,6 +18,7 @@ const founderSection = z.object({
 const founderBio = z.object({
   name: z.string(),
   role: z.string(),
+  image: z.string().optional(),
   sections: z.array(founderSection),
 });
 
