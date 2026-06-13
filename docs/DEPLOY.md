@@ -2,35 +2,43 @@
 
 ## Overview
 
-The site builds to a static `dist/` directory via Astro. Nginx on your DigitalOcean droplet serves that directory. Deployment is triggered by pushing to the `main` branch.
+The site builds to a static `dist/` directory via Astro. GitHub Actions builds `dist/` on every push to `main` and SCPs it directly to the DigitalOcean droplet. Nginx serves that directory. The server never runs `npm` or `git` as part of the deploy pipeline.
 
 ---
 
-## Server Requirements
+## How deploys work
 
-- Ubuntu 22.04+ (or equivalent)
-- Node.js 18+ (`nvm install --lts` recommended)
-- Nginx
+1. Push (or merge a PR) to `main`
+2. GitHub Actions (`ubuntu-latest`, Node 20) runs `npm ci` then `npm run build`
+3. The built `dist/` is copied to `/var/www/connectedpnw/dist/` on the droplet via SCP
+4. Nginx serves the updated files — done
+
+Workflow file: `.github/workflows/deploy.yml`
+
+Required GitHub secrets (Settings → Secrets → Actions):
+
+| Secret | Value |
+|---|---|
+| `SERVER_HOST` | Droplet IP or hostname |
+| `SERVER_USER` | SSH username |
+| `SERVER_SSH_KEY` | Private SSH key (corresponding public key must be in `~/.ssh/authorized_keys` on the server) |
 
 ---
 
-## Initial Server Setup
+## Initial server setup
 
-### 1. Install Node.js
+This only needs to be done once. After this, the server is hands-off for all future deploys.
+
+### 1. Install Nginx
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-source ~/.bashrc
-nvm install --lts
+apt update && apt install -y nginx
 ```
 
-### 2. Clone the repository
+### 2. Create the web root
 
 ```bash
-git clone https://github.com/YOUR_ORG/connectedpnw.git /var/www/connectedpnw
-cd /var/www/connectedpnw
-npm install
-npm run build
+mkdir -p /var/www/connectedpnw/dist
 ```
 
 ### 3. Configure Nginx
@@ -46,18 +54,15 @@ server {
     root /var/www/connectedpnw/dist;
     index index.html;
 
-    # Serve pre-built static files; fall back to index.html for SPA-style 404s
     location / {
         try_files $uri $uri/ $uri.html /404.html =404;
     }
 
-    # Cache static assets aggressively
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff2?)$ {
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
 
-    # Security headers
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
@@ -78,117 +83,47 @@ nginx -t && systemctl reload nginx
 ### 4. HTTPS with Certbot
 
 ```bash
-apt install certbot python3-certbot-nginx
+apt install -y certbot python3-certbot-nginx
 certbot --nginx -d connectedpnw.com -d www.connectedpnw.com
 ```
 
 ---
 
-## Deployment
+## Manual rebuild (emergency only)
 
-### Option A — Git post-receive hook (no CI required)
-
-On the server, set up a bare repo:
+If you need to deploy without GitHub Actions (e.g. CI is down), SSH into the droplet and build locally:
 
 ```bash
-git init --bare /var/repo/connectedpnw.git
-```
+# One-time: install Node if not present
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+source ~/.bashrc
+nvm install --lts
 
-Create `/var/repo/connectedpnw.git/hooks/post-receive`:
+# Clone repo if not already present
+git clone https://github.com/YOUR_ORG/connectedpnw.git /tmp/cnctpnw
 
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-REPO=/var/www/connectedpnw
-BRANCH=main
-
-while read oldrev newrev ref; do
-  if [[ "$ref" == "refs/heads/$BRANCH" ]]; then
-    echo "--- Deploying $BRANCH ---"
-    git --work-tree="$REPO" --git-dir="/var/repo/connectedpnw.git" checkout -f "$BRANCH"
-    cd "$REPO"
-    npm ci --prefer-offline
-    npm run build
-    echo "--- Deploy complete ---"
-  fi
-done
-```
-
-```bash
-chmod +x /var/repo/connectedpnw.git/hooks/post-receive
-```
-
-Add the server as a remote on your local machine:
-
-```bash
-git remote add production ssh://user@YOUR_SERVER_IP/var/repo/connectedpnw.git
-git push production main
-```
-
-### Option B — GitHub Actions
-
-Create `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: npm ci
-      - run: npm run build
-
-      - name: Sync dist to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: dist/
-          target: /var/www/connectedpnw/dist/
-          strip_components: 1
-```
-
-Set `SERVER_HOST`, `SERVER_USER`, and `SERVER_SSH_KEY` in GitHub → Settings → Secrets.
-
----
-
-## Quick rebuild on the server
-
-```bash
-cd /var/www/connectedpnw
-git pull origin main
-npm ci --prefer-offline
+# Build and copy
+cd /tmp/cnctpnw
+npm ci
 npm run build
+cp -r dist/* /var/www/connectedpnw/dist/
 ```
 
-Or use the included `deploy.sh` script:
+Or if the repo is already checked out somewhere on the server:
 
 ```bash
-bash /var/www/connectedpnw/deploy.sh
+cd /path/to/cnctpnw
+git pull
+npm ci
+npm run build
+cp -r dist/* /var/www/connectedpnw/dist/
 ```
 
 ---
 
 ## Content updates (no-code)
 
-Staff update content by editing the Markdown files in `src/content/site/` via the GitHub web UI. After saving, a new deploy is triggered automatically (GitHub Actions) or can be triggered manually via `deploy.sh`.
-
-Files to edit:
+Staff update content by editing the Markdown files in `src/content/site/` via the GitHub web UI. Saving triggers a deploy automatically.
 
 | File | What it controls |
 |---|---|
