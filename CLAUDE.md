@@ -4,13 +4,15 @@
 A multi-page static website for **Connected PNW**, a guided dating and relational skills program (not therapy, not a dating service) co-founded by Miri Arie and Nina Helms. Based in the Pacific Northwest.
 
 ## Stack
-- **Framework**: Astro 4, static output (`npm run build` → `dist/`)
+- **Framework**: Astro 5, static output (`npm run build` → `dist/`)
 - **Styling**: Tailwind CSS + custom CSS variables in `src/styles/global.css`
 - **Content**: Astro Content Collections — all user-facing text lives in `src/content/site/*.md`
 - **Hosting**: DigitalOcean droplet, Nginx serves `dist/`
-- **Deploy**: GitHub Actions → SSH → rebuild (CI/CD not yet configured — next task)
-- **Forms**: Formspree (stubbed, needs form ID in `contact.md`)
-- **Email**: Cloudflare Email Routing → personal Gmail accounts (setup in progress)
+- **Deploy**: GitHub Actions → SCP → `/var/www/connectedpnw/dist/` on push to `main` (`.github/workflows/deploy.yml`)
+- **Forms**: Formspree — form ID configured in `contact.md` (`contact_form_action`)
+- **Email**: Cloudflare Email Routing → personal Gmail accounts
+- **Analytics**: Plausible Analytics (`connectedpnw.com`) — register at plausible.io to activate
+- **SEO**: OG/Twitter Card tags, JSON-LD (`EducationalOrganization`), sitemap, robots.txt — all in `Base.astro` / `astro.config.mjs`
 
 ## Key commands
 ```bash
@@ -51,13 +53,13 @@ Light/dark toggle is in `src/layouts/Base.astro` (inline script). Theme respects
 ## Key constraints
 - **Zero hardcoded text in .astro files** — all copy comes from content collections
 - Non-technical staff edit `src/content/site/*.md` via GitHub web UI; don't restructure frontmatter keys they depend on without updating EDITING.md
-- Nina's bio (`team.md`) is still placeholder text — waiting on her copy
-- Formspree form ID not yet set — update `contact_form_action` in `contact.md`
+
+## Pending / one-time setup
+- Create `public/images/og-default.jpg` (1200×630px) for social share previews
+- Register `connectedpnw.com` on plausible.io to activate analytics
+- Submit `https://connectedpnw.com/sitemap-index.xml` to Google Search Console
 
 ## Documentation
 - `EDITING.md` — for non-technical staff (text, images, colors)
 - `DEV.md` — developer reference (adding pages, SSR, Decap CMS, blog)
-- `DEPLOY.md` — Nginx config, GitHub Actions workflow, post-receive hook
-
-## Next task
-Set up GitHub repo + GitHub Actions CI/CD deploying to the DigitalOcean droplet on push to `main`.
+- `DEPLOY.md` — Nginx config, GitHub Actions workflow, server setup

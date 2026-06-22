@@ -64,6 +64,39 @@ const f = faq.data;
     </div>
   </section>
 
+  <!-- ── Program journey ── -->
+  <section id="journey">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {j.kicker && <p class="kicker">{j.kicker}</p>}
+          {j.section_heading && <h2>{j.section_heading}</h2>}
+        </div>
+        {j.section_intro && <p>{j.section_intro}</p>}
+      </div>
+      {j.steps && (
+        <div class="timeline">
+          {j.steps.map((step) => (
+            <article class={`timeline-step${step.highlight ? ' highlight' : ''}`}>
+              {step.image && (
+                <div class="timeline-img">
+                  <img src={step.image} alt={step.heading} loading="lazy" />
+                </div>
+              )}
+              <div class="timeline-body">
+                <div class="timeline-num" aria-hidden="true">{step.num}</div>
+                <div>
+                  <h3>{step.heading}</h3>
+                  <p class="muted">{step.body}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
   <!-- ── Coaching model ── -->
   <section id="model">
     <div class="container">
@@ -128,39 +161,6 @@ const f = faq.data;
               </div>
               <h3>{card.heading}</h3>
               <p class="muted">{card.body}</p>
-            </article>
-          ))}
-        </div>
-      )}
-    </div>
-  </section>
-
-  <!-- ── Program journey ── -->
-  <section id="journey">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          {j.kicker && <p class="kicker">{j.kicker}</p>}
-          {j.section_heading && <h2>{j.section_heading}</h2>}
-        </div>
-        {j.section_intro && <p>{j.section_intro}</p>}
-      </div>
-      {j.steps && (
-        <div class="timeline">
-          {j.steps.map((step) => (
-            <article class={`timeline-step${step.highlight ? ' highlight' : ''}`}>
-              {step.image && (
-                <div class="timeline-img">
-                  <img src={step.image} alt={step.heading} loading="lazy" />
-                </div>
-              )}
-              <div class="timeline-body">
-                <div class="timeline-num" aria-hidden="true">{step.num}</div>
-                <div>
-                  <h3>{step.heading}</h3>
-                  <p class="muted">{step.body}</p>
-                </div>
-              </div>
             </article>
           ))}
         </div>
