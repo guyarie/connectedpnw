@@ -11,7 +11,7 @@ A multi-page static website for **Connected PNW**, a guided dating and relationa
 - **Deploy**: GitHub Actions → SCP → `/var/www/connectedpnw/dist/` on push to `main` (`.github/workflows/deploy.yml`)
 - **Forms**: Formspree — form ID configured in `contact.md` (`contact_form_action`)
 - **Email**: Cloudflare Email Routing → personal Gmail accounts
-- **Analytics**: Plausible Analytics (`connectedpnw.com`) — register at plausible.io to activate
+- **Analytics**: Plausible CE self-hosted at `analytics.16jets.com` (mini-PC, Docker, Cloudflare Tunnel)
 - **SEO**: OG/Twitter Card tags, JSON-LD (`EducationalOrganization`), sitemap, robots.txt — all in `Base.astro` / `astro.config.mjs`
 
 ## Key commands
@@ -56,8 +56,6 @@ Light/dark toggle is in `src/layouts/Base.astro` (inline script). Theme respects
 
 ## Pending / one-time setup
 - Create `public/images/og-default.jpg` (1200×630px) for social share previews
-- Register `connectedpnw.com` on plausible.io to activate analytics
-- Submit `https://connectedpnw.com/sitemap-index.xml` to Google Search Console
 
 ## Documentation
 - `EDITING.md` — for non-technical staff (text, images, colors)
