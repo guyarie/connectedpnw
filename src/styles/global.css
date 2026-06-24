@@ -141,10 +141,16 @@ header {
 }
 
 .brand-logo {
-  height: 64px;
+  height: 51px;
   width: auto;
   display: block;
   object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .brand-logo {
+    height: 26px;
+  }
 }
 
 .nav-links {
