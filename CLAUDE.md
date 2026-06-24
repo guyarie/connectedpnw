@@ -54,8 +54,6 @@ Light/dark toggle is in `src/layouts/Base.astro` (inline script). Theme respects
 - **Zero hardcoded text in .astro files** — all copy comes from content collections
 - Non-technical staff edit `src/content/site/*.md` via GitHub web UI; don't restructure frontmatter keys they depend on without updating EDITING.md
 
-## Pending / one-time setup
-- Create `public/images/og-default.jpg` (1200×630px) for social share previews
 
 ## Documentation
 - `EDITING.md` — for non-technical staff (text, images, colors)
