@@ -23,6 +23,7 @@ const c = contact.data;
           id="contact-form"
           method="POST"
           action={c.contact_form_action ?? '#'}
+          data-mailerlite={c.mailerlite_form_action ?? ''}
           data-redirect={c.contact_redirect_url ?? '/thanks'}
         >
           <input type="hidden" name="_subject" value="New interest list submission — Connected PNW" />
@@ -88,20 +89,40 @@ const c = contact.data;
     const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    try {
-      const res = await fetch(form.action, {
+
+    const data = new FormData(form);
+
+    // Dual submit: Formspree emails the founders the full submission (incl. the
+    // message); MailerLite adds the subscriber to the interest list group so the
+    // nurture sequence starts. The message field is deliberately NOT sent to
+    // MailerLite — it may contain personal detail that belongs in the founders'
+    // inbox, not in an ESP profile.
+    const submits: Promise<Response>[] = [
+      fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: data,
         headers: { Accept: 'application/json' },
-      });
-      if (res.ok) {
-        window.location.href = form.dataset.redirect ?? '/thanks';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Join the interest list';
-        alert('Something went wrong — please try again.');
-      }
-    } catch {
+      }),
+    ];
+
+    const mlAction = form.dataset.mailerlite;
+    const honeypotTripped = !!data.get('_gotcha');
+    if (mlAction && !honeypotTripped) {
+      const mlBody = new URLSearchParams();
+      mlBody.set('fields[email]', String(data.get('email') ?? ''));
+      mlBody.set('fields[name]', String(data.get('first_name') ?? ''));
+      mlBody.set('fields[last_name]', String(data.get('last_name') ?? ''));
+      mlBody.set('fields[hear_about]', String(data.get('hear_about') ?? ''));
+      mlBody.set('ml-submit', '1');
+      mlBody.set('anticsrf', 'true');
+      submits.push(fetch(mlAction, { method: 'POST', body: mlBody }));
+    }
+
+    const results = await Promise.allSettled(submits);
+    const anyOk = results.some((r) => r.status === 'fulfilled' && r.value.ok);
+    if (anyOk) {
+      window.location.href = form.dataset.redirect ?? '/thanks';
+    } else {
       btn.disabled = false;
       btn.textContent = 'Join the interest list';
       alert('Something went wrong — please try again.');
