@@ -1,0 +1,32 @@
+---
+import { getEntry } from 'astro:content';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const contact = await getEntry('site', 'contact');
+const { instagram_url, facebook_url } = contact.data;
+---
+
+{(instagram_url || facebook_url) && (
+  <div class:list={['social-links', className]} aria-label="Follow us on social media">
+    {instagram_url && (
+      <a href={instagram_url} target="_blank" rel="noopener noreferrer" aria-label="Follow Connected PNW on Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+          <circle cx="12" cy="12" r="4.2" />
+          <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+    )}
+    {facebook_url && (
+      <a href={facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Follow Connected PNW on Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M13.5 21v-8.1h2.72l.41-3.16h-3.13V7.7c0-.91.25-1.53 1.56-1.53h1.67V3.35A22.3 22.3 0 0 0 14.3 3.2c-2.32 0-3.91 1.42-3.91 4.02v2.24H7.66v3.16h2.73V21z" />
+        </svg>
+      </a>
+    )}
+  </div>
+)}

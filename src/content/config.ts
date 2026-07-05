@@ -56,6 +56,8 @@ const site = defineCollection({
     contact_form_action: z.string().optional(),
     mailerlite_form_action: z.string().optional(),
     contact_redirect_url: z.string().optional(),
+    instagram_url: z.string().optional(),
+    facebook_url: z.string().optional(),
     // Team section
     founders_heading: z.string().optional(),
     founders_intro: z.string().optional(),

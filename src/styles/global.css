@@ -591,6 +591,30 @@ footer {
 
 .footer-links a:hover { color: var(--color-text); }
 
+.social-links {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.social-links a {
+  display: inline-flex;
+  color: var(--color-text-muted);
+  transition: color 0.15s ease;
+}
+
+.social-links a:hover { color: var(--color-text); }
+
+.header-social {
+  gap: var(--space-3);
+  padding-right: 0.25rem;
+  border-right: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+}
+
+.mobile-nav-social {
+  justify-content: center;
+  margin-top: var(--space-3);
+}
+
 /* ── Team section ── */
 
 .label-pill {
@@ -795,5 +819,6 @@ footer {
   .model-step::after { display: none; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
+  .header-social { display: none; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
 }

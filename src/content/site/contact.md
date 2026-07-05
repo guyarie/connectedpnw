@@ -8,4 +8,6 @@ contact_note: "Your information will not be shared or used for marketing. We'll 
 contact_form_action: "https://formspree.io/f/maqkzqvl"
 mailerlite_form_action: "https://assets.mailerlite.com/jsonp/2489001/forms/192032452080830159/subscribe"
 contact_redirect_url: "https://connectedpnw.com/thanks"
+instagram_url: "https://www.instagram.com/pnw.connected"
+facebook_url: "https://www.facebook.com/connectedpnw"
 ---
