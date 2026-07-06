@@ -819,6 +819,18 @@ footer {
   .model-step::after { display: none; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  .header-social { display: none; }
+  .header-theme-toggle { display: none; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+}
+
+.mobile-nav-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  margin-top: var(--space-2);
+  padding: var(--space-2) 0;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
 }
