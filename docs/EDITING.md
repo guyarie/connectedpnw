@@ -1,6 +1,6 @@
 # Editing Guide — Connected PNW
 
-This guide is for anyone updating the website's text, images, or basic appearance. You don't need to know how to code. All edits are made by changing plain text files on GitHub.
+This guide is for anyone updating the website's text, images, or basic appearance — including an AI agent editing on someone's behalf. You don't need to know how to code. All edits are made by changing plain text files on GitHub, either through the GitHub web UI (people) or the GitHub API (agents — see [Editing via the GitHub API](#editing-via-the-github-api-for-ai-agents)).
 
 ---
 
@@ -76,9 +76,11 @@ To **remove** an item: delete its two lines (`- question:` and `answer:`).
 
 ---
 
-## Writing blog posts
+## Blog posts
 
 Blog posts live in `src/content/posts/` — one Markdown file per post. Unlike the site content files, the text after the frontmatter **is** the post body, written in Markdown.
+
+### Adding a post
 
 1. On GitHub, navigate to `src/content/posts/`.
 2. Click **Add file → Create new file**.
@@ -102,7 +104,14 @@ Blog posts live in `src/content/posts/` — one Markdown file per post. Unlike t
 
 See `src/content/posts/welcome-to-the-connected-pnw-blog.md` for a working example (it's a draft, so it won't appear on the live site).
 
-For an AI agent to publish posts programmatically instead of using the GitHub web UI, see the "Agent publishing" section of `DEV.md`.
+### Editing a post
+
+Open the post's `.md` file in `src/content/posts/`, click the pencil icon, change the frontmatter and/or body text, and commit — same as any other content file.
+
+### Removing a post
+
+- **Take it down but keep the text**: set `draft: true` in the frontmatter and commit. The post immediately drops out of the listing, its own page, and the RSS feed, but the file (and the writing) stays in the repo for later.
+- **Delete it permanently**: open the post's file on GitHub, click the trash-can icon (top-right of the file view), and commit the deletion.
 
 ---
 
@@ -159,6 +168,72 @@ Fonts are loaded at the top of `src/layouts/Base.astro` via this line:
 - **Satoshi** is the body font.
 
 To swap fonts, replace the font names in that URL with others from [fontshare.com](https://www.fontshare.com), then update the `--font-display` and `--font-body` variables in `global.css` to match.
+
+---
+
+## Editing via the GitHub API (for AI agents)
+
+Everything above describes the GitHub web UI. An AI agent — including one running on a different machine — can make the same edits programmatically through the **GitHub Contents API**, since the site is static and every push to `main` triggers an automatic build + deploy (`.github/workflows/deploy.yml`). No extra infrastructure is needed; this applies to any file under `src/content/` (site pages or blog posts), not just blog posts.
+
+Set up once: create a **fine-grained GitHub PAT** scoped to just this repo (`guyarie/connectedpnw`) with `Contents: Read and write` permission — nothing broader. Give it to the agent as `$GITHUB_TOKEN`.
+
+### Create a new file (e.g. a new blog post)
+
+```bash
+curl -X PUT \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
+  -d '{
+    "message": "Add blog post: My New Post",
+    "content": "'"$(base64 -w0 my-new-post.md)"'",
+    "branch": "main"
+  }'
+```
+
+Or with `gh`:
+
+```bash
+gh api -X PUT repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
+  -f message="Add blog post: My New Post" \
+  -f content="$(base64 -w0 my-new-post.md)" \
+  -f branch=main
+```
+
+### Edit an existing file
+
+Same `PUT` call as above, but GitHub requires the file's current `sha` to confirm you're updating (not accidentally overwriting someone else's change). Fetch it first:
+
+```bash
+sha=$(gh api repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md --jq .sha)
+
+gh api -X PUT repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
+  -f message="Update blog post: My New Post" \
+  -f content="$(base64 -w0 my-new-post.md)" \
+  -f sha="$sha" \
+  -f branch=main
+```
+
+To unpublish without deleting, this is just an edit that changes `draft: false` to `draft: true` in the frontmatter.
+
+### Delete a file
+
+Also needs the current `sha`:
+
+```bash
+sha=$(gh api repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md --jq .sha)
+
+gh api -X DELETE repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
+  -f message="Remove blog post: My New Post" \
+  -f sha="$sha" \
+  -f branch=main
+```
+
+### Notes
+
+- Pushing straight to `main` deploys immediately once the file lands. For a review step before anything goes live, have the agent push to a branch and open a PR (`gh pr create`) instead of writing directly to `main`; merge it once the change is checked.
+- For blog posts, the agent needs valid frontmatter matching the `posts` schema (`title`, `description`, `date`, `author`, `draft`, optional `image`/`tags`) plus a Markdown body — see "Adding a post" above for the shape. No build step or local checkout is required on the agent's end.
+- Keep `draft: true` as the default in agent-authored posts so publishing is a separate, deliberate step.
 
 ---
 

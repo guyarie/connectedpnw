@@ -129,40 +129,7 @@ Already set up:
 - **SEO**: each post page emits `BlogPosting` JSON-LD via `Base.astro`'s `head` slot, and gets its own OG/Twitter tags (`ogType="article"`). `src/pages/rss.xml.js` serves an RSS feed at `/rss.xml`, linked from `<head>` on every page. `@astrojs/sitemap` already picks up the new routes automatically.
 - **Nav**: a "Blog" link is in both `Header.astro` and `Footer.astro`.
 
-To add a post by hand, see the "Writing blog posts" section of `EDITING.md`.
-
-#### Agent publishing
-
-Because the site is static and deploys are triggered by pushes to `main` (`.github/workflows/deploy.yml`), the simplest way for an AI agent on another machine to publish is the **GitHub REST API** — no extra infrastructure needed:
-
-```bash
-# Create or update a post file directly via the Contents API
-curl -X PUT \
-  -H "Authorization: Bearer $GITHUB_TOKEN" \
-  -H "Accept: application/vnd.github+json" \
-  https://api.github.com/repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
-  -d '{
-    "message": "Add blog post: My New Post",
-    "content": "'"$(base64 -w0 my-new-post.md)"'",
-    "branch": "main"
-  }'
-```
-
-Or equivalently with `gh`:
-
-```bash
-gh api -X PUT repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
-  -f message="Add blog post: My New Post" \
-  -f content="$(base64 -w0 my-new-post.md)" \
-  -f branch=main
-```
-
-Notes:
-
-- Use a **fine-grained GitHub PAT** scoped to just this repo with `Contents: Read and write` permission — nothing broader.
-- Pushing straight to `main` deploys immediately once the file lands (existing GitHub Actions workflow). For a review step before anything goes live, have the agent push to a branch and open a PR (`gh pr create`) instead of writing directly to `main`; merge it once the post is checked.
-- The agent only needs to produce valid frontmatter matching the `posts` schema above (`title`, `description`, `date`, `draft`, etc.) plus a Markdown body — no build step or local checkout required on its end.
-- Keep `draft: true` as the default in agent-authored posts so publishing is a separate, deliberate step (flip to `false` in a follow-up commit or PR).
+To add, edit, or remove a post — by hand or via an AI agent's API access — see `EDITING.md`. That's the single doc both staff and agents need for content changes; nothing blog-specific lives here beyond the schema/wiring above.
 
 ### Enable SSR (when a dynamic feature is needed)
 
