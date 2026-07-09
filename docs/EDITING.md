@@ -31,7 +31,6 @@ The site will rebuild and go live in about 60–90 seconds.
 | `model.md` | The five coaching model steps |
 | `gains.md` | The three "What participants gain" cards (Insight, Skill, Confidence) |
 | `journey.md` | The four program journey steps (Group learning → Paired practice) |
-| `about.md` | The "About Connected PNW" section heading and the two cards |
 | `faq.md` | All FAQ questions and answers |
 | `contact.md` | The contact page heading, intro text, and the privacy note at the bottom |
 
@@ -74,6 +73,36 @@ To **edit** an item: change the text after `question:` or `answer:`.
 To **add** a new item: copy an existing `- question:` / `answer:` block, paste it at the end of the list, and update the text. Make sure the indentation (the spaces at the start of each line) matches the other items exactly.
 
 To **remove** an item: delete its two lines (`- question:` and `answer:`).
+
+---
+
+## Writing blog posts
+
+Blog posts live in `src/content/posts/` — one Markdown file per post. Unlike the site content files, the text after the frontmatter **is** the post body, written in Markdown.
+
+1. On GitHub, navigate to `src/content/posts/`.
+2. Click **Add file → Create new file**.
+3. Name it something URL-friendly ending in `.md`, e.g. `understanding-your-dating-patterns.md`. The filename becomes the post's URL: `/blog/understanding-your-dating-patterns/`.
+4. Add frontmatter and body, e.g.:
+
+   ```markdown
+   ---
+   title: "Understanding Your Dating Patterns"
+   description: "A short one- or two-sentence summary shown on the blog listing page."
+   date: 2026-07-06
+   author: "Connected PNW"
+   draft: false
+   ---
+
+   Your post content goes here, written in Markdown. Use blank lines between
+   paragraphs, `## Heading` for subheadings, and `- item` for bullet lists.
+   ```
+
+5. Commit the file. If `draft: false`, it goes live on the next build (~60–90 seconds). Set `draft: true` to keep working on a post without publishing it — draft posts never appear in the production listing, post pages, or the RSS feed.
+
+See `src/content/posts/welcome-to-the-connected-pnw-blog.md` for a working example (it's a draft, so it won't appear on the live site).
+
+For an AI agent to publish posts programmatically instead of using the GitHub web UI, see the "Agent publishing" section of `DEV.md`.
 
 ---
 

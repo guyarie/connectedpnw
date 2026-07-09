@@ -72,4 +72,17 @@ const site = defineCollection({
   }),
 });
 
-export const collections = { site };
+const posts = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.date(),
+    author: z.string().default('Connected PNW'),
+    image: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { site, posts };

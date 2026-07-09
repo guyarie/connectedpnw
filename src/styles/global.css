@@ -748,6 +748,29 @@ footer {
   );
 }
 
+/* ── Blog post content ── */
+
+.prose {
+  color: var(--color-text);
+  font-size: var(--text-base);
+  line-height: 1.75;
+}
+
+.prose > * + * { margin-top: var(--space-5); }
+.prose h2 { font-size: var(--text-lg); margin-top: var(--space-8); }
+.prose h3 { font-size: var(--text-base); margin-top: var(--space-6); }
+.prose p, .prose li { color: var(--color-text-muted); }
+.prose ul, .prose ol { padding-left: 1.4rem; }
+.prose li + li { margin-top: var(--space-2); }
+.prose a { color: var(--color-primary); text-decoration: underline; }
+.prose blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--space-4);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.prose img { border-radius: var(--radius-lg); width: 100%; height: auto; }
+
 /* ── Hamburger & mobile nav ── */
 
 .nav-hamburger {

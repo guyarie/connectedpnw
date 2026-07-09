@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base
+  title="Blog — Connected PNW"
+  description="Notes on dating and relational skills from the Connected PNW team."
+>
+  <div class="page-hero">
+    <div class="container">
+      <p class="kicker">Blog</p>
+      <h1 style="max-width:none;font-size:var(--text-xl);">Notes on connection.</h1>
+      <p class="lead" style="margin-top:var(--space-4);">
+        Thoughts on dating patterns, communication, and building the skills that support real connection.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      {posts.length === 0 && <p class="muted">No posts yet — check back soon.</p>}
+      <div class="cards-3">
+        {posts.map((post) => (
+          <article class="card">
+            {post.data.draft && <p class="kicker" style="color:var(--color-primary);">Draft</p>}
+            <h3><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h3>
+            <p class="muted" style="font-size:var(--text-xs);">
+              {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+            <p class="muted">{post.data.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -34,6 +34,7 @@ src/
   content/
     config.ts          # Zod schemas — edit when adding new content fields
     site/              # One .md file per page section
+    posts/             # One .md file per blog post
   layouts/
     Base.astro         # HTML shell: fonts, theme script, Header + Footer slots
   components/
@@ -42,10 +43,13 @@ src/
   styles/
     global.css         # CSS custom properties (light/dark), all component classes
   pages/
-    index.astro        # Home — renders all 6 sections from content files
-    about.astro        # /about standalone page
+    index.astro        # Home — renders all sections from content files
     faq.astro          # /faq standalone page
     contact.astro      # /contact — Formspree-ready form
+    rss.xml.js          # RSS feed for the blog
+    blog/
+      index.astro      # /blog listing page
+      [slug].astro     # /blog/<slug> single post page
 public/
   favicon.svg
   images/              # Add client images here
@@ -115,22 +119,50 @@ Same pattern — edit the relevant `.md` file's `cards` or `steps` array. If you
 
 Reorder the `<section>` blocks in `src/pages/index.astro`. Update the nav anchor links in `Header.astro` to match.
 
-### Add a blog
+### Blog
 
-1. Define a new `posts` collection in `src/content/config.ts`:
-   ```ts
-   const posts = defineCollection({
-     type: 'content',
-     schema: z.object({
-       title: z.string(),
-       date: z.date(),
-       description: z.string().optional(),
-       draft: z.boolean().optional(),
-     }),
-   });
-   ```
-2. Create `src/content/posts/` and add `.md` files.
-3. Create `src/pages/blog/index.astro` (listing) and `src/pages/blog/[slug].astro` (single post).
+Already set up:
+
+- **Collection**: `posts` in `src/content/config.ts` — `title`, `description`, `date`, `author` (defaults to "Connected PNW"), `image` (optional, used as the OG image), `tags` (optional), `draft` (defaults to `false`).
+- **Content**: one `.md` file per post in `src/content/posts/`. The Markdown body after the frontmatter is the post content.
+- **Pages**: `src/pages/blog/index.astro` (listing, newest first) and `src/pages/blog/[slug].astro` (single post — slug comes from the filename). Both filter out `draft: true` posts in production (`import.meta.env.PROD`) but show them in `npm run dev` so drafts can be previewed locally.
+- **SEO**: each post page emits `BlogPosting` JSON-LD via `Base.astro`'s `head` slot, and gets its own OG/Twitter tags (`ogType="article"`). `src/pages/rss.xml.js` serves an RSS feed at `/rss.xml`, linked from `<head>` on every page. `@astrojs/sitemap` already picks up the new routes automatically.
+- **Nav**: a "Blog" link is in both `Header.astro` and `Footer.astro`.
+
+To add a post by hand, see the "Writing blog posts" section of `EDITING.md`.
+
+#### Agent publishing
+
+Because the site is static and deploys are triggered by pushes to `main` (`.github/workflows/deploy.yml`), the simplest way for an AI agent on another machine to publish is the **GitHub REST API** — no extra infrastructure needed:
+
+```bash
+# Create or update a post file directly via the Contents API
+curl -X PUT \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
+  -d '{
+    "message": "Add blog post: My New Post",
+    "content": "'"$(base64 -w0 my-new-post.md)"'",
+    "branch": "main"
+  }'
+```
+
+Or equivalently with `gh`:
+
+```bash
+gh api -X PUT repos/guyarie/connectedpnw/contents/src/content/posts/my-new-post.md \
+  -f message="Add blog post: My New Post" \
+  -f content="$(base64 -w0 my-new-post.md)" \
+  -f branch=main
+```
+
+Notes:
+
+- Use a **fine-grained GitHub PAT** scoped to just this repo with `Contents: Read and write` permission — nothing broader.
+- Pushing straight to `main` deploys immediately once the file lands (existing GitHub Actions workflow). For a review step before anything goes live, have the agent push to a branch and open a PR (`gh pr create`) instead of writing directly to `main`; merge it once the post is checked.
+- The agent only needs to produce valid frontmatter matching the `posts` schema above (`title`, `description`, `date`, `draft`, etc.) plus a Markdown body — no build step or local checkout required on its end.
+- Keep `draft: true` as the default in agent-authored posts so publishing is a separate, deliberate step (flip to `false` in a follow-up commit or PR).
 
 ### Enable SSR (when a dynamic feature is needed)
 

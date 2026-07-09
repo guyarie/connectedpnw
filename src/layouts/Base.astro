@@ -7,12 +7,14 @@ export interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
 }
 
 const {
   title,
   description = 'Connected PNW — a guided dating and relational skills program.',
   ogImage = '/images/og_image_1.jpeg',
+  ogType = 'website',
 } = Astro.props;
 
 const siteUrl = 'https://connectedpnw.com';
@@ -44,9 +46,10 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/png" href="/images/ICON.png" />
+    <link rel="alternate" type="application/rss+xml" title="Connected PNW Blog" href="/rss.xml" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Connected PNW" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -71,6 +74,8 @@ const jsonLd = {
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,700&display=swap"
       rel="stylesheet"
     />
+
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
