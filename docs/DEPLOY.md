@@ -2,7 +2,7 @@
 
 ## Overview
 
-The site builds to a static `dist/` directory via Astro. GitHub Actions builds `dist/` on every push to `main` and SCPs it directly to the DigitalOcean droplet. Nginx serves that directory. The server never runs `npm` or `git` as part of the deploy pipeline.
+The site builds to a static `dist/` directory via Astro. GitHub Actions builds `dist/` on every push to `main` and rsyncs it to the DigitalOcean droplet, deleting any files on the server that no longer exist in the new build. Nginx serves that directory. The server never runs `npm` or `git` as part of the deploy pipeline.
 
 ---
 
@@ -10,8 +10,10 @@ The site builds to a static `dist/` directory via Astro. GitHub Actions builds `
 
 1. Push (or merge a PR) to `main`
 2. GitHub Actions (`ubuntu-latest`, Node 20) runs `npm ci` then `npm run build`
-3. The built `dist/` is copied to `/var/www/connectedpnw/dist/` on the droplet via SCP
+3. The built `dist/` is synced to `/var/www/connectedpnw/dist/` on the droplet via `rsync -avzr --delete` over SSH
 4. Nginx serves the updated files — done
+
+The `--delete` flag matters: without it, removing a page's source (e.g. deleting a blog post's `.md` file) would stop the build from regenerating that page, but the old HTML file would silently keep serving on the droplet forever since nothing ever removes it. `rsync --delete` prunes anything in the server's `dist/` that isn't in the freshly built one, so removed pages actually 404. Requires `rsync` on the droplet — present by default on Ubuntu; install with `apt install -y rsync` if missing.
 
 Workflow file: `.github/workflows/deploy.yml`
 
@@ -106,7 +108,7 @@ git clone https://github.com/YOUR_ORG/connectedpnw.git /tmp/cnctpnw
 cd /tmp/cnctpnw
 npm ci
 npm run build
-cp -r dist/* /var/www/connectedpnw/dist/
+rsync -avzr --delete dist/ /var/www/connectedpnw/dist/
 ```
 
 Or if the repo is already checked out somewhere on the server:
@@ -116,7 +118,7 @@ cd /path/to/cnctpnw
 git pull
 npm ci
 npm run build
-cp -r dist/* /var/www/connectedpnw/dist/
+rsync -avzr --delete dist/ /var/www/connectedpnw/dist/
 ```
 
 ---

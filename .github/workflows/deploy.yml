@@ -20,11 +20,11 @@ jobs:
       - run: npm run build
 
       - name: Sync dist to server
-        uses: appleboy/scp-action@v0.1.7
+        uses: burnett01/rsync-deployments@7.0.1
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "dist/"
-          target: /var/www/connectedpnw/dist/
-          strip_components: 1
+          switches: -avzr --delete
+          path: dist/
+          remote_path: /var/www/connectedpnw/dist/
+          remote_host: ${{ secrets.SERVER_HOST }}
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
