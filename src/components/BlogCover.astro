@@ -1,0 +1,19 @@
+---
+export interface Props {
+  image?: string;
+  title: string;
+  class?: string;
+}
+
+const { image, title, class: className = '' } = Astro.props;
+---
+
+<div class:list={['blog-cover', className]}>
+  {image ? (
+    <img src={image} alt={title} loading="lazy" />
+  ) : (
+    <div class="blog-cover-placeholder" aria-hidden="true">
+      <img src="/images/ICON.png" alt="" />
+    </div>
+  )}
+</div>

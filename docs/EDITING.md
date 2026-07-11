@@ -104,6 +104,18 @@ Blog posts live in `src/content/posts/` — one Markdown file per post. Unlike t
 
 See `src/content/posts/welcome-to-the-connected-pnw-blog.md` for a working example (it's a draft, so it won't appear on the live site).
 
+#### Cover image (optional)
+
+Posts don't need a photo to look finished — if you leave `image` out of the frontmatter, the post automatically gets a branded placeholder cover (a soft gradient with the Connected PNW heart mark), on both the blog listing and the post page. This is the default and it's fine to leave every post this way.
+
+If you do have a real photo for a post, upload it to `public/images/` (see "Adding or changing images" below) and add it to the frontmatter:
+
+```yaml
+image: "/images/my-post-photo.jpg"
+```
+
+A real photo replaces the placeholder everywhere that post appears, and is also used as its social-share (Open Graph) image.
+
 ### Editing a post
 
 Open the post's `.md` file in `src/content/posts/`, click the pencil icon, change the frontmatter and/or body text, and commit — same as any other content file.

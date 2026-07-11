@@ -771,6 +771,93 @@ footer {
 }
 .prose img { border-radius: var(--radius-lg); width: 100%; height: auto; }
 
+/* ── Blog listing ── */
+
+.blog-hero {
+  padding: clamp(2rem, 4vw, 3rem) 0 var(--space-8);
+}
+
+.blog-cover {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-highlight),
+    color-mix(in srgb, var(--color-primary) 22%, var(--color-surface))
+  );
+}
+
+.blog-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.blog-cover-placeholder img {
+  width: 34%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.35;
+  filter: saturate(0.85);
+}
+
+.blog-featured {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  margin-bottom: var(--space-12);
+}
+
+.blog-featured .blog-cover { aspect-ratio: 4 / 3; }
+
+.blog-featured-body .kicker { margin-bottom: var(--space-3); }
+.blog-featured-body h2 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+.blog-featured-body p.lead { margin-bottom: var(--space-5); }
+
+.blog-meta {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.blog-meta .tag-pill {
+  background: var(--color-primary-highlight);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  padding: 0.15rem 0.6rem;
+  font-size: var(--text-xs);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.blog-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.blog-card .blog-cover { border-radius: 0; }
+.blog-card-body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); flex: 1; }
+.blog-card-body h3 { font-size: var(--text-base); line-height: 1.35; }
+.blog-card-body p.muted { flex: 1; }
+
+@media (max-width: 780px) {
+  .blog-featured { grid-template-columns: 1fr; }
+  .blog-featured .blog-cover { aspect-ratio: 16 / 9; }
+}
+
 /* ── Hamburger & mobile nav ── */
 
 .nav-hamburger {

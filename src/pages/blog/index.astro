@@ -1,16 +1,21 @@
 ---
 import Base from '../../layouts/Base.astro';
+import BlogCover from '../../components/BlogCover.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const [featured, ...rest] = posts;
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <Base
   title="Blog — Connected PNW"
   description="Notes on dating and relational skills from the Connected PNW team."
 >
-  <div class="page-hero">
+  <div class="page-hero blog-hero">
     <div class="container">
       <p class="kicker">Blog</p>
       <h1 style="max-width:none;font-size:var(--text-xl);">Notes on connection.</h1>
@@ -22,19 +27,48 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
 
   <section>
     <div class="container">
-      {posts.length === 0 && <p class="muted">No posts yet — check back soon.</p>}
-      <div class="cards-3">
-        {posts.map((post) => (
-          <article class="card">
-            {post.data.draft && <p class="kicker" style="color:var(--color-primary);">Draft</p>}
-            <h3><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h3>
-            <p class="muted" style="font-size:var(--text-xs);">
-              {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </p>
-            <p class="muted">{post.data.description}</p>
-          </article>
-        ))}
-      </div>
+      {!featured && <p class="muted">No posts yet — check back soon.</p>}
+
+      {featured && (
+        <article class="blog-featured">
+          <BlogCover image={featured.data.image} title={featured.data.title} />
+          <div class="blog-featured-body">
+            <p class="kicker">Latest</p>
+            <h2><a href={`/blog/${featured.slug}/`}>{featured.data.title}</a></h2>
+            <p class="lead">{featured.data.description}</p>
+            <div class="blog-meta">
+              <span>{formatDate(featured.data.date)}</span>
+              <span>·</span>
+              <span>{featured.data.author}</span>
+              {featured.data.draft && <span class="tag-pill">Draft</span>}
+              {featured.data.tags?.map((tag) => <span class="tag-pill">{tag}</span>)}
+            </div>
+            <div class="actions" style="margin-top:var(--space-2);">
+              <a class="btn btn-primary" href={`/blog/${featured.slug}/`}>Read the post</a>
+            </div>
+          </div>
+        </article>
+      )}
+
+      {rest.length > 0 && (
+        <div class="blog-grid">
+          {rest.map((post) => (
+            <article class="card blog-card">
+              <a href={`/blog/${post.slug}/`} aria-hidden="true" tabindex="-1">
+                <BlogCover image={post.data.image} title={post.data.title} />
+              </a>
+              <div class="blog-card-body">
+                <div class="blog-meta">
+                  <span>{formatDate(post.data.date)}</span>
+                  {post.data.draft && <span class="tag-pill">Draft</span>}
+                </div>
+                <h3><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h3>
+                <p class="muted">{post.data.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   </section>
 </Base>

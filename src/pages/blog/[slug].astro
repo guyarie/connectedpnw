@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import BlogCover from '../../components/BlogCover.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -41,6 +42,9 @@ const jsonLd = {
   </div>
 
   <section>
+    <div class="container" style="max-width:720px;margin-bottom:var(--space-8);">
+      <BlogCover image={image} title={title} />
+    </div>
     <div class="container prose" style="max-width:720px;">
       <Content />
     </div>
