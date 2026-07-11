@@ -29,7 +29,7 @@ const jsonLd = {
 <Base title={`${title} — Connected PNW Blog`} description={description} ogImage={image} ogType="article">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <div class="page-hero">
+  <div class="page-hero blog-hero">
     <div class="container" style="max-width:720px;">
       <p class="kicker">Blog</p>
       <h1 style="max-width:none;font-size:var(--text-xl);">{title}</h1>
@@ -41,7 +41,7 @@ const jsonLd = {
     </div>
   </div>
 
-  <section>
+  <section class="blog-posts-section">
     <div class="container" style="max-width:720px;margin-bottom:var(--space-8);">
       <BlogCover image={image} title={title} />
     </div>

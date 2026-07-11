@@ -774,7 +774,11 @@ footer {
 /* ── Blog listing ── */
 
 .blog-hero {
-  padding: clamp(2rem, 4vw, 3rem) 0 var(--space-8);
+  padding: clamp(2rem, 4vw, 3rem) 0 var(--space-4);
+}
+
+.blog-posts-section {
+  padding-top: 0;
 }
 
 .blog-cover {
