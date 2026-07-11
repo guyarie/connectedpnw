@@ -6,11 +6,6 @@ author: "Connected PNW"
 draft: false
 ---
 
-TARGET KEYWORD: [FOUNDERS: Please confirm target keyword for this revised angle]
-META DESCRIPTION: Dating as an adult is hard—not because you're doing it wrong, but because you're missing structured opportunities to practice. Here's what actually helps.
-
----
-
 ## You're Not Imagining It: Adult Dating Is Hard
 
 You're on the apps. You go to the occasional party. You have friends who offer to set you up. Everyone says they know someone single.
@@ -70,11 +65,3 @@ If you've been trying for a while and still feel stuck, you don't have to keep f
 Connected is a program that teaches the skills that support real romantic connection: how to start conversations that go somewhere, how to handle awkwardness without shutting down, how to build confidence that makes dating feel possible. It's not therapy. It's skills-building and hands-on practice in a structured, supportive environment with people who share your goals.
 
 We're building our first cohort now. If you're curious whether it might be a fit, [**add your name to our interest list here**](#)—we'll be in touch with details and next steps.
-
----
-
-**Connection is possible. It just needs practice—and a structure that makes practice feel doable.** You're not imagining the difficulty. And you're not the only one feeling it. But you're also not stuck with it.
-
----
-
-**Messaging pillar:** #3 (You're not the only one) + #2 (Practice beats advice)
