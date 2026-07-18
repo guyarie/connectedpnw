@@ -30,7 +30,7 @@ founders:
           - "She values time outdoors, meaningful relationships, and collaborative work with colleagues and community. These experiences continue to reinforce her belief that growth is an ongoing, lived process—shaped not only in structured programs, but in everyday engagement with life."
   - name: "Nina Helms, MA, LMHC."
     role: "Co-founder & facilitator."
-    image: "/images/nina-headshot.jpg"
+    image: "/images/nina-headshot.png"
     sections:
       - paragraphs:
           - Nina is a master's-level relational expert with more than a decade of experience helping people build lives rooted in authenticity, connection, and belonging. She is passionate about helping individuals understand themselves more deeply so they can create healthier relationships, stronger communities, and a greater sense of fulfillment in their everyday lives."
