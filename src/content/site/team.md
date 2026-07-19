@@ -15,7 +15,7 @@ founders:
     sections:
       - paragraphs:
           - "Dr. Miri Arie is a psychologist, group facilitator, and relational skills expert specializing in helping adults understand their interpersonal patterns and build the skills needed for authentic, confident connection."
-          - "Her work centers on the belief that meaningful relationships are not just something we find—they are something we learn how to create through awareness, practice, and feedback. She is particularly interested in how people show up in early dating, friendship, and intimate relationships, and in helping individuals move from insight into real-world relational change."
+          - "Miri's work centers on the belief that meaningful relationships are not just something we find—they are something we learn how to create through awareness, practice, and feedback. She is particularly interested in how people show up in early dating, friendship, and intimate relationships, and in helping individuals move from insight into real-world relational change."
       - heading: "Professional Background."
         paragraphs:
           - "Dr. Arie's background in psychology and group work informs her approach to relational expertise. She is a Certified Group Psychotherapist (CGP) with extensive experience facilitating group processes, interpersonal learning environments, and attachment-informed work with individuals, families, and communities."
@@ -33,7 +33,8 @@ founders:
     image: "/images/nina-headshot.png"
     sections:
       - paragraphs:
-          - Nina is a master's-level relational expert with more than a decade of experience helping people build lives rooted in authenticity, connection, and belonging. She is passionate about helping individuals understand themselves more deeply so they can create healthier relationships, stronger communities, and a greater sense of fulfillment in their everyday lives."
+          - "Nina is a master's-level relational expert with more than a decade of experience helping people build lives rooted in authenticity, connection, and belonging."
+          - "Nina is passionate about helping individuals understand themselves more deeply so they can create healthier relationships, stronger communities, and a greater sense of fulfillment in their everyday lives."
       - heading: "Professional Background."
         paragraphs:
           - "Nina's professional foundation is in psychology, with specialized expertise in relational trauma, attachment, and neurodivergence. Throughout her career, she has worked with adults, couples, and families, helping them navigate life's challenges while strengthening their capacity for connection and emotional well-being."

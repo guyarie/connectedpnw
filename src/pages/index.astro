@@ -199,20 +199,20 @@ const f = faq.data;
           {t.bios_heading && <p class="kicker">{t.bios_heading}</p>}
           {t.bios_intro && <h3 style="font-size:var(--text-lg);max-width:36rem;margin-bottom:var(--space-6);">{t.bios_intro}</h3>}
           <div class="two-col-bios">
-            {t.founders.map((founder) => (
+            {t.founders.map((founder, idx) => (
               <article class="bio-block">
                 <div class="bio-header">
                   <div>
                     <h3 class="bio-name">{founder.name}</h3>
                     <div class="bio-role">{founder.role}</div>
                   </div>
-                  {founder.image && (
-                    <img class="bio-headshot" src={founder.image} alt={founder.name} loading="lazy" />
-                  )}
                 </div>
                 <div class="bio-body">
-                  {founder.sections.map((section) => (
+                  {founder.sections.map((section, secIdx) => (
                     <div class="bio-section">
+                      {secIdx === 0 && founder.image && (
+                        <img class="bio-headshot" src={founder.image} alt={founder.name} loading="lazy" />
+                      )}
                       {section.heading && <h4 class="bio-section-heading">{section.heading}</h4>}
                       {section.paragraphs.map((p) => <p>{p}</p>)}
                     </div>
