@@ -6,7 +6,10 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    # Runs on the self-hosted runner on holdens-box (home server).
+    # The build uses the box's RAM and publishes straight to the Nginx web root
+    # on the same machine — no SSH/rsync-over-network, no deploy secrets.
+    runs-on: [self-hosted, holdens]
 
     steps:
       - uses: actions/checkout@v4
@@ -19,12 +22,5 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Sync dist to server
-        uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -avzr --delete
-          path: dist/
-          remote_path: /var/www/connectedpnw/dist/
-          remote_host: ${{ secrets.SERVER_HOST }}
-          remote_user: ${{ secrets.SERVER_USER }}
-          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+      - name: Publish dist to Nginx web root
+        run: rsync -a --delete dist/ /var/www/connectedpnw/dist/
