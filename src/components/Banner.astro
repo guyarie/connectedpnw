@@ -1,0 +1,101 @@
+---
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('site', 'banner');
+const d = entry?.data;
+
+const image = d?.banner_image?.trim() ?? '';
+const imageMobile = d?.banner_image_mobile?.trim() ?? '';
+const start = d?.banner_start?.trim() ?? '';
+const end = d?.banner_end?.trim() ?? '';
+
+// Date window is evaluated at build time and re-checked in the browser, so an
+// expired banner disappears even if the site has not been rebuilt.
+const today = new Date().toISOString().slice(0, 10);
+const inWindow = (!start || today >= start) && (!end || today <= end);
+
+const show = Boolean(d?.enabled) && image.length > 0 && inWindow;
+
+const mobileRatio = d?.banner_mobile_ratio?.trim() || '3 / 2';
+const alt = d?.banner_alt?.trim() || 'Announcement';
+const linkUrl = d?.banner_link_url?.trim() ?? '';
+const dismissible = d?.banner_dismissible ?? false;
+const external = linkUrl.startsWith('http');
+
+const dismissKey =
+  'cpnw-hbanner-' +
+  Array.from(image).reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7).toString(36);
+---
+
+{
+  show && (
+    <div
+      class={`home-banner${imageMobile ? ' has-mobile-image' : ''}`}
+      style={imageMobile ? `--banner-mobile-ratio: ${mobileRatio};` : undefined}
+      data-home-banner
+      data-dismiss-key={dismissible ? dismissKey : undefined}
+      data-end={end || undefined}
+      hidden={dismissible}
+    >
+      {linkUrl ? (
+        <a
+          class="home-banner-link"
+          href={linkUrl}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
+          aria-label={alt}
+        >
+          <picture>
+            {imageMobile && <source media="(max-width: 640px)" srcset={imageMobile} />}
+            <img src={image} alt={alt} />
+          </picture>
+        </a>
+      ) : (
+        <picture>
+          {imageMobile && <source media="(max-width: 640px)" srcset={imageMobile} />}
+          <img src={image} alt={alt} />
+        </picture>
+      )}
+
+      {dismissible && (
+        <button
+          class="home-banner-close"
+          type="button"
+          aria-label="Dismiss announcement"
+          data-home-banner-close
+        >
+          ×
+        </button>
+      )}
+    </div>
+  )
+}
+
+<script>
+  const banner = document.querySelector('[data-home-banner]') as HTMLElement | null;
+  if (banner) {
+    const key = banner.dataset.dismissKey;
+    const end = banner.dataset.end;
+    const expired = !!end && new Date().toISOString().slice(0, 10) > end;
+    let dismissed = false;
+    try {
+      dismissed = !!key && localStorage.getItem(key) === '1';
+    } catch {
+      // Storage blocked — show the banner rather than hiding it.
+    }
+
+    if (expired || dismissed) {
+      banner.remove();
+    } else {
+      banner.hidden = false;
+      banner.querySelector('[data-home-banner-close]')?.addEventListener('click', () => {
+        banner.remove();
+        try {
+          if (key) localStorage.setItem(key, '1');
+        } catch {
+          // Ignore — dismissed for this page view only.
+        }
+      });
+    }
+  }
+</script>

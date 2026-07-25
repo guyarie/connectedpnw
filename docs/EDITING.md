@@ -33,6 +33,75 @@ The site will rebuild and go live in about 60–90 seconds.
 | `journey.md` | The four program journey steps (Group learning → Paired practice) |
 | `faq.md` | All FAQ questions and answers |
 | `contact.md` | The contact page heading, intro text, and the privacy note at the bottom |
+| `events.md` | The Events page — the list of upcoming and past events (see below) |
+| `banner.md` | The wide banner image at the top of the home page (see below) |
+
+---
+
+## The events page
+
+`src/content/site/events.md` controls everything on the **Events** page. Each event is one block in the `events:` list:
+
+```yaml
+events:
+  - date: '2026-07-31'
+    display_date: 'July 31, 2026'
+    time: '6:00–8:00 PM'
+    name: 'FIKA launching event'
+    location: 'FIKA, Seattle'
+    body: "Join us to meet the founders and hear how the program works."
+    perks:
+      - strong: 'Free ticket'
+        text: "get on our list and we'll send yours"
+    link_label: 'RSVP'
+    link_url: 'https://example.com/rsvp'
+```
+
+| Field | What it does |
+|---|---|
+| `date` | **Required.** Always `YYYY-MM-DD`. The site uses this to sort events and to decide what is upcoming vs. past — it is not what visitors see. |
+| `display_date` | What visitors actually see, written however you like (`'July 31, 2026'`). |
+| `time` | Optional, e.g. `'6:00–8:00 PM'`. Leave as `''` to omit. |
+| `name` | **Required.** The event name. |
+| `location` | Venue or city. Leave as `''` to omit. |
+| `body` | A short paragraph about the event. |
+| `perks` | Optional bullet list of what attendees get. Each bullet has a `strong:` part (shown in bold) and a `text:` part. |
+| `image` / `image_alt` | Optional photo shown above the event details. Upload the file to `public/images/` and write the path as `/images/your-file.jpg`. `image_alt` describes the picture for screen readers. |
+| `link_label` / `link_url` | Optional button, e.g. an RSVP or ticket link. Both must be filled in for the button to appear. |
+
+Events whose `date` has passed move to a **Past events** section at the bottom of the page automatically — you don't have to delete them. To remove one entirely, delete its whole block (the `- date:` line and every indented line under it).
+
+If there are no upcoming events, the page shows the `events_empty_note` text instead.
+
+---
+
+## The home page banner
+
+`src/content/site/banner.md` controls a wide banner image at the very top of the **home page only**.
+
+```yaml
+enabled: true
+banner_image: '/images/fika-banner.png'
+banner_image_mobile: ''
+banner_alt: 'Fika Launch Party, July 31, 2026 — come meet Miri and Nina in person.'
+banner_link_url: 'https://luma.com/itloxxxw'
+banner_dismissible: false
+banner_start: ''
+banner_end: '2026-07-31'
+```
+
+| Field | What it does |
+|---|---|
+| `enabled` | `true` shows the banner, `false` hides it. No quotes around the word. |
+| `banner_image` | The artwork. Upload the file to `public/images/`, then write the path as `/images/your-file.png`. It stretches to the full width of the screen, so use a wide image. |
+| `banner_image_mobile` | Optional second file used on screens 640px and narrower. A wide banner shrinks to unreadable text on a phone — a taller, squarer version fixes that. Recommended size: **1200 × 800 pixels** (a 3:2 rectangle). Leave as `''` to use the same image everywhere. |
+| `banner_mobile_ratio` | The shape of the mobile image, written as `'width / height'` — e.g. `'3 / 2'` for a 1200 × 800 image, `'2 / 1'` for 1200 × 600. Must match the file you uploaded, or it will be cropped. Defaults to `'3 / 2'`. |
+| `banner_alt` | Describes the banner for screen readers and for people who block images. Write out whatever the banner says, including the date and the button text. |
+| `banner_link_url` | Where clicking the banner goes. External addresses open in a new tab. Leave as `''` to make it non-clickable. |
+| `banner_dismissible` | `true` adds a × in the corner. It stays closed for that visitor until you change `banner_image`. |
+| `banner_start` / `banner_end` | Optional dates in `YYYY-MM-DD` form. The banner only shows inside that window. Leave as `''` to always show. |
+
+**To take the banner down**, set `enabled: false`. (An expired `banner_end` also hides it automatically.)
 
 ---
 

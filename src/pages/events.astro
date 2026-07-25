@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const events = await getEntry('site', 'events');
+const e = events.data;
+
+const today = new Date().toISOString().slice(0, 10);
+const all = [...(e.events ?? [])].sort((a, b) => a.date.localeCompare(b.date));
+const upcoming = all.filter((ev) => ev.date >= today);
+const past = all.filter((ev) => ev.date < today).reverse();
+---
+
+<Base title={`${e.title} — Connected PNW`} description={e.section_intro}>
+
+  <div class="page-hero">
+    <div class="container">
+      {e.kicker && <p class="kicker">{e.kicker}</p>}
+      {e.section_heading && <h1 style="max-width:none;font-size:var(--text-xl);">{e.section_heading}</h1>}
+      {e.section_intro && <p class="lead" style="margin-top:var(--space-4);">{e.section_intro}</p>}
+    </div>
+  </div>
+
+  <section>
+    <div class="container" style="max-width:820px;">
+      {upcoming.length > 0 ? (
+        <div class="event-list">
+          {upcoming.map((ev) => (
+            <article class="card event-card">
+              {ev.image && (
+                <div class="event-image">
+                  <img src={ev.image} alt={ev.image_alt || ev.name} loading="lazy" />
+                </div>
+              )}
+              <p class="mini event-date">
+                <time datetime={ev.date}>{ev.display_date || ev.date}</time>
+                {ev.time && <span class="event-meta-sep">·</span>}
+                {ev.time}
+              </p>
+              <h3>{ev.name}</h3>
+              {ev.location && <p class="event-location">{ev.location}</p>}
+              {ev.body && <p>{ev.body}</p>}
+              {ev.perks && (
+                <ul class="event-perks">
+                  {ev.perks.map((perk) => (
+                    <li>
+                      <span class="dot" aria-hidden="true"></span>
+                      <span><strong>{perk.strong}</strong> — {perk.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {ev.link_label && ev.link_url && (
+                <a
+                  class="btn btn-secondary event-link"
+                  href={ev.link_url}
+                  target={ev.link_url.startsWith('http') ? '_blank' : undefined}
+                  rel={ev.link_url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {ev.link_label}
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      ) : (
+        e.events_empty_note && <p class="lead">{e.events_empty_note}</p>
+      )}
+
+      {past.length > 0 && (
+        <div class="event-past">
+          <h2 class="event-past-heading">Past events</h2>
+          <div class="event-list">
+            {past.map((ev) => (
+              <article class="card event-card is-past">
+                <p class="mini event-date">
+                  <time datetime={ev.date}>{ev.display_date || ev.date}</time>
+                </p>
+                <h3>{ev.name}</h3>
+                {ev.location && <p class="event-location">{ev.location}</p>}
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="actions" style="margin-top:var(--space-10);">
+        <a class="btn btn-primary" href="/contact">Get on the interest list</a>
+        <a class="btn btn-secondary" href="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

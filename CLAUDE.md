@@ -7,8 +7,9 @@ A multi-page static website for **Connected PNW**, a guided dating and relationa
 - **Framework**: Astro 5, static output (`npm run build` → `dist/`)
 - **Styling**: Tailwind CSS + custom CSS variables in `src/styles/global.css`
 - **Content**: Astro Content Collections — all user-facing text lives in `src/content/site/*.md`
-- **Hosting**: DigitalOcean droplet, Nginx serves `dist/`
-- **Deploy**: GitHub Actions → SCP → `/var/www/connectedpnw/dist/` on push to `main` (`.github/workflows/deploy.yml`)
+- **Hosting**: Self-hosted on **holdens-box** (home server, dynamic IP via DuckDNS `holdens-box.duckdns.org`), Nginx serves `dist/`. Site is behind Cloudflare (proxied / orange-cloud); `connectedpnw.com` + `www` are CNAMEs → `holdens-box.duckdns.org`.
+- **Deploy**: A **GitHub Actions self-hosted runner runs on holdens-box**. On push to `main` it builds on the box and publishes locally with `rsync` to `/var/www/connectedpnw/dist/` — no SSH, no deploy secrets (`.github/workflows/deploy.yml`).
+- **TLS**: Let's Encrypt via certbot (Nginx). ⚠️ Auto-renewal currently uses the HTTP-01 (`nginx`) authenticator, which **fails behind the Cloudflare proxy** — needs switching to DNS-01 with a Cloudflare API token before the cert expires (see `renewal .conf` / certbot).
 - **Forms**: Formspree — form ID configured in `contact.md` (`contact_form_action`)
 - **Email**: Cloudflare Email Routing → personal Gmail accounts
 - **Analytics**: Plausible CE self-hosted at `analytics.16jets.com` (mini-PC, Docker, Cloudflare Tunnel)
@@ -26,6 +27,7 @@ npm run preview  # preview dist/ locally
 |---|---|---|
 | `/` | `src/pages/index.astro` | Imports all site/*.md entries |
 | `/about` | `src/pages/about.astro` | `about.md` |
+| `/events` | `src/pages/events.astro` | `events.md` |
 | `/faq` | `src/pages/faq.astro` | `faq.md` |
 | `/contact` | `src/pages/contact.astro` | `contact.md` |
 | `/thanks` | `src/pages/thanks.astro` | Hardcoded (post-form redirect) |
@@ -39,6 +41,8 @@ npm run preview  # preview dist/ locally
 - `team.md` — full team section: founders narrative, bios (with subsections), values
 - `faq.md` — FAQ items
 - `contact.md` — contact page + Formspree action URL + redirect URL
+- `events.md` — events list (upcoming/past split by `date` at build time)
+- `banner.md` — home-page-only banner image (`enabled`, image + optional mobile image, link, dismissible, date window); rendered by `src/components/Banner.astro` at the top of `index.astro`
 
 ## Content schema
 Defined in `src/content/config.ts`. All fields optional except `title`.
@@ -56,6 +60,6 @@ Light/dark toggle is in `src/layouts/Base.astro` (inline script). Theme respects
 
 
 ## Documentation
-- `EDITING.md` — for non-technical staff (text, images, colors)
-- `DEV.md` — developer reference (adding pages, SSR, Decap CMS, blog)
-- `DEPLOY.md` — Nginx config, GitHub Actions workflow, server setup
+- `docs/EDITING.md` — for non-technical staff (text, images, colors)
+- `docs/DEV.md` — developer reference (adding pages, SSR, Decap CMS, blog)
+- `docs/DEPLOY.md` — hosting (self-hosted on holdens-box), self-hosted runner deploy, Nginx config, TLS/renewal

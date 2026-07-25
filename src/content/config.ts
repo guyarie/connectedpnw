@@ -22,6 +22,20 @@ const founderBio = z.object({
   sections: z.array(founderSection),
 });
 
+const event = z.object({
+  date: z.string(), // YYYY-MM-DD — used for sorting and upcoming/past split
+  display_date: z.string().optional(),
+  time: z.string().optional(),
+  name: z.string(),
+  location: z.string().optional(),
+  body: z.string().optional(),
+  perks: z.array(bulletItem).optional(),
+  image: z.string().optional(),
+  image_alt: z.string().optional(),
+  link_label: z.string().optional(),
+  link_url: z.string().optional(),
+});
+
 const site = defineCollection({
   type: 'content',
   schema: z.object({
@@ -58,6 +72,19 @@ const site = defineCollection({
     contact_redirect_url: z.string().optional(),
     instagram_url: z.string().optional(),
     facebook_url: z.string().optional(),
+    // Events
+    events: z.array(event).optional(),
+    events_empty_note: z.string().optional(),
+    // Home page banner
+    enabled: z.boolean().optional(),
+    banner_image: z.string().optional(),
+    banner_image_mobile: z.string().optional(),
+    banner_mobile_ratio: z.string().optional(), // e.g. '3 / 2' — shape of the mobile image
+    banner_alt: z.string().optional(),
+    banner_link_url: z.string().optional(),
+    banner_dismissible: z.boolean().optional(),
+    banner_start: z.string().optional(),
+    banner_end: z.string().optional(),
     // Team section
     founders_heading: z.string().optional(),
     founders_intro: z.string().optional(),
