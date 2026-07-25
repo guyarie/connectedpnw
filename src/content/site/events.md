@@ -16,7 +16,7 @@ events:
       - strong: 'Free Entry'
         text: "Sign up to the Connected list and we'll register you for the party"
       - strong: 'A drink on us'
-        text: '$15 off the drink package with code SEATTLETECHWEEK26'
+        text: '$15 off the drink package with code CONNECTED15'
       - strong: '10% off'
         text: 'Meet us there and get 10% off the regular Connected program price'
       - strong: 'Win big'
