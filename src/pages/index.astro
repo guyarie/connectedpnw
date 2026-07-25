@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Banner from '../components/Banner.astro';
 import { getEntry } from 'astro:content';
 
 const home    = await getEntry('site', 'home');
@@ -18,6 +19,8 @@ const f = faq.data;
 ---
 
 <Base title={h.title} description={h.description}>
+
+  <Banner />
 
   <!-- ── Hero ── -->
   <section class="hero" id="top">

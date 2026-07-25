@@ -11,8 +11,8 @@ Reference for maintaining and extending the site.
 | Framework | Astro 4 | Static output by default; SSR-ready via adapter |
 | Styling | Tailwind CSS + custom CSS | Layout utilities via Tailwind; component styles and CSS variables in `src/styles/global.css` |
 | Content | Astro Content Collections | Typed schemas in `src/content/config.ts`; one `.md` per section |
-| Hosting | DigitalOcean droplet | Nginx serves `dist/` as document root |
-| Deploy | `deploy.sh` / GitHub Actions | See `DEPLOY.md` |
+| Hosting | Self-hosted (`holdens-box`, home server) behind Cloudflare | Nginx serves `dist/` as document root; DuckDNS + Cloudflare CNAME |
+| Deploy | GitHub Actions self-hosted runner on the box | Builds on the box, publishes locally; see `DEPLOY.md` |
 
 ---
 
