@@ -5,7 +5,7 @@ enabled: true
 # The banner artwork — put the file in public/images/ and reference it here.
 banner_image: '/images/fika-banner.png'
 # Optional taller version used on phones (640px wide and under).
-banner_image_mobile: '/images/fika-banner-mobile.png'
+banner_image_mobile: '/images/fika-banner-mobile.webp'
 # The shape of the mobile image, as 'width / height'. 2400 x 1600 is 3 / 2.
 banner_mobile_ratio: '3 / 2'
 # Describes the banner for screen readers and for people who block images.
