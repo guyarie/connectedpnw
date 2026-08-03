@@ -1,8 +1,8 @@
 ---
 title: "Connected — Build the skills that support real connection"
 description: "Connected is a guided dating and interpersonal skills program for adults who want to understand their patterns, communicate authentically, and practice building real connection."
-eyebrow: "Guided dating and relational skills program"
-hero_heading: "Build the skills that support real connection."
+eyebrow: "Learn the relationship skills that make dating more authentic—and healthy relationships possible."
+hero_heading: "Dating isn't just about finding the right person. It's about learning how to build healthy relationships."
 hero_lead: "Connected is a guided dating and interpersonal skills program for adults who want to understand their patterns, communicate authentically, and practice building real connection in a supportive group setting."
 hero_note: "This is not therapy. This is not a dating service. It is a skills-based learning experience — part workshop, part practice space, part social community — where people learn how to show up in relationships with more awareness, intention, and confidence."
 cta_primary_label: "See how it works"
