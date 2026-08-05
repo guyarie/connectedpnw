@@ -565,9 +565,13 @@ footer {
 
 .footer-links {
   display: flex;
-  gap: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
   font-size: var(--text-sm);
 }
+
+/* Wrap between links, never inside a label. */
+.footer-links a { white-space: nowrap; }
 
 .footer-links a:hover { color: var(--color-text); }
 
@@ -1000,6 +1004,12 @@ footer {
   .story,
   .phase,
   .founder-grid { grid-template-columns: 1fr; }
+
+  /* The even-row track swap is `.x:nth-child(even)` (0,2,0), which outranks
+     the plain `.story` / `.phase` rules above — specificity beats the media
+     query — so those rows need collapsing at matching specificity. */
+  .story:nth-child(even),
+  .phase:nth-child(even) { grid-template-columns: 1fr; }
 
   .story:nth-child(even) .story-media,
   .phase:nth-child(even) .phase-media { order: 0; }
