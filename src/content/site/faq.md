@@ -3,6 +3,13 @@ title: "Questions About Connected"
 description: "Common questions about Connected: what it is, what paired practice means, how long the program runs, and how groups are organized."
 kicker: "FAQ"
 section_heading: "Questions About Connected"
+# Buttons shown under the questions.
+actions:
+  - label: "Join the interest list"
+    url: "/contact"
+    style: "primary"
+  - label: "See how it works"
+    url: "/how-it-works"
 faqs:
   - question: "Is Connected therapy?"
     answer: "No. Connected is a guided, experiential relationship-building program created by therapists, but separate from their psychotherapy practices. It focuses on learning, practice, coaching, and community rather than mental health diagnosis or treatment."

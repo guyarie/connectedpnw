@@ -1,7 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import BlogCover from '../../components/BlogCover.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+
+const blog = await getEntry('site', 'blog');
+const b = blog.data;
 
 const allPosts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -11,23 +14,20 @@ const formatDate = (date: Date) =>
   date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<Base
-  title="Blog — Connected PNW"
-  description="Notes on dating and relational skills from the Connected PNW team."
->
+<Base title={`${b.title} — Connected PNW`} description={b.description}>
   <div class="page-hero blog-hero">
     <div class="container">
-      <p class="kicker">Blog</p>
-      <h1 style="max-width:none;font-size:var(--text-xl);">Notes on connection.</h1>
-      <p class="lead" style="margin-top:var(--space-4);">
-        Thoughts on dating patterns, communication, and building the skills that support real connection.
-      </p>
+      <div class="page-intro" style="margin-bottom:0;">
+        {b.kicker && <p class="kicker">{b.kicker}</p>}
+        {b.section_heading && <h1>{b.section_heading}</h1>}
+        {b.section_intro && <p class="lead" style="margin-bottom:0;">{b.section_intro}</p>}
+      </div>
     </div>
   </div>
 
   <section class="blog-posts-section">
     <div class="container">
-      {!featured && <p class="muted">No posts yet — check back soon.</p>}
+      {!featured && b.empty_note && <p class="muted">{b.empty_note}</p>}
 
       {featured && (
         <article class="blog-featured">

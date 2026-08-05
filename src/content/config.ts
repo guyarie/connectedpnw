@@ -115,6 +115,8 @@ const site = defineCollection({
     // Events
     events: z.array(event).optional(),
     events_empty_note: z.string().optional(),
+    // Shown by a listing page when it has nothing to show
+    empty_note: z.string().optional(),
     // Home page banner
     enabled: z.boolean().optional(),
     banner_image: z.string().optional(),
