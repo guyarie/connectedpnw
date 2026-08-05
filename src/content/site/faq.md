@@ -26,7 +26,7 @@ faqs:
   - question: "How are groups and practice pairs organized?"
     answer: "The first cohort is designed for heterosexual participants. Men and women learn in parallel groups and meet during Social Nights. Grouping and pairings are informed by the intake conversation, goals, participant preferences, age range, life stage, and overall fit."
   - question: "How are groups organized by age?"
-    answer: "Our typical age ranges are 26–35, 35–45, and 45+. These ranges are guidelines rather than strict cutoffs. We also consider factors such as personality, life experience, and overall group fit when determining placement. As a result, there may be some flexibility around the age boundaries to help create groups that work well together."
+    answer: "The first Connected cohort is designed primarily for adults approximately 26–45. Participants may be organized into groups based on age, life stage, dating experience, and overall group fit, with some flexibility around chronological age. Future cohorts are expected to serve a wider range of ages."
   - question: "How is feedback handled?"
     answer: "Feedback is introduced gradually, with care and guidance. Especially at the beginning, most feedback is explored during coaching sessions."
   - question: "What happens after I complete the program?"
