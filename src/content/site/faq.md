@@ -25,7 +25,7 @@ faqs:
     answer: "The program begins with three four-hour workshops, each followed by a Social Night. Several weeks of introductory partner meetings are followed by three months of paired practice and weekly coaching."
   - question: "How are groups and practice pairs organized?"
     answer: "The first cohort is designed for heterosexual participants. Men and women learn in parallel groups and meet during Social Nights. Grouping and pairings are informed by the intake conversation, goals, participant preferences, age range, life stage, and overall fit."
-  - question: "How are groups organized by age?"
+  - question: "What age range is Connected designed for?"
     answer: "The first Connected cohort is designed primarily for adults approximately 26–45. Participants may be organized into groups based on age, life stage, dating experience, and overall group fit, with some flexibility around chronological age. Future cohorts are expected to serve a wider range of ages."
   - question: "How is feedback handled?"
     answer: "Feedback is introduced gradually, with care and guidance. Especially at the beginning, most feedback is explored during coaching sessions."
