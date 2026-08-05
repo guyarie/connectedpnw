@@ -916,11 +916,14 @@ footer {
   align-items: start;
 }
 
-/* Height follows the photo's own proportions so the whole headshot shows
-   rather than being cropped to a square. */
+/* Portrait ratio, so headshots are tall rather than square and every founder
+   card is the same size. Photos close to 2:3 crop imperceptibly; `top` keeps
+   heads in frame when a photo is squarer than the box. */
 .founder-portrait {
   width: 8rem;
-  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center top;
   border-radius: var(--radius-lg);
   display: block;
 }
