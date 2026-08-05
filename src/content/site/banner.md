@@ -1,7 +1,9 @@
 ---
 title: Home page banner
 # Set to true to show the banner at the top of the home page. Set to false to hide it.
-enabled: true
+# Retired after the Fika launch party — swap in new artwork and set this to
+# true to bring the banner back for the next event.
+enabled: false
 # The banner artwork — put the file in public/images/ and reference it here.
 banner_image: '/images/fika-banner.png'
 # Optional taller version used on phones (640px wide and under).
