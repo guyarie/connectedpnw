@@ -51,7 +51,7 @@ actions:
 
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"
-cta_body: "Meeting in person in Bellevue, Washington."
+cta_body: "For adults approximately 26–45 • In person in Bellevue, Washington"
 cta_label: "Join the interest list"
 cta_url: "/contact"
 ---

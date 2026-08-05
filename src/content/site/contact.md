@@ -1,9 +1,9 @@
 ---
 title: "Join the Interest List"
 description: "Join the Connected PNW interest list for the January 2027 cohort, meeting in person in Bellevue, Washington."
-kicker: "January 2027 • Bellevue, Washington"
+kicker: "January 2027 • Bellevue, Washington • Ages approximately 26–45"
 section_heading: "Join the Interest List"
-section_intro: "Receive program updates and an invitation to schedule a brief introductory call. Joining the list does not commit you to participating."
+section_intro: "Join the interest list to receive program updates and an invitation to schedule a brief introductory call. Joining the list does not commit you to participating. Future cohorts are expected to serve a wider range of ages."
 contact_note: "Your information will not be shared or used for marketing. We'll only reach out about Connected PNW program availability."
 contact_form_action: "https://formspree.io/f/maqkzqvl"
 mailerlite_form_action: "https://assets.mailerlite.com/jsonp/2489001/forms/192032452080830159/subscribe"
