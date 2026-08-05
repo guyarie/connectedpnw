@@ -50,6 +50,24 @@ const c = contact.data;
             </div>
 
             <div class="form-field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required />
+            </div>
+
+            <div class="form-field">
+              <label for="instagram">Instagram handle <span class="muted">(optional)</span></label>
+              <input
+                type="text"
+                id="instagram"
+                name="instagram"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                placeholder="@yourhandle"
+              />
+            </div>
+
+            <div class="form-field">
               <label for="hear_about">How did you hear about Connected PNW?</label>
               <select id="hear_about" name="hear_about">
                 <option value="">Select one…</option>
@@ -114,7 +132,13 @@ const c = contact.data;
       mlBody.set('fields[email]', String(data.get('email') ?? ''));
       mlBody.set('fields[name]', String(data.get('first_name') ?? ''));
       mlBody.set('fields[last_name]', String(data.get('last_name') ?? ''));
+      mlBody.set('fields[phone]', String(data.get('phone') ?? ''));
       mlBody.set('fields[hear_about]', String(data.get('hear_about') ?? ''));
+
+      // Normalised without the leading @ so the value is consistent in
+      // MailerLite regardless of how people type it.
+      const instagram = String(data.get('instagram') ?? '').trim().replace(/^@+/, '');
+      if (instagram) mlBody.set('fields[instagram]', instagram);
       mlBody.set('ml-submit', '1');
       mlBody.set('anticsrf', 'true');
       submits.push(fetch(mlAction, { method: 'POST', body: mlBody }));
