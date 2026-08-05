@@ -1,21 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import Banner from '../components/Banner.astro';
+import ImageSlot from '../components/ImageSlot.astro';
 import { getEntry } from 'astro:content';
 
-const home    = await getEntry('site', 'home');
-const model   = await getEntry('site', 'model');
-const gains   = await getEntry('site', 'gains');
-const journey = await getEntry('site', 'journey');
-const team    = await getEntry('site', 'team');
-const faq     = await getEntry('site', 'faq');
+const home = await getEntry('site', 'home');
+const how  = await getEntry('site', 'how');
 
 const h = home.data;
-const m = model.data;
-const g = gains.data;
-const j = journey.data;
-const t = team.data;
-const f = faq.data;
+const phases = how.data.phases ?? [];
 ---
 
 <Base title={h.title} description={h.description}>
@@ -29,249 +22,113 @@ const f = faq.data;
         {h.eyebrow && <div class="eyebrow">{h.eyebrow}</div>}
         {h.hero_heading && <h1>{h.hero_heading}</h1>}
         {h.hero_lead && <p class="lead">{h.hero_lead}</p>}
-        {h.hero_note && <p class="muted">{h.hero_note}</p>}
         <div class="actions">
           {h.cta_primary_label && (
-            <a class="btn btn-primary" href={h.cta_primary_url}>
-              {h.cta_primary_label}
-            </a>
+            <a class="btn btn-primary" href={h.cta_primary_url}>{h.cta_primary_label}</a>
           )}
           {h.cta_secondary_label && (
-            <a class="btn btn-secondary" href={h.cta_secondary_url}>
-              {h.cta_secondary_label}
-            </a>
+            <a class="btn btn-secondary" href={h.cta_secondary_url}>{h.cta_secondary_label}</a>
           )}
         </div>
+        {h.hero_note && <p class="muted hero-note">{h.hero_note}</p>}
       </div>
 
-      <aside class="panel" aria-label="Connected PNW difference overview">
-        <p class="mini">The Connected PNW difference</p>
-        {h.difference_heading && <h3>{h.difference_heading}</h3>}
-        {h.difference_bullets && (
-          <div class="bullet-list">
-            {h.difference_bullets.map((item) => (
-              <div class="bullet-item">
-                <div class="dot" aria-hidden="true"></div>
-                <div>
-                  <strong>{item.strong}</strong>
-                  <br />
-                  <span class="muted">{item.text}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </aside>
-    </div>
-  </section>
-
-  <!-- ── Program journey ── -->
-  <section id="journey">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          {j.kicker && <p class="kicker">{j.kicker}</p>}
-          {j.section_heading && <h2>{j.section_heading}</h2>}
-        </div>
-        {j.section_intro && <p>{j.section_intro}</p>}
-      </div>
-      {j.steps && (
-        <div class="timeline">
-          {j.steps.map((step) => (
-            <article class={`timeline-step${step.highlight ? ' highlight' : ''}`}>
-              {step.image && (
-                <div class="timeline-img">
-                  <img src={step.image} alt={step.heading} loading="lazy" />
-                </div>
-              )}
-              <div class="timeline-body">
-                <div class="timeline-num" aria-hidden="true">{step.num}</div>
-                <div>
-                  <h3>{step.heading}</h3>
-                  <p class="muted">{step.body}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
-    </div>
-  </section>
-
-  <!-- ── Coaching model ── -->
-  <section id="model">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          {m.kicker && <p class="kicker">{m.kicker}</p>}
-          {m.section_heading && <h2>{m.section_heading}</h2>}
-        </div>
-        {m.section_intro && <p>{m.section_intro}</p>}
-      </div>
-      {m.model_steps && (
-        <div class="model" aria-label="Coaching model steps">
-          {m.model_steps.map((step) => (
-            <article class="model-step">
-              <strong>{step.title}</strong>
-              <span class="muted">{step.body}</span>
-            </article>
-          ))}
-        </div>
-      )}
-      <img
-        src="/images/new-hero-image.png"
-        alt="People gathered around a table"
-        class="model-photo"
+      <ImageSlot
+        src={h.hero_image}
+        alt={h.hero_image_alt}
+        placeholder={h.hero_image_placeholder}
+        class="is-hero"
       />
     </div>
   </section>
 
-  <!-- ── What participants gain ── -->
-  <section id="difference">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          {g.kicker && <p class="kicker">{g.kicker}</p>}
-          {g.section_heading && <h2>{g.section_heading}</h2>}
-        </div>
-        {g.section_intro && <p>{g.section_intro}</p>}
-      </div>
-      {g.cards && (
-        <div class="cards-3">
-          {g.cards.map((card) => (
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                {card.heading === 'Insight' && (
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
-                    <path d="M10 21h4"/>
-                    <path d="M9.5 17h5"/>
-                  </svg>
-                )}
-                {card.heading === 'Skill' && (
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                  </svg>
-                )}
-                {card.heading === 'Confidence' && (
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M6 20v-2a6 6 0 0 1 12 0v2"/>
-                  </svg>
-                )}
-              </div>
-              <h3>{card.heading}</h3>
-              <p class="muted">{card.body}</p>
+  <!-- ── Different starting points ── -->
+  {h.audiences && h.audiences.length > 0 && (
+    <section id="who">
+      <div class="container">
+        {h.audience_heading && (
+          <div class="page-intro is-wide"><h2>{h.audience_heading}</h2></div>
+        )}
+        <div class="audience-grid">
+          {h.audiences.map((a) => (
+            <article class="audience-item">
+              <ImageSlot src={a.image} alt={a.image_alt} placeholder={a.label} />
+              <p>{a.body}</p>
             </article>
           ))}
         </div>
-      )}
-    </div>
-  </section>
-
-  <!-- ── Team ── -->
-  <section id="team">
-    <div class="container">
-      <div style="padding:0 0 var(--space-10);">
-        {t.kicker && <div class="label-pill">{t.kicker}</div>}
-        {t.section_heading && <h2 style="font-size:var(--text-xl);max-width:none;">{t.section_heading}</h2>}
-        {t.section_intro && <p class="lead" style="margin-top:var(--space-4);max-width:none;">{t.section_intro}</p>}
       </div>
+    </section>
+  )}
 
-      {/* Founders overview */}
-      {t.founders_heading && (
-        <div style="margin-bottom:var(--space-10);">
-          <p class="kicker">{t.founders_heading}</p>
-          {t.founders_intro && <h3 style="font-size:var(--text-lg);max-width:28rem;margin-bottom:var(--space-6);">{t.founders_intro}</h3>}
-          <div class="team-grid">
-            {t.founders_narrative && (
-              <div class="team-narrative">
-                {t.founders_narrative.map((p) => <p>{p}</p>)}
-              </div>
-            )}
-            <div class="founders-pic">
-              <img src="/images/team-pic.jpg" alt="Founders" loading="lazy" />
-            </div>
-          </div>
+  <!-- ── What makes Connected different ── -->
+  {h.features && h.features.length > 0 && (
+    <section id="difference">
+      <div class="container">
+        <div class="page-intro">
+          {h.features_heading && <h2>{h.features_heading}</h2>}
+          {h.features_intro && <p>{h.features_intro}</p>}
         </div>
-      )}
-
-      {/* Individual bios */}
-      {t.founders && t.founders.length > 0 && (
-        <div style="margin-bottom:var(--space-10);">
-          {t.bios_heading && <p class="kicker">{t.bios_heading}</p>}
-          {t.bios_intro && <h3 style="font-size:var(--text-lg);max-width:36rem;margin-bottom:var(--space-6);">{t.bios_intro}</h3>}
-          <div class="two-col-bios">
-            {t.founders.map((founder, idx) => (
-              <article class="bio-block">
-                <div class="bio-header">
-                  <div>
-                    <h3 class="bio-name">{founder.name}</h3>
-                    <div class="bio-role">{founder.role}</div>
-                  </div>
-                </div>
-                <div class="bio-body">
-                  {founder.sections.map((section, secIdx) => (
-                    <div class="bio-section">
-                      {secIdx === 0 && founder.image && (
-                        <img class="bio-headshot" src={founder.image} alt={founder.name} loading="lazy" />
-                      )}
-                      {section.heading && <h4 class="bio-section-heading">{section.heading}</h4>}
-                      {section.paragraphs.map((p) => <p>{p}</p>)}
-                    </div>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Values */}
-      {t.values && t.values.length > 0 && (
-        <div style="padding-bottom:clamp(3.5rem,7vw,6rem);">
-          {t.values_heading && <p class="kicker">{t.values_heading}</p>}
-          {t.values_intro && <h3 style="font-size:var(--text-lg);max-width:36rem;margin-bottom:var(--space-6);">{t.values_intro}</h3>}
-          <div class="values-grid">
-            {t.values.map((v) => (
-              <article class="value-card">
-                <h3>{v.heading}</h3>
-                <p>{v.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  </section>
-
-  <!-- ── FAQ ── -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          {f.kicker && <p class="kicker">{f.kicker}</p>}
-          {f.section_heading && <h2>{f.section_heading}</h2>}
-        </div>
-        {f.section_intro && <p>{f.section_intro}</p>}
-      </div>
-      {f.faqs && (
-        <div class="faq-grid">
-          {f.faqs.map((item) => (
-            <details class="faq-item">
-              <summary>
-                <h3>{item.question}</h3>
-                <span class="faq-chevron" aria-hidden="true">▾</span>
-              </summary>
-              <div class="faq-answer">{item.answer}</div>
-            </details>
+        <div class="feature-grid">
+          {h.features.map((f) => (
+            <article class="feature">
+              <h3>{f.heading}</h3>
+              <p>{f.body}</p>
+            </article>
           ))}
         </div>
-      )}
-      <div class="actions" style="margin-top:var(--space-10);">
-        <a class="btn btn-primary" href="/contact">Get on the interest list</a>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
+
+  <!-- ── The Connected Experience ── -->
+  {phases.length > 0 && (
+    <section id="experience">
+      <div class="container">
+        <div class="page-intro">
+          {h.phases_heading && <h2>{h.phases_heading}</h2>}
+          {h.phases_intro && <p>{h.phases_intro}</p>}
+        </div>
+        <div class="story-flow">
+          {phases.map((p) => (
+            <article class="story">
+              <div class="story-copy">
+                <p class="step-num">{p.num}</p>
+                <h3>{p.heading}</h3>
+                <p>{p.body}</p>
+              </div>
+              <div class="story-media">
+                <ImageSlot src={p.image} alt={p.image_alt} placeholder={p.image_placeholder} />
+              </div>
+            </article>
+          ))}
+        </div>
+        {h.actions && (
+          <div class="actions">
+            {h.actions.map((a) => (
+              <a class={`btn btn-${a.style ?? 'secondary'}`} href={a.url}>{a.label}</a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- ── Closing CTA ── -->
+  {h.cta_heading && (
+    <section id="join">
+      <div class="container">
+        <div class="cta-band">
+          <h2>{h.cta_heading}</h2>
+          {h.cta_body && <p>{h.cta_body}</p>}
+          {h.cta_label && (
+            <div class="actions">
+              <a class="btn btn-primary" href={h.cta_url}>{h.cta_label}</a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
 
 </Base>

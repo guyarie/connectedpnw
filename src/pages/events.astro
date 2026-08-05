@@ -15,9 +15,11 @@ const past = all.filter((ev) => ev.date < today).reverse();
 
   <div class="page-hero">
     <div class="container">
-      {e.kicker && <p class="kicker">{e.kicker}</p>}
-      {e.section_heading && <h1 style="max-width:none;font-size:var(--text-xl);">{e.section_heading}</h1>}
-      {e.section_intro && <p class="lead" style="margin-top:var(--space-4);">{e.section_intro}</p>}
+      <div class="page-intro" style="margin-bottom:0;">
+        {e.kicker && <p class="kicker">{e.kicker}</p>}
+        {e.section_heading && <h1>{e.section_heading}</h1>}
+        {e.section_intro && <p class="lead" style="margin-bottom:0;">{e.section_intro}</p>}
+      </div>
     </div>
   </div>
 
@@ -85,7 +87,7 @@ const past = all.filter((ev) => ev.date < today).reverse();
       )}
 
       <div class="actions" style="margin-top:var(--space-10);">
-        <a class="btn btn-primary" href="/contact">Get on the interest list</a>
+        <a class="btn btn-primary" href="/contact">Join the interest list</a>
         <a class="btn btn-secondary" href="/">Back to home</a>
       </div>
     </div>

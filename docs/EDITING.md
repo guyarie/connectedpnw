@@ -27,14 +27,25 @@ The site will rebuild and go live in about 60–90 seconds.
 
 | File | What it controls |
 |---|---|
-| `home.md` | Hero heading, subtext, the eyebrow label, the two buttons, and the "difference" panel on the right |
-| `model.md` | The five coaching model steps |
-| `gains.md` | The three "What participants gain" cards (Insight, Skill, Confidence) |
-| `journey.md` | The four program journey steps (Group learning → Paired practice) |
+| `home.md` | The whole home page: hero, the two "starting points", the three difference points, and the closing call-to-action band |
+| `how.md` | The **How it works** page — the three program phases. The short version of each phase also appears on the home page |
+| `team.md` | The **Founders** page — the intro, both bios, and the "How We Hold the Space" values |
 | `faq.md` | All FAQ questions and answers |
-| `contact.md` | The contact page heading, intro text, and the privacy note at the bottom |
+| `contact.md` | The interest-list page heading, intro text, and the privacy note at the bottom |
+| `blog.md` | The blog listing page heading and intro (the posts themselves live in `src/content/posts/`) |
 | `events.md` | The Events page — the list of upcoming and past events (see below) |
 | `banner.md` | The wide banner image at the top of the home page (see below) |
+
+### Photos on the page
+
+Anywhere the site shows a photo, the content file has an `image:` line. Put the
+file in `public/images/` and point at it, e.g. `image: '/images/social-night.jpg'`.
+If you delete the `image:` line, that spot shows a dashed placeholder box with a
+short label instead of breaking the layout — handy while you are waiting on a
+photo. The label comes from the `image_placeholder:` line.
+
+Always fill in `image_alt:` too — that is the description read aloud to visitors
+using a screen reader.
 
 ---
 

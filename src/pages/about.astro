@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const team = await getEntry('site', 'team');
+const t = team.data;
+---
+
+<Base title={`${t.title} — Connected PNW`} description={t.description}>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-intro is-wide" style="margin-bottom:0;">
+        {t.kicker && <p class="kicker">{t.kicker}</p>}
+        {t.section_heading && <h1>{t.section_heading}</h1>}
+        {t.founders_narrative?.map((para) => <p>{para}</p>)}
+      </div>
+    </div>
+  </div>
+
+  {t.founders && t.founders.length > 0 && (
+    <section>
+      <div class="container">
+        <div class="founder-grid">
+          {t.founders.map((f) => (
+            <article class="founder">
+              {f.image && (
+                <img class="founder-portrait" src={f.image} alt={f.image_alt ?? f.name} loading="lazy" />
+              )}
+              <div>
+                <h2>{f.name}</h2>
+                {f.role && <p class="muted" style="margin-bottom:var(--space-3);">{f.role}</p>}
+                {f.bio && <p>{f.bio}</p>}
+                {f.sections?.map((section) => (
+                  <div style="margin-top:var(--space-4);">
+                    {section.heading && <h3 class="bio-section-heading">{section.heading}</h3>}
+                    {section.paragraphs.map((para) => <p>{para}</p>)}
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {t.values && t.values.length > 0 && (
+    <section style="background:var(--color-surface-offset);">
+      <div class="container">
+        {t.values_heading && (
+          <div class="page-intro"><h2>{t.values_heading}</h2></div>
+        )}
+        <div class="feature-grid is-four">
+          {t.values.map((v) => (
+            <article class="feature">
+              <h3>{v.heading}</h3>
+              <p>{v.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {t.cta_heading && (
+    <section>
+      <div class="container">
+        <div class="cta-band">
+          <h2>{t.cta_heading}</h2>
+          {t.cta_body && <p>{t.cta_body}</p>}
+          {t.cta_label && (
+            <div class="actions">
+              <a class="btn btn-primary" href={t.cta_url}>{t.cta_label}</a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+</Base>

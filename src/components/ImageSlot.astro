@@ -1,0 +1,27 @@
+---
+/**
+ * Renders a photo, or a labelled placeholder box when the content file has
+ * no image yet. Lets staff drop a photo into a section by adding an `image:`
+ * line in the markdown, without touching any .astro file.
+ */
+export interface Props {
+  src?: string;
+  alt?: string;
+  /** Shown inside the placeholder box when `src` is missing. */
+  placeholder?: string;
+  /** Extra classes, e.g. "is-hero". */
+  class?: string;
+}
+
+const { src, alt = '', placeholder = 'Photo coming soon', class: extra = '' } = Astro.props;
+---
+
+{src ? (
+  <div class:list={['image-slot', extra]}>
+    <img src={src} alt={alt} loading="lazy" />
+  </div>
+) : (
+  <div class:list={['image-slot', 'is-placeholder', extra]} aria-hidden="true">
+    <span>{placeholder}</span>
+  </div>
+)}

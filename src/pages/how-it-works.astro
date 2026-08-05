@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import ImageSlot from '../components/ImageSlot.astro';
+import { getEntry } from 'astro:content';
+
+const how = await getEntry('site', 'how');
+const w = how.data;
+const phases = w.phases ?? [];
+---
+
+<Base title={`${w.title} — Connected PNW`} description={w.description}>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-intro" style="margin-bottom:0;">
+        {w.kicker && <p class="kicker">{w.kicker}</p>}
+        {w.section_heading && <h1>{w.section_heading}</h1>}
+        {w.section_intro && <p class="lead" style="margin-bottom:0;">{w.section_intro}</p>}
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="phase-flow">
+        {phases.map((p) => (
+          <article class="phase">
+            <div class="phase-copy">
+              <p class="step-num">{p.num}</p>
+              <h2>{p.heading}</h2>
+              {(p.detail ?? [p.body]).map((para) => <p>{para}</p>)}
+
+              {p.list && p.list.length > 0 && (
+                <>
+                  {p.list_heading && <h3>{p.list_heading}</h3>}
+                  <ul class="phase-list">
+                    {p.list.map((item) => <li>{item}</li>)}
+                  </ul>
+                </>
+              )}
+
+              {p.list_footnote && <p style="margin-top:var(--space-5);">{p.list_footnote}</p>}
+            </div>
+            <div class="phase-media">
+              <ImageSlot src={p.image} alt={p.image_alt} placeholder={p.image_placeholder} />
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {w.actions && (
+        <div class="actions" style="margin-top:clamp(3rem,6vw,4.5rem);">
+          {w.actions.map((a) => (
+            <a class={`btn btn-${a.style ?? 'secondary'}`} href={a.url}>{a.label}</a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+</Base>

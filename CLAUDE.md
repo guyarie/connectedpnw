@@ -25,34 +25,37 @@ npm run preview  # preview dist/ locally
 ## Pages
 | Route | File | Content source |
 |---|---|---|
-| `/` | `src/pages/index.astro` | Imports all site/*.md entries |
-| `/about` | `src/pages/about.astro` | `about.md` |
+| `/` | `src/pages/index.astro` | `home.md` + the phases from `how.md` |
+| `/how-it-works` | `src/pages/how-it-works.astro` | `how.md` |
+| `/about` | `src/pages/about.astro` | `team.md` (nav label: "Founders") |
 | `/events` | `src/pages/events.astro` | `events.md` |
 | `/faq` | `src/pages/faq.astro` | `faq.md` |
-| `/contact` | `src/pages/contact.astro` | `contact.md` |
+| `/contact` | `src/pages/contact.astro` | `contact.md` (the interest list) |
+| `/blog/` | `src/pages/blog/index.astro` | `blog.md` + `src/content/posts/` |
 | `/thanks` | `src/pages/thanks.astro` | Hardcoded (post-form redirect) |
 
 ## Content files (`src/content/site/`)
-- `home.md` — hero, difference panel, CTAs
-- `model.md` — 5 coaching model steps
-- `gains.md` — 3 "what you gain" cards
-- `journey.md` — 4 program journey timeline steps
-- `about.md` — about section, 2 cards
-- `team.md` — full team section: founders narrative, bios (with subsections), values
+- `home.md` — hero, audience split, feature rules, closing CTA band
+- `how.md` — the three program phases; the short form of each also renders on the home page
+- `team.md` — Founders page: intro narrative, short bios, "How We Hold the Space" values
 - `faq.md` — FAQ items
-- `contact.md` — contact page + Formspree action URL + redirect URL
+- `contact.md` — interest-list page + Formspree/MailerLite action URLs + redirect URL
+- `blog.md` — blog listing page heading/intro
 - `events.md` — events list (upcoming/past split by `date` at build time)
 - `banner.md` — home-page-only banner image (`enabled`, image + optional mobile image, link, dismissible, date window); rendered by `src/components/Banner.astro` at the top of `index.astro`
 
 ## Content schema
 Defined in `src/content/config.ts`. All fields optional except `title`.
-Founder bios use `sections: [{heading?, paragraphs: []}]` — supports subsection headings within a bio.
+Founder bios use `bio: string` for the short form; `sections: [{heading?, paragraphs: []}]` is still supported for long, multi-part bios.
+Any section that shows a photo takes `image` / `image_alt` / `image_placeholder` and renders through `src/components/ImageSlot.astro`, which falls back to a labelled dashed box when `image` is absent.
 
 ## CSS approach
 All component styles and CSS custom properties (light + dark theme) live in `src/styles/global.css`. Tailwind handles layout utilities. Dark mode is driven by `data-theme` on `<html>` — no Tailwind dark: prefix needed. Do not add hardcoded color values to .astro files; use `var(--color-*)`.
 
 ## Theming
-Light/dark toggle is in `src/layouts/Base.astro` (inline script). Theme respects `prefers-color-scheme` on load.
+Light/dark toggle is in `src/layouts/Base.astro` (inline script). It always starts in light mode and the choice is not persisted across page loads — it does **not** currently read `prefers-color-scheme` or `localStorage`, despite what the toggle implies.
+
+Accent colours: `--color-primary` (forest green) for structure and links, `--color-accent` (coral) for the feature top-rules and the CTA band. Both are defined for light and dark.
 
 ## Key constraints
 - **Zero hardcoded text in .astro files** — all copy comes from content collections

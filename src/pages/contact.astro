@@ -10,9 +10,11 @@ const c = contact.data;
 
   <div class="page-hero">
     <div class="container">
-      {c.kicker && <p class="kicker">{c.kicker}</p>}
-      {c.section_heading && <h1 style="max-width:none;font-size:var(--text-xl);">{c.section_heading}</h1>}
-      {c.section_intro && <p class="lead" style="margin-top:var(--space-4);">{c.section_intro}</p>}
+      <div class="page-intro" style="margin-bottom:0;">
+        {c.kicker && <p class="kicker">{c.kicker}</p>}
+        {c.section_heading && <h1>{c.section_heading}</h1>}
+        {c.section_intro && <p class="lead" style="margin-bottom:0;">{c.section_intro}</p>}
+      </div>
     </div>
   </div>
 
@@ -45,6 +47,24 @@ const c = contact.data;
             <div class="form-field">
               <label for="email">Email address</label>
               <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+
+            <div class="form-field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required />
+            </div>
+
+            <div class="form-field">
+              <label for="instagram">Instagram handle <span class="muted">(optional)</span></label>
+              <input
+                type="text"
+                id="instagram"
+                name="instagram"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                placeholder="@yourhandle"
+              />
             </div>
 
             <div class="form-field">
@@ -112,7 +132,13 @@ const c = contact.data;
       mlBody.set('fields[email]', String(data.get('email') ?? ''));
       mlBody.set('fields[name]', String(data.get('first_name') ?? ''));
       mlBody.set('fields[last_name]', String(data.get('last_name') ?? ''));
+      mlBody.set('fields[phone]', String(data.get('phone') ?? ''));
       mlBody.set('fields[hear_about]', String(data.get('hear_about') ?? ''));
+
+      // Normalised without the leading @ so the value is consistent in
+      // MailerLite regardless of how people type it.
+      const instagram = String(data.get('instagram') ?? '').trim().replace(/^@+/, '');
+      if (instagram) mlBody.set('fields[instagram]', instagram);
       mlBody.set('ml-submit', '1');
       mlBody.set('anticsrf', 'true');
       submits.push(fetch(mlAction, { method: 'POST', body: mlBody }));
