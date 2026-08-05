@@ -306,6 +306,12 @@ header {
 .nav-links a:hover,
 .nav-links a:focus-visible { color: var(--color-text); }
 
+.nav-links a[aria-current='page'],
+.mobile-nav a[aria-current='page'] {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
 .theme-toggle {
   border: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
   background: var(--color-surface);

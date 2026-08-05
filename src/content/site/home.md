@@ -42,6 +42,12 @@ features:
 # ── The Connected Experience (short form; full version on /how-it-works) ──
 phases_heading: "The Connected Experience"
 phases_intro: "Learn together. Practice with support. Stay connected."
+# Buttons shown under the three phases.
+actions:
+  - label: "Explore the full program"
+    url: "/how-it-works"
+  - label: "Questions about Connected"
+    url: "/faq"
 
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"

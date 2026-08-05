@@ -25,6 +25,13 @@ const phase = z.object({
   list: z.array(z.string()).optional(),
   list_footnote: z.string().optional(),
 });
+// A button. `style` defaults to secondary.
+const action = z.object({
+  label: z.string(),
+  url: z.string(),
+  style: z.enum(['primary', 'secondary']).optional(),
+});
+
 const faqItem = z.object({ question: z.string(), answer: z.string() });
 const founderSection = z.object({
   heading: z.string().optional(),
@@ -89,6 +96,8 @@ const site = defineCollection({
     phases_heading: z.string().optional(),
     phases_intro: z.string().optional(),
     phases: z.array(phase).optional(),
+    // Buttons shown at the foot of a section/page
+    actions: z.array(action).optional(),
     // Closing CTA band
     cta_heading: z.string().optional(),
     cta_body: z.string().optional(),

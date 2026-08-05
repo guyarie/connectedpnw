@@ -19,6 +19,12 @@ founders:
     image_alt: "Nina Helms"
     bio: "Nina is a licensed mental health counselor with more than a decade of experience working with adults, couples, and families. Her relational approach draws on expertise in attachment, communication, relational trauma, and neurodivergence, along with a strong belief in authenticity, friendship, and shared enjoyment as foundations for lasting connection."
 
+# Closing call-to-action band at the foot of the Founders page.
+cta_heading: "Interested in the January 2027 cohort?"
+cta_body: "Meeting in person in Bellevue, Washington."
+cta_label: "Join the interest list"
+cta_url: "/contact"
+
 values_heading: "How We Hold the Space"
 values:
   - heading: "Honest and kind"

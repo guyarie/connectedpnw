@@ -4,6 +4,13 @@ description: "How Connected works: three workshops and Social Nights, three mont
 kicker: "How It Works"
 section_heading: "The Connected Experience"
 section_intro: "Learn together. Practice with support. Stay connected."
+# Buttons shown at the foot of the page.
+actions:
+  - label: "Join the interest list"
+    url: "/contact"
+    style: "primary"
+  - label: "Questions about Connected"
+    url: "/faq"
 
 # These phases appear in short form on the home page (heading + body + image)
 # and in full on this page (detail paragraphs, list, footnote).

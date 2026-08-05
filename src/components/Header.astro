@@ -1,12 +1,18 @@
 ---
 import SocialLinks from './SocialLinks.astro';
 
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => {
+  const target = href.replace(/\/$/, '') || '/';
+  return target === '/' ? path === '/' : path === target || path.startsWith(`${target}/`);
+};
+
 const navLinks = [
-  { label: 'Program journey', href: '/#journey' },
-  { label: 'Coaching model', href: '/#model' },
-  { label: 'What you gain', href: '/#difference' },
-  { label: 'Team', href: '/#team' },
+  { label: 'Home', href: '/' },
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Founders', href: '/about' },
   { label: 'FAQ', href: '/faq' },
+  { label: 'Events', href: '/events' },
   { label: 'Blog', href: '/blog/' },
 ];
 ---
@@ -18,13 +24,15 @@ const navLinks = [
     </a>
 
     <nav class="nav-links" aria-label="Primary navigation">
-      {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      {navLinks.map((link) => (
+        <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>
+      ))}
     </nav>
 
     <div style="display:flex;align-items:center;gap:0.75rem;">
       <SocialLinks class="header-social" />
       <a class="btn btn-primary" href="/contact" style="min-height:40px;padding:0.6rem 1rem;font-size:var(--text-xs);">
-        Connect
+        Join interest list
       </a>
       <button
         class="theme-toggle header-theme-toggle"
@@ -46,8 +54,10 @@ const navLinks = [
   </div>
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
-    {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
-    <a href="/contact" class="btn btn-primary" style="margin-top:var(--space-2);">Connect</a>
+    {navLinks.map((link) => (
+      <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>
+    ))}
+    <a href="/contact" class="btn btn-primary" style="margin-top:var(--space-2);">Join interest list</a>
     <button
       class="theme-toggle mobile-nav-theme-toggle"
       type="button"
