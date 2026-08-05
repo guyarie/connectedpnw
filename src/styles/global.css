@@ -739,6 +739,9 @@ footer {
   margin-bottom: var(--space-10);
 }
 
+/* For headings that read better on one line than wrapped at 45rem. */
+.page-intro.is-wide { max-width: 62rem; }
+
 .page-intro h1,
 .page-intro h2 { max-width: none; }
 .page-intro > p { color: var(--color-text-muted); margin-bottom: 0; }
@@ -793,14 +796,19 @@ footer {
 
 .audience-item {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-template-columns: 9.6rem minmax(0, 1fr);
   gap: var(--space-5);
   align-items: center;
 }
 
 .audience-item .image-slot { aspect-ratio: 1; }
 .audience-item .image-slot.is-placeholder { min-height: 0; font-size: var(--text-xs); padding: var(--space-3); }
-.audience-item p { margin: 0; color: var(--color-text-muted); }
+
+.audience-item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: calc(var(--text-base) + 2pt);
+}
 
 /* ── Feature rules (coral top border) ── */
 
@@ -831,6 +839,7 @@ footer {
   align-items: center;
 }
 
+.story:nth-child(even) { grid-template-columns: minmax(18rem, 1.1fr) minmax(0, 0.9fr); }
 .story:nth-child(even) .story-media { order: -1; }
 .story-copy { max-width: 32rem; }
 .story-copy h3 { font-size: var(--text-lg); }
@@ -842,11 +851,14 @@ footer {
 
 .phase {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.8fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(16rem, 1fr);
   gap: var(--space-10);
   align-items: center;
 }
 
+/* Even rows show the image first. Swap the track sizes as well as the order,
+   otherwise the image lands in the other column and changes size row to row. */
+.phase:nth-child(even) { grid-template-columns: minmax(16rem, 1fr) minmax(0, 0.95fr); }
 .phase:nth-child(even) .phase-media { order: -1; }
 
 .phase-copy {
@@ -1003,7 +1015,7 @@ footer {
 }
 
 @media (max-width: 560px) {
-  .audience-item,
+  .audience-item { grid-template-columns: 6rem minmax(0, 1fr); }
   .founder { grid-template-columns: 5rem minmax(0, 1fr); }
   .founder-portrait { width: 5rem; height: 5rem; }
 }

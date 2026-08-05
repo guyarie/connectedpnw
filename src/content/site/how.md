@@ -22,16 +22,16 @@ phases:
     image_alt: "Participants in a workshop conversation"
     image_placeholder: "Workshop + Social Night images"
     detail:
-      - "Explore your relationship goals and build practical skills through three engaging workshops, followed by Social Nights where the learning comes to life."
+      - "Explore your relationship goals and build practical skills across three workshops, followed by Social Nights where the learning comes to life."
     list_heading: "What you'll explore"
     list:
-      - "What you want in a relationship—and what you realistically expect from one"
-      - "How you communicate, listen, and express what matters to you"
+      - "What you want in a relationship, and what you expect"
+      - "How you communicate, listen, and express what matters"
       - "The habits and expectations you bring into early connection"
-      - "Understanding your own experience and responding to another person's"
+      - "Understanding your experience, and responding to another's"
       - "Boundaries, consent, attraction, intimacy, and sexuality"
-      - "How to stay more present and authentic when dating feels uncertain"
-    list_footnote: "Each workshop day is followed by a Social Night, which may include a dance class, group outing, or another shared activity."
+      - "How to stay present and authentic when dating feels uncertain"
+    list_footnote: "Each workshop day ends with a Social Night — a dance class, group outing, or another shared activity."
 
   - num: "02"
     heading: "Practice with support"
@@ -40,8 +40,8 @@ phases:
     image_alt: "Two people in conversation while walking outdoors"
     image_placeholder: "Paired conversation with coaching context"
     detail:
-      - "You'll be paired for practice—not matched for dating. Before the extended phase, you'll meet several potential practice partners and have a meaningful voice in choosing whom you would like to practice with."
-      - "The three-month structure allows the practice to move beyond introductions into skills that become important later in dating—communicating needs and expectations, navigating differences, and staying connected over time."
+      - "You'll be paired for practice—not matched for dating. Beforehand you'll meet several potential partners and have a real voice in choosing whom to practice with."
+      - "Three months lets the practice move past introductions into the skills that matter later in dating: communicating needs, navigating differences, and staying connected over time."
     list_heading: "What to expect"
     list:
       - "Weekly individual or paired coaching"

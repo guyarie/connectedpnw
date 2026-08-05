@@ -1,7 +1,6 @@
 ---
 title: "Meet the Founders"
 description: "Connected was created by Miri Arie, PhD, CGP, and Nina Helms, MA, LMHC, as a bridge between understanding dating and actually practising it."
-kicker: "About"
 section_heading: "Meet the Founders"
 founders_narrative:
   - "Connected was created by Miri Arie, PhD, CGP, and Nina Helms, MA, LMHC, after years of hearing clients describe the pressure, uncertainty, and disappointment they experienced during first dates and the early stages of dating. Many understood what they wanted to do differently, but found it much harder to put that understanding into practice when the stakes felt real."
