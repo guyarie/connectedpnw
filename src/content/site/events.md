@@ -4,7 +4,7 @@ kicker: "What's on"
 section_heading: "Come meet us in person"
 section_intro: "Workshops, launch nights, and meet-ups where you can meet the Connected team and ask us anything."
 # Shown when there are no upcoming events listed.
-events_empty_note: "No events on the calendar right now. Get on the interest list and we'll let you know as soon as the next one is announced."
+events_empty_note: "No events on the calendar right now. Join the interest list and we'll let you know as soon as the next one is announced."
 events:
   - date: '2026-07-31'
     display_date: 'Thursday, July 31, 2026'

@@ -140,10 +140,11 @@ Staff update content by editing the Markdown files in `src/content/site/` via th
 
 | File | What it controls |
 |---|---|
-| `src/content/site/home.md` | Hero heading, subtext, CTAs, difference bullets |
-| `src/content/site/model.md` | Coaching model steps |
-| `src/content/site/gains.md` | "What participants gain" cards |
-| `src/content/site/journey.md` | Program journey timeline |
-| `src/content/site/about.md` | About section cards |
+| `src/content/site/home.md` | Home page: hero, starting points, difference points, closing CTA |
+| `src/content/site/how.md` | How it works — the three program phases |
+| `src/content/site/team.md` | Founders page: intro, bios, values |
 | `src/content/site/faq.md` | FAQ questions and answers |
-| `src/content/site/contact.md` | Contact page heading and Formspree form action URL |
+| `src/content/site/blog.md` | Blog listing heading and intro |
+| `src/content/site/contact.md` | Interest-list page heading and Formspree form action URL |
+| `src/content/site/events.md` | Events list (upcoming/past split by date at build time) |
+| `src/content/site/banner.md` | Home-page banner image (currently disabled) |
