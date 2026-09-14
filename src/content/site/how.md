@@ -3,7 +3,7 @@ title: "The Connected Experience"
 description: "How Connected works: three workshops and Social Nights, three months of paired practice with weekly coaching, and an ongoing community for graduates."
 kicker: "How It Works"
 section_heading: "The Connected Experience"
-section_intro: "A 5–6 month, in-person experience in Bellevue: learn together, practice with support, and stay connected. Cohort 1 begins January 2027; the investment is $6,000."
+section_intro: "A 5–6 month, in-person experience in Bellevue: learn together, practice with support, and stay connected. Cohort 1 begins January 2027."
 # Buttons shown at the foot of the page.
 actions:
   - label: "Schedule an Introductory Conversation"

@@ -6,7 +6,7 @@ description: "Connected is an in-person, guided, experiential and non-clinical r
 eyebrow: "Seattle area • In person in Bellevue"
 hero_heading: "Hoping to build a lasting relationship?"
 hero_lead: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program where you can learn and practice new ways of connecting alongside a supportive community in Bellevue, serving the Seattle/Eastside area."
-hero_note: "A 5–6 month experience • Cohort 1 begins January 2027 • $6,000 investment. Connected is not therapy, matchmaking, speed dating, or a traditional dating service."
+hero_note: "A 5–6 month experience • Cohort 1 begins January 2027. Connected is not therapy, matchmaking, speed dating, or a traditional dating service."
 cta_primary_label: "Schedule an Introductory Conversation"
 cta_primary_url: "/contact"
 cta_secondary_label: "See how it works"
@@ -51,7 +51,7 @@ actions:
 
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"
-cta_body: "Tell us a little about yourself, then schedule a free introductory conversation to learn more about Connected and see whether it might be a good fit. Cohort 1 is a 5–6 month experience with a $6,000 investment, for heterosexual adults approximately ages 26–45. In person in Bellevue, serving the Seattle/Eastside area."
+cta_body: "Tell us a little about yourself, then schedule a free introductory conversation to learn more about Connected and see whether it might be a good fit. Cohort 1 is a 5–6 month experience for heterosexual adults approximately ages 26–45. In person in Bellevue, serving the Seattle/Eastside area."
 cta_label: "Schedule an Introductory Conversation"
 cta_url: "/contact"
 ---

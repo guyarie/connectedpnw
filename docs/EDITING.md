@@ -31,7 +31,7 @@ The site will rebuild and go live in about 60–90 seconds.
 | `how.md` | The **How it works** page — the three program phases. The short version of each phase also appears on the home page |
 | `team.md` | The **Founders** page — the intro, both bios, and the "How We Hold the Space" values |
 | `faq.md` | All FAQ questions and answers |
-| `contact.md` | The introductory-conversation page headings, program details, investment, form button labels, scheduling redirect, and privacy note |
+| `contact.md` | The introductory-conversation page headings, program details, form button labels, scheduling redirect, and privacy note |
 | `blog.md` | The blog listing page heading and intro (the posts themselves live in `src/content/posts/`) |
 | `events.md` | The Events page — the list of upcoming and past events (see below) |
 | `banner.md` | The wide banner image at the top of the home page (see below) |
@@ -344,7 +344,7 @@ When asking, be specific: *"Add the photo `group-session-photo.jpg` below the he
 
 ### Introductory conversation form
 
-In `src/content/site/contact.md`, `section_heading` sets the page heading and `title` sets the introductory-conversation title. `section_intro` explains the form-to-scheduling flow. `contact_program_details` and `contact_commitment` appear above the form; keep the cohort, 5–6 month duration, and $6,000 investment consistent with `home.md`, `how.md`, `team.md`, and `faq.md`.
+In `src/content/site/contact.md`, `section_heading` sets the page heading and `title` sets the introductory-conversation title. `section_intro` explains the form-to-scheduling flow. `contact_program_details` and `contact_commitment` appear above the form; keep the cohort and 5–6 month duration consistent with `home.md`, `how.md`, `team.md`, and `faq.md`. Pricing belongs only in the FAQ entry “What is the investment for Cohort 1?” in `faq.md`; do not add the price to other pages or CTAs.
 
 `contact_button_label` is the submit button text; `contact_sending_label` appears while sending; `contact_error_message` appears if delivery fails. `contact_subject` is the founders’ notification subject. `contact_nav_label` supplies the header/footer link and `cta_label` supplies the events/blog button.
 
