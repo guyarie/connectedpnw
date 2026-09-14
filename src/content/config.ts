@@ -106,6 +106,13 @@ const site = defineCollection({
     // FAQ
     faqs: z.array(faqItem).optional(),
     // Contact
+    contact_program_details: z.string().optional(),
+    contact_commitment: z.string().optional(),
+    contact_button_label: z.string().optional(),
+    contact_sending_label: z.string().optional(),
+    contact_error_message: z.string().optional(),
+    contact_subject: z.string().optional(),
+    contact_nav_label: z.string().optional(),
     contact_note: z.string().optional(),
     contact_form_action: z.string().optional(),
     mailerlite_form_action: z.string().optional(),

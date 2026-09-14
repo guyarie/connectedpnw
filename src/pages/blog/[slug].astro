@@ -1,7 +1,8 @@
 ---
+const contact = await getEntry('site', 'contact');
 import Base from '../../layouts/Base.astro';
 import BlogCover from '../../components/BlogCover.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true);
@@ -51,7 +52,7 @@ const jsonLd = {
     <div class="container" style="max-width:720px;">
       <div class="actions" style="margin-top:var(--space-10);">
         <a class="btn btn-secondary" href="/blog/">Back to the blog</a>
-        <a class="btn btn-primary" href="/contact">Join the interest list</a>
+        <a class="btn btn-primary" href="/contact">{contact.data.cta_label}</a>
       </div>
     </div>
   </section>

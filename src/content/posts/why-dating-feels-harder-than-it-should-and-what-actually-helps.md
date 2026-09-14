@@ -64,4 +64,4 @@ If you've been trying for a while and still feel stuck, you don't have to keep f
 
 Connected is a program that teaches the skills that support real romantic connection: how to start conversations that go somewhere, how to handle awkwardness without shutting down, how to build confidence that makes dating feel possible. It's not therapy. It's skills-building and hands-on practice in a structured, supportive environment with people who share your goals.
 
-We're building our first cohort now. If you're curious whether it might be a fit, [**add your name to our interest list here**](#)—we'll be in touch with details and next steps.
+We're building our first cohort now. If you're curious whether it might be a fit, [**schedule a free introductory conversation**](/contact). Tell us a little about yourself, then choose a time to meet.

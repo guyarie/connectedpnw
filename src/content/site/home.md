@@ -1,13 +1,13 @@
 ---
 title: "Connected PNW — Hoping to build a lasting relationship?"
-description: "Connected is a guided experience where adults in the Seattle area learn and practice new ways of connecting alongside a supportive community. In person in Bellevue, Washington."
+description: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program in Bellevue, serving the Seattle/Eastside area."
 
 # ── Hero ──────────────────────────────────────────────────────────────
 eyebrow: "Seattle area • In person in Bellevue"
 hero_heading: "Hoping to build a lasting relationship?"
-hero_lead: "Connected is a guided experience where you can learn and practice new ways of connecting alongside a supportive community."
-hero_note: "Connected is not therapy or a dating service. It is a guided, experiential program created by therapists, but separate from their psychotherapy practices."
-cta_primary_label: "Join the January 2027 interest list"
+hero_lead: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program where you can learn and practice new ways of connecting alongside a supportive community in Bellevue, serving the Seattle/Eastside area."
+hero_note: "A 5–6 month experience • Cohort 1 begins January 2027 • $6,000 investment. Connected is not therapy, matchmaking, speed dating, or a traditional dating service."
+cta_primary_label: "Schedule an Introductory Conversation"
 cta_primary_url: "/contact"
 cta_secondary_label: "See how it works"
 cta_secondary_url: "/how-it-works"
@@ -41,7 +41,7 @@ features:
 
 # ── The Connected Experience (short form; full version on /how-it-works) ──
 phases_heading: "The Connected Experience"
-phases_intro: "Learn together. Practice with support. Stay connected."
+phases_intro: "A 5–6 month experience: learn together, practice with support, and stay connected."
 # Buttons shown under the three phases.
 actions:
   - label: "Explore the full program"
@@ -51,7 +51,7 @@ actions:
 
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"
-cta_body: "For adults approximately 26–45 • In person in Bellevue, Washington"
-cta_label: "Join the interest list"
+cta_body: "Tell us a little about yourself, then schedule a free introductory conversation to learn more about Connected and see whether it might be a good fit. Cohort 1 is a 5–6 month experience with a $6,000 investment, for heterosexual adults approximately ages 26–45. In person in Bellevue, serving the Seattle/Eastside area."
+cta_label: "Schedule an Introductory Conversation"
 cta_url: "/contact"
 ---

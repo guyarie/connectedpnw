@@ -1,4 +1,5 @@
 ---
+const contact = await getEntry('site', 'contact');
 import Base from '../layouts/Base.astro';
 import { getEntry } from 'astro:content';
 
@@ -87,7 +88,7 @@ const past = all.filter((ev) => ev.date < today).reverse();
       )}
 
       <div class="actions" style="margin-top:var(--space-10);">
-        <a class="btn btn-primary" href="/contact">Join the interest list</a>
+        <a class="btn btn-primary" href="/contact">{contact.data.cta_label}</a>
         <a class="btn btn-secondary" href="/">Back to home</a>
       </div>
     </div>

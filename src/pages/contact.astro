@@ -13,6 +13,7 @@ const c = contact.data;
       <div class="page-intro" style="margin-bottom:0;">
         {c.kicker && <p class="kicker">{c.kicker}</p>}
         {c.section_heading && <h1>{c.section_heading}</h1>}
+        <h2>{c.title}</h2>
         {c.section_intro && <p class="lead" style="margin-bottom:0;">{c.section_intro}</p>}
       </div>
     </div>
@@ -20,15 +21,19 @@ const c = contact.data;
 
   <section>
     <div class="container" style="max-width:640px;">
+      {c.contact_program_details && <p>{c.contact_program_details}</p>}
+      {c.contact_commitment && <p><strong>{c.contact_commitment}</strong></p>}
       <div class="panel">
         <form
           id="contact-form"
           method="POST"
           action={c.contact_form_action ?? '#'}
           data-mailerlite={c.mailerlite_form_action ?? ''}
-          data-redirect={c.contact_redirect_url ?? '/thanks'}
+          data-redirect={c.contact_redirect_url}
+          data-sending={c.contact_sending_label}
+          data-error={c.contact_error_message}
         >
-          <input type="hidden" name="_subject" value="New interest list submission — Connected PNW" />
+          <input type="hidden" name="_subject" value={c.contact_subject} />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div style="display:grid;gap:var(--space-5);">
@@ -85,7 +90,7 @@ const c = contact.data;
             </div>
 
             <button type="submit" class="btn btn-primary" style="width:100%;">
-              Join the interest list
+              {c.contact_button_label}
             </button>
 
           </div>
@@ -107,8 +112,10 @@ const c = contact.data;
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (btn.disabled) return;
+    const buttonLabel = btn.textContent;
     btn.disabled = true;
-    btn.textContent = 'Sending…';
+    btn.textContent = form.dataset.sending ?? buttonLabel;
 
     const data = new FormData(form);
 
@@ -145,13 +152,15 @@ const c = contact.data;
     }
 
     const results = await Promise.allSettled(submits);
-    const anyOk = results.some((r) => r.status === 'fulfilled' && r.value.ok);
-    if (anyOk) {
-      window.location.href = form.dataset.redirect ?? '/thanks';
+    // Formspree must receive the full submission before scheduling proceeds.
+    const primaryResult = results[0];
+    const formDelivered = primaryResult.status === 'fulfilled' && primaryResult.value.ok;
+    if (formDelivered && form.dataset.redirect) {
+      window.location.href = form.dataset.redirect;
     } else {
       btn.disabled = false;
-      btn.textContent = 'Join the interest list';
-      alert('Something went wrong — please try again.');
+      btn.textContent = buttonLabel;
+      alert(form.dataset.error);
     }
   });
 </script>

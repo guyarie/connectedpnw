@@ -20,8 +20,8 @@ founders:
 
 # Closing call-to-action band at the foot of the Founders page.
 cta_heading: "Interested in the January 2027 cohort?"
-cta_body: "Meeting in person in Bellevue, Washington."
-cta_label: "Join the interest list"
+cta_body: "A 5–6 month experience meeting in person in Bellevue, Washington. Cohort 1 investment: $6,000. Tell us a little about yourself, then schedule a free introductory conversation."
+cta_label: "Schedule an Introductory Conversation"
 cta_url: "/contact"
 
 values_heading: "How We Hold the Space"

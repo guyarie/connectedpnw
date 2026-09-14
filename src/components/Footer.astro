@@ -1,4 +1,6 @@
 ---
+const contact = await getEntry('site', 'contact');
+import { getEntry } from 'astro:content';
 import SocialLinks from './SocialLinks.astro';
 
 const year = new Date().getFullYear();
@@ -21,7 +23,7 @@ const year = new Date().getFullYear();
       <a href="/events">Events</a>
       <a href="/faq">FAQ</a>
       <a href="/blog/">Blog</a>
-      <a href="/contact">Join interest list</a>
+      <a href="/contact">{contact.data.contact_nav_label}</a>
     </nav>
 
     <SocialLinks class="footer-social" />

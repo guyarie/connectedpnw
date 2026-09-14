@@ -22,6 +22,7 @@ const phases = how.data.phases ?? [];
         {h.eyebrow && <div class="eyebrow">{h.eyebrow}</div>}
         {h.hero_heading && <h1>{h.hero_heading}</h1>}
         {h.hero_lead && <p class="lead">{h.hero_lead}</p>}
+        {h.hero_note && <p class="muted hero-note">{h.hero_note}</p>}
         <div class="actions">
           {h.cta_primary_label && (
             <a class="btn btn-primary" href={h.cta_primary_url}>{h.cta_primary_label}</a>
@@ -30,7 +31,6 @@ const phases = how.data.phases ?? [];
             <a class="btn btn-secondary" href={h.cta_secondary_url}>{h.cta_secondary_label}</a>
           )}
         </div>
-        {h.hero_note && <p class="muted hero-note">{h.hero_note}</p>}
       </div>
 
       <ImageSlot
