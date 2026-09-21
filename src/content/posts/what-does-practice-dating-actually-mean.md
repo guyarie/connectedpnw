@@ -1,4 +1,13 @@
-# What Does “Practice Dating” Actually Mean?
+---
+title: "What Does \"Practice Dating\" Actually Mean?"
+description: "Practice dating isn't role-play or a script—it's real interactions in a context built for noticing, feedback, and trying again."
+date: 2026-09-21
+author: "Connected PNW"
+tags:
+  - "Dating skills"
+  - "Guided practice"
+draft: false
+---
 
 Dating is one of those things we're somehow expected to know how to do.
 
