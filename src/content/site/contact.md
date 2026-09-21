@@ -8,6 +8,7 @@ contact_note: "Your information will not be shared or used for marketing. We’l
 contact_form_action: "https://formspree.io/f/maqkzqvl"
 mailerlite_form_action: "https://assets.mailerlite.com/jsonp/2489001/forms/192032452080830159/subscribe"
 contact_redirect_url: "https://tidycal.com/team/connectedpnw/intro-call"
+contact_phone: "(360) 797-5175"
 instagram_url: "https://www.instagram.com/pnw.connected"
 facebook_url: "https://www.facebook.com/people/Connected-PNW/61590472781029/"
 contact_program_details: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program in Bellevue, serving the Seattle/Eastside area. Cohort 1 begins January 2027 and is for heterosexual adults approximately ages 26–45, with some flexibility based on life stage, dating experience and fit."

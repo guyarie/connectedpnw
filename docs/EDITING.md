@@ -349,3 +349,5 @@ In `src/content/site/contact.md`, `section_heading` sets the page heading and `t
 `contact_button_label` is the submit button text; `contact_sending_label` appears while sending; `contact_error_message` appears if delivery fails. `contact_subject` is the founders’ notification subject. `contact_nav_label` supplies the header/footer link and `cta_label` supplies the events/blog button.
 
 `contact_redirect_url` is `https://tidycal.com/team/connectedpnw/intro-call`. Visitors reach this scheduling page after Formspree accepts their full submission. MailerLite still receives the existing subscriber fields. All website scheduling CTAs link to `/contact` first so visitors complete the form.
+
+`contact_phone` is the phone number shown site-wide in the footer (as a tap-to-call link). Leave it blank to hide it.
