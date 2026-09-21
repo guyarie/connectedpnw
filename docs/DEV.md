@@ -63,16 +63,18 @@ Content lives entirely in `src/content/site/*.md` frontmatter. Pages import entr
 
 ### Adding a new field to an existing page
 
-1. Add the field to the schema in `src/content/config.ts` (mark optional with `.optional()` unless every page needs it).
+1. Add the field to the schema in `src/content/schema.ts` (mark optional with `.optional()` unless every page needs it). `config.ts` only wires the schemas into Astro; the content service (`worker/`) validates edits with the same file.
 2. Add the field and its value to the relevant `.md` file.
 3. Reference `entry.data.your_field` in the corresponding `.astro` page.
+4. Add the field to `public/admin/config.yml` so the `/admin` editor shows it. If it is a list of objects, also add it to `LIST_FIELDS` in `schema.ts`.
 
 ### Adding a new page
 
 1. Create `src/content/site/new-page.md` with appropriate frontmatter.
-2. Extend the schema in `config.ts` if new field types are needed.
+2. Extend the schema in `schema.ts` if new field types are needed, and add the page to `PAGES` / `LIST_FIELDS` there so agents can edit it.
 3. Create `src/pages/new-page.astro`, import with `getEntry('site', 'new-page')`, wrap in `<Base>`.
 4. Add the route to `Header.astro` nav links and `Footer.astro` if needed.
+5. Add a `files` entry for it in `public/admin/config.yml`.
 
 ---
 
@@ -146,13 +148,15 @@ export default defineConfig({
 
 Then `npm install @astrojs/node`. The Node server runs via `node ./dist/server/entry.mjs`. Update Nginx to reverse-proxy instead of serving static files.
 
-### Add Decap CMS
+### Editing without GitHub: content service and `/admin`
 
-1. Create `public/admin/index.html` (Decap bootstrap page).
-2. Create `public/admin/config.yml` pointing at your GitHub repo and `src/content/site/` collections.
-3. Configure Netlify Identity or a third-party OAuth provider (e.g. `netlify-cms-github-oauth-provider` for self-hosted).
+Non-developers edit through Claude / ChatGPT (an MCP server + REST API on a Cloudflare Worker in `worker/`) or the Sveltia CMS page at `/admin` (`public/admin/`). Both commit to `main` like any other edit. Setup, architecture and the tool list are in `docs/CONTENT-SERVICE.md`.
 
-No Astro or content schema changes needed — Decap edits the same `.md` files.
+```bash
+npm run worker:check    # typecheck + tests for the worker
+npm run worker:dev      # local worker on :8787
+npm run worker:deploy   # deploy to Cloudflare
+```
 
 ### Connect the contact form
 

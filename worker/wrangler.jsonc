@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "connectedpnw-content",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  // Custom domain on the Cloudflare zone. Remove this block to use the
+  // *.workers.dev URL instead (then update SERVICE_URL below).
+  "routes": [{ "pattern": "content.connectedpnw.com", "custom_domain": true }],
+  "vars": {
+    "SERVICE_URL": "https://content.connectedpnw.com",
+    "SITE_URL": "https://connectedpnw.com",
+    "GITHUB_REPO": "guyarie/connectedpnw",
+    "GITHUB_BRANCH": "main",
+    "ALLOWED_EMAILS": "miri@connectedpnw.com,nina@connectedpnw.com",
+    "GOOGLE_CLIENT_ID": "REPLACE_ME.apps.googleusercontent.com",
+    "GITHUB_OAUTH_CLIENT_ID": "REPLACE_ME"
+  },
+  // Secrets (set with `npx wrangler secret put <NAME>` from this folder):
+  //   GOOGLE_CLIENT_SECRET        Google OAuth client secret
+  //   GITHUB_TOKEN                fine-grained PAT (V1 placeholder for a GitHub App)
+  //   GITHUB_OAUTH_CLIENT_SECRET  GitHub OAuth app secret for the /admin login
+  "kv_namespaces": [{ "binding": "OAUTH_KV", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }],
+  "observability": { "enabled": true }
+}

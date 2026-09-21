@@ -1,0 +1,25 @@
+name: Check
+
+# Catches a broken content edit or code change before it reaches main.
+# Runs on GitHub's hosted runners, not the self-hosted deploy runner.
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build the site
+        run: npm run build
+      - name: Install the content service
+        run: npm ci --prefix worker
+      - name: Typecheck and test the content service
+        run: npm run worker:check

@@ -1,0 +1,325 @@
+# Sveltia CMS configuration for /admin.
+# Field names here MUST match src/content/schema.ts — when a field is added
+# there, add it here too or the editor cannot see it.
+
+backend:
+  name: github
+  repo: guyarie/connectedpnw
+  branch: main
+  # The content service handles the GitHub sign-in popup.
+  base_url: https://content.connectedpnw.com
+  auth_endpoint: auth
+  commit_messages:
+    create: "Add {{collection}}: {{slug}}"
+    update: "Update {{collection}}: {{slug}}"
+    delete: "Remove {{collection}}: {{slug}}"
+    uploadMedia: "Add image: {{path}}"
+    deleteMedia: "Remove image: {{path}}"
+
+site_url: https://connectedpnw.com
+display_url: https://connectedpnw.com
+logo_url: /favicon.svg
+media_folder: public/images
+public_folder: /images
+
+# Reusable field snippets --------------------------------------------------
+_image: &image
+  label: Image
+  name: image
+  widget: image
+  required: false
+  hint: "Optional. Pick an image that is already on the site."
+_image_alt: &image_alt
+  label: Image description (for screen readers)
+  name: image_alt
+  widget: string
+  required: false
+_card_fields: &card_fields
+  - { label: Heading, name: heading, widget: string }
+  - { label: Body, name: body, widget: text }
+_action_fields: &action_fields
+  - { label: Button label, name: label, widget: string }
+  - { label: Link, name: url, widget: string, hint: "e.g. /contact or a full https:// address" }
+  - label: Style
+    name: style
+    widget: select
+    options: [primary, secondary]
+    required: false
+    hint: "Primary = filled button. Leave empty for secondary."
+_kicker: &kicker
+  label: Kicker (small label above the heading)
+  name: kicker
+  widget: string
+  required: false
+_section_heading: &section_heading
+  label: Page heading
+  name: section_heading
+  widget: string
+  required: false
+_section_intro: &section_intro
+  label: Intro paragraph
+  name: section_intro
+  widget: text
+  required: false
+_title: &title
+  label: Browser tab title
+  name: title
+  widget: string
+_description: &description
+  label: Search-engine description
+  name: description
+  widget: text
+  required: false
+_cta_band: &cta_band
+  - { label: CTA band heading, name: cta_heading, widget: string, required: false }
+  - { label: CTA band text, name: cta_body, widget: text, required: false }
+  - { label: CTA button label, name: cta_label, widget: string, required: false }
+  - { label: CTA button link, name: cta_url, widget: string, required: false }
+
+collections:
+  - name: pages
+    label: Pages
+    description: "The text of each page. Changes go live within a couple of minutes."
+    editor:
+      preview: false
+    files:
+      - name: home
+        label: Home page
+        file: src/content/site/home.md
+        fields:
+          - *title
+          - *description
+          - { label: Eyebrow (small line above the hero heading), name: eyebrow, widget: string, required: false }
+          - { label: Hero heading, name: hero_heading, widget: string, required: false }
+          - { label: Hero lead paragraph, name: hero_lead, widget: text, required: false }
+          - { label: Hero note (small print), name: hero_note, widget: text, required: false }
+          - { label: Primary button label, name: cta_primary_label, widget: string, required: false }
+          - { label: Primary button link, name: cta_primary_url, widget: string, required: false }
+          - { label: Secondary button label, name: cta_secondary_label, widget: string, required: false }
+          - { label: Secondary button link, name: cta_secondary_url, widget: string, required: false }
+          - { label: Hero image, name: hero_image, widget: image, required: false }
+          - { label: Hero image description, name: hero_image_alt, widget: string, required: false }
+          - { label: Hero image placeholder text, name: hero_image_placeholder, widget: string, required: false, hint: "Shown only if no hero image is set." }
+          - { label: "Starting points heading", name: audience_heading, widget: string, required: false }
+          - label: Starting points (two panels)
+            name: audiences
+            widget: list
+            required: false
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Body, name: body, widget: text }
+              - *image
+              - *image_alt
+          - { label: Features heading, name: features_heading, widget: string, required: false }
+          - { label: Features intro, name: features_intro, widget: text, required: false }
+          - label: Features (three rules)
+            name: features
+            widget: list
+            required: false
+            fields: *card_fields
+          - { label: Phases heading, name: phases_heading, widget: string, required: false, hint: "The phases themselves are edited on the How It Works page." }
+          - { label: Phases intro, name: phases_intro, widget: text, required: false }
+          - label: Buttons under the phases
+            name: actions
+            widget: list
+            required: false
+            fields: *action_fields
+          - *cta_band
+
+      - name: how
+        label: How It Works
+        file: src/content/site/how.md
+        fields:
+          - *title
+          - *description
+          - *kicker
+          - *section_heading
+          - *section_intro
+          - label: Buttons at the foot of the page
+            name: actions
+            widget: list
+            required: false
+            fields: *action_fields
+          - label: Program phases
+            name: phases
+            widget: list
+            required: false
+            hint: "Heading, body and image also appear in short form on the home page."
+            fields:
+              - { label: Number, name: num, widget: string, hint: "e.g. 01" }
+              - { label: Heading, name: heading, widget: string }
+              - { label: Short body, name: body, widget: text }
+              - *image
+              - *image_alt
+              - { label: Image placeholder text, name: image_placeholder, widget: string, required: false }
+              - label: Detail paragraphs
+                name: detail
+                widget: list
+                required: false
+                field: { label: Paragraph, name: paragraph, widget: text }
+              - { label: List heading, name: list_heading, widget: string, required: false }
+              - label: List items
+                name: list
+                widget: list
+                required: false
+                field: { label: Item, name: item, widget: string }
+              - { label: List footnote, name: list_footnote, widget: text, required: false }
+
+      - name: team
+        label: Founders
+        file: src/content/site/team.md
+        fields:
+          - *title
+          - *description
+          - *section_heading
+          - label: Founders narrative (paragraphs)
+            name: founders_narrative
+            widget: list
+            required: false
+            field: { label: Paragraph, name: paragraph, widget: text }
+          - label: Founders
+            name: founders
+            widget: list
+            required: false
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string, required: false }
+              - *image
+              - *image_alt
+              - { label: Short bio, name: bio, widget: text, required: false }
+          - *cta_band
+          - { label: Values heading, name: values_heading, widget: string, required: false }
+          - label: Values ("How We Hold the Space")
+            name: values
+            widget: list
+            required: false
+            fields: *card_fields
+
+      - name: events
+        label: Events
+        file: src/content/site/events.md
+        fields:
+          - *title
+          - *kicker
+          - *section_heading
+          - *section_intro
+          - { label: Text shown when there are no upcoming events, name: events_empty_note, widget: text, required: false }
+          - label: Events
+            name: events
+            widget: list
+            required: false
+            summary: "{{fields.date}} — {{fields.name}}"
+            fields:
+              - { label: Date, name: date, widget: string, pattern: ['^\d{4}-\d{2}-\d{2}$', 'Use the format YYYY-MM-DD'], hint: "YYYY-MM-DD. Decides whether the event is upcoming or past." }
+              - { label: Date as displayed, name: display_date, widget: string, required: false, hint: "e.g. Thursday, July 31, 2026" }
+              - { label: Time, name: time, widget: string, required: false }
+              - { label: Name, name: name, widget: string }
+              - { label: Location, name: location, widget: string, required: false }
+              - { label: Description, name: body, widget: text, required: false }
+              - label: Perks
+                name: perks
+                widget: list
+                required: false
+                fields:
+                  - { label: Bold part, name: strong, widget: string }
+                  - { label: Text, name: text, widget: string }
+              - *image
+              - *image_alt
+              - { label: Link label, name: link_label, widget: string, required: false }
+              - { label: Link, name: link_url, widget: string, required: false }
+
+      - name: faq
+        label: FAQ
+        file: src/content/site/faq.md
+        fields:
+          - *title
+          - *description
+          - *kicker
+          - *section_heading
+          - label: Buttons under the questions
+            name: actions
+            widget: list
+            required: false
+            fields: *action_fields
+          - label: Questions
+            name: faqs
+            widget: list
+            required: false
+            summary: "{{fields.question}}"
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: Answer, name: answer, widget: text }
+
+      - name: contact
+        label: Schedule a conversation (interest form)
+        file: src/content/site/contact.md
+        fields:
+          - *title
+          - *description
+          - *kicker
+          - *section_heading
+          - *section_intro
+          - { label: Privacy note under the form, name: contact_note, widget: text, required: false }
+          - { label: Program details, name: contact_program_details, widget: text, required: false }
+          - { label: Commitment line, name: contact_commitment, widget: string, required: false }
+          - { label: Submit button label, name: contact_button_label, widget: string, required: false }
+          - { label: Submit button label while sending, name: contact_sending_label, widget: string, required: false }
+          - { label: Error message, name: contact_error_message, widget: string, required: false }
+          - { label: Email subject for submissions, name: contact_subject, widget: string, required: false }
+          - { label: Site-wide CTA button label, name: cta_label, widget: string, required: false }
+          - { label: Navigation label, name: contact_nav_label, widget: string, required: false }
+          - { label: Phone number, name: contact_phone, widget: string, required: false }
+          - { label: Instagram link, name: instagram_url, widget: string, required: false }
+          - { label: Facebook link, name: facebook_url, widget: string, required: false }
+          - { label: "Form endpoint (Formspree) — change only on purpose", name: contact_form_action, widget: string, required: false }
+          - { label: "Mailing-list endpoint (MailerLite) — change only on purpose", name: mailerlite_form_action, widget: string, required: false }
+          - { label: "Scheduling link after submit — change only on purpose", name: contact_redirect_url, widget: string, required: false }
+
+      - name: blog
+        label: Blog listing page
+        file: src/content/site/blog.md
+        fields:
+          - *title
+          - *description
+          - *kicker
+          - *section_heading
+          - *section_intro
+          - { label: Text shown when there are no posts, name: empty_note, widget: string, required: false }
+
+      - name: banner
+        label: Home page banner
+        file: src/content/site/banner.md
+        fields:
+          - *title
+          - { label: Show the banner, name: enabled, widget: boolean, required: false }
+          - { label: Banner image, name: banner_image, widget: image, required: false }
+          - { label: Banner image for phones, name: banner_image_mobile, widget: image, required: false }
+          - { label: Phone image shape, name: banner_mobile_ratio, widget: string, required: false, hint: "width / height, e.g. 3 / 2" }
+          - { label: Banner description (for screen readers), name: banner_alt, widget: string, required: false }
+          - { label: Link when clicked, name: banner_link_url, widget: string, required: false }
+          - { label: Visitors can close it, name: banner_dismissible, widget: boolean, required: false }
+          - { label: Show from (YYYY-MM-DD), name: banner_start, widget: string, required: false }
+          - { label: Show until (YYYY-MM-DD), name: banner_end, widget: string, required: false }
+
+  - name: posts
+    label: Blog posts
+    folder: src/content/posts
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}{{draft}}"
+    sortable_fields: [date, title]
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description (listing + search engines), name: description, widget: text }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Author, name: author, widget: string, default: "Connected PNW" }
+      - { label: Cover image, name: image, widget: image, required: false }
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        field: { label: Tag, name: tag, widget: string }
+      - { label: Draft (not shown on the site), name: draft, widget: boolean, default: true }
+      - { label: Article, name: body, widget: markdown }

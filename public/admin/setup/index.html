@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Editing the site · Connected PNW</title>
+    <link rel="icon" href="/favicon.svg" />
+    <style>
+      :root { --green: #2f5d50; --ink: #1f2a24; --muted: #5d6b64; --line: #e3e8e5; --bg: #fbfaf7; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+      main { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+      h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .25rem; color: var(--green); }
+      h2 { font-size: 1.3rem; margin: 2.5rem 0 .5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+      p.lead { color: var(--muted); margin-top: 0; }
+      ol { padding-left: 1.4rem; } li { margin: .5rem 0; }
+      code, .copy { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .95em; }
+      .copy { display: flex; gap: .5rem; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: .5rem; padding: .6rem .8rem; margin: .75rem 0; }
+      .copy span { flex: 1; overflow-wrap: anywhere; }
+      button { font: inherit; background: var(--green); color: #fff; border: 0; border-radius: .4rem; padding: .35rem .8rem; cursor: pointer; }
+      .note { background: #fff; border-left: 4px solid var(--green); padding: .75rem 1rem; border-radius: 0 .5rem .5rem 0; margin: 1rem 0; }
+      .tip { color: var(--muted); font-size: .95rem; }
+      a { color: var(--green); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Editing connectedpnw.com</h1>
+      <p class="lead">Three ways to change the site's text and blog. Each needs a one-time setup of a few minutes. Every change goes live within about two minutes and can be undone.</p>
+
+      <h2>1. From Claude</h2>
+      <ol>
+        <li>In Claude, open <strong>Settings → Connectors</strong> and click <strong>Add custom connector</strong>.</li>
+        <li>Name it <em>Connected PNW website</em> and paste this URL:
+          <div class="copy"><span id="mcp-url"></span><button data-copy="mcp-url">Copy</button></div>
+        </li>
+        <li>Click <strong>Add</strong>, then <strong>Connect</strong>. Sign in with your Google account and click <strong>Allow</strong>.</li>
+        <li>Start a new chat and try: <em>"What does the FAQ say about pricing?"</em> or <em>"Add an event on October 3 called …"</em>.</li>
+      </ol>
+      <p class="tip">If Claude does not use the connector, check that it is switched on in the chat's tools menu (the + or sliders icon next to the message box).</p>
+
+      <h2>2. From ChatGPT</h2>
+      <ol>
+        <li>Open the <strong>Connected PNW Editor</strong> GPT: <span id="gpt-link"></span></li>
+        <li>The first time it needs to read or change something it will ask you to sign in. Choose <strong>Sign in with Google</strong> and click <strong>Allow</strong>.</li>
+        <li>Talk to it the same way as Claude.</li>
+      </ol>
+      <p class="tip">Prefer to use it in your regular ChatGPT chats? In ChatGPT go to <strong>Settings → Apps &amp; Connectors → Advanced → Developer mode</strong>, then <strong>Create</strong> a connector with the URL from section 1.</p>
+
+      <h2>3. The editing page</h2>
+      <p>For seeing every field of a page at once, reordering events, or changing images: <a href="/admin/">connectedpnw.com/admin</a>. Sign in with your GitHub account.</p>
+
+      <h2>Good to know</h2>
+      <div class="note">
+        <p><strong>Undo.</strong> Ask "undo my last change" or "show recent changes and undo the one about …". Every change is kept forever, so nothing is lost.</p>
+        <p><strong>Blog posts start as drafts.</strong> A new post is not visible until you say "publish it".</p>
+        <p><strong>Is it live yet?</strong> Ask "is my change live?". Publishing takes about two minutes.</p>
+        <p><strong>Images</strong> can't be uploaded through chat yet. Use the editing page, or send the image to the site's developer.</p>
+      </div>
+    </main>
+    <script>
+      // The only two things to edit when the service moves:
+      var SERVICE_URL = 'https://content.connectedpnw.com';
+      var GPT_URL = ''; // paste the shared link of the custom GPT here
+
+      document.getElementById('mcp-url').textContent = SERVICE_URL + '/mcp';
+      var gpt = document.getElementById('gpt-link');
+      if (GPT_URL) { var a = document.createElement('a'); a.href = GPT_URL; a.textContent = GPT_URL; gpt.appendChild(a); }
+      else gpt.textContent = 'ask the site’s developer for the link.';
+      document.querySelectorAll('button[data-copy]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent).then(function () { b.textContent = 'Copied'; });
+        });
+      });
+    </script>
+  </body>
+</html>

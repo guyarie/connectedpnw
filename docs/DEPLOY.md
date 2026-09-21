@@ -136,7 +136,9 @@ rsync -a --delete dist/ /var/www/connectedpnw/dist/
 
 ## Content updates (no-code)
 
-Staff update content by editing the Markdown files in `src/content/site/` via the GitHub web UI. Saving triggers a deploy automatically.
+Staff update content through Claude / ChatGPT or the `/admin` page — both go through the **content service** (a Cloudflare Worker, see `docs/CONTENT-SERVICE.md` for setup) and commit to `main`, which triggers this same deploy. Editing the Markdown files in `src/content/site/` via the GitHub web UI still works as a fallback.
+
+Pull requests and non-`main` branches run `.github/workflows/check.yml` (build + worker tests) on GitHub-hosted runners, so a broken edit is caught before it reaches the box.
 
 | File | What it controls |
 |---|---|

@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "worker:check": "npm --prefix worker run check",
+    "worker:dev": "npm --prefix worker run dev",
+    "worker:deploy": "npm --prefix worker run deploy",
+    "worker:secret": "npm --prefix worker run secret --"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

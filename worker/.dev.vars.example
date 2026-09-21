@@ -1,0 +1,4 @@
+# Copy to worker/.dev.vars for `npm run worker:dev`. Never commit .dev.vars.
+GOOGLE_CLIENT_SECRET=
+GITHUB_TOKEN=
+GITHUB_OAUTH_CLIENT_SECRET=

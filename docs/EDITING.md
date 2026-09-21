@@ -1,12 +1,33 @@
 # Editing Guide — Connected PNW
 
-This guide is for anyone updating the website's text, images, or basic appearance — including an AI agent editing on someone's behalf. You don't need to know how to code. All edits are made by changing plain text files on GitHub, either through the GitHub web UI (people) or the GitHub API (agents — see [Editing via the GitHub API](#editing-via-the-github-api-for-ai-agents)).
+This guide is for anyone updating the website's text, images, or basic appearance — including an AI agent editing on someone's behalf. You don't need to know how to code.
+
+---
+
+## The easy ways to edit
+
+You don't need GitHub for everyday text changes. Set-up instructions with screenshots are at **[connectedpnw.com/admin/setup](https://connectedpnw.com/admin/setup/)**.
+
+| Way | Best for |
+|---|---|
+| **Ask Claude** (after adding the *Connected PNW website* connector once) | Any text change, new events, FAQ answers, writing and publishing blog posts, undoing a change |
+| **Ask ChatGPT** (the *Connected PNW Editor* GPT) | Same as Claude |
+| **The editing page** at [connectedpnw.com/admin](https://connectedpnw.com/admin/) | Seeing every field of a page at once, reordering lists, changing images |
+
+Things worth knowing:
+
+- Changes go live within about two minutes. Ask *"is my change live?"* to check.
+- Every change can be undone: *"undo my last change"* or *"show recent changes"*.
+- New blog posts start as **drafts**. Say *"publish it"* when it's ready.
+- Images can't be uploaded through chat yet — use the editing page or ask the developer.
+
+The rest of this guide explains what lives where, which is useful whichever way you edit, and how to edit directly on GitHub as a fallback.
 
 ---
 
 ## How edits work
 
-Every piece of text on the site lives in a file inside the `src/content/site/` folder. You edit these files on GitHub, save (commit), and the site rebuilds automatically within a minute or two.
+Every piece of text on the site lives in a file inside the `src/content/site/` folder. Whether you change it through Claude, ChatGPT, the editing page or GitHub, the result is the same: the file is saved, and the site rebuilds automatically within a minute or two.
 
 ---
 
@@ -263,9 +284,11 @@ To swap fonts, replace the font names in that URL with others from [fontshare.co
 
 ---
 
-## Editing via the GitHub API (for AI agents)
+## Editing via the GitHub API (for developers' AI agents)
 
-Everything above describes the GitHub web UI. An AI agent — including one running on a different machine — can make the same edits programmatically through the **GitHub Contents API**, since the site is static and every push to `main` triggers an automatic build + deploy (`.github/workflows/deploy.yml`). No extra infrastructure is needed; this applies to any file under `src/content/` (site pages or blog posts), not just blog posts.
+The founders' agents should use the content service instead (see the top of this guide and `docs/CONTENT-SERVICE.md`). This section is for a developer's own agent that already has a GitHub token.
+
+An AI agent can make the same edits programmatically through the **GitHub Contents API**, since the site is static and every push to `main` triggers an automatic build + deploy (`.github/workflows/deploy.yml`). This applies to any file under `src/content/` (site pages or blog posts), not just blog posts.
 
 Set up once: create a **fine-grained GitHub PAT** scoped to just this repo (`guyarie/connectedpnw`) with `Contents: Read and write` permission — nothing broader. Give it to the agent as `$GITHUB_TOKEN`.
 
