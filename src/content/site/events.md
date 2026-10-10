@@ -6,6 +6,19 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
+  - date: '2026-11-18'
+    display_date: 'Wednesday, November 18, 2026'
+    time: '7:00 pm'
+    name: 'ConnectEd Friendsgiving: Cook, Connect & Celebrate'
+    location: 'Taste Buds Kitchen · 15015 Main Street, Suite 109, Bellevue, WA 98007'
+    body: 'Join us for a hands-on Thai cooking class followed by a shared Friendsgiving dinner. We’ll prepare a meal together, learn from one another, and lend a hand along the way. Then we’ll settle in for an evening of good food, conversation, and connection.'
+    perks:
+      - strong: 'Tickets'
+        text: '$95 per person.'
+      - strong: 'Please note'
+        text: 'This is an educational and skill-building gathering, not therapy or matchmaking.'
+    image: '/images/friendsgiving-event.jpg'
+    image_alt: 'Connected Friendsgiving: six adults cooking together. November 18, 2026 at 7 pm, Taste Buds Kitchen, Bellevue. $95 per person.'
   - date: '2026-10-26'
     display_date: "Monday, October 26, 2026"
     time: '7:00–8:30 pm'
