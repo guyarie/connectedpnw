@@ -6,6 +6,36 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
+  - date: '2026-10-26'
+    display_date: "Monday, October 26, 2026"
+    time: '7:00–8:30 pm'
+    name: "Workshop 1: From Meeting People to Making Friends"
+    location: '14655 Bel Red Rd., Building F, Suite 203, Bellevue, WA 98007'
+    body: "How do we move from small talk to meaningful friendship? Explore ways to show up authentically, become more comfortable with vulnerability, and take small interpersonal risks that stretch your comfort zone while respecting your boundaries. Learn to recognize mutual interest and red flags, understand your own preferences and patterns, and extend invitations to stay connected."
+    perks:
+      - strong: 'Doors open at 6:30 pm'
+        text: 'Settle in and mingle before the workshop, which runs from 7:00 to 8:30 pm.'
+      - strong: 'Tickets'
+        text: '$25 per workshop.'
+      - strong: 'Please note'
+        text: 'These are educational and skill-building workshops, not therapy or matchmaking.'
+    link_label: 'Register and buy tickets'
+    link_url: 'https://www.tickettailor.com/events/connectedpnw/2466475'
+  - date: '2026-11-02'
+    display_date: "Monday, November 2, 2026"
+    time: '7:00–8:30 pm'
+    name: "Workshop 2: From Mutual Interest to a First Date"
+    location: '14655 Bel Red Rd., Building F, Suite 203, Bellevue, WA 98007'
+    body: "Expressing romantic interest takes vulnerability—and knowing what you want matters, too. Explore your preferences and patterns, recognize mutual interest and red flags, and practice expressing your intentions authentically. Learn to take thoughtful interpersonal risks, respect your own and others’ boundaries, and suggest a first date while leaving room for an honest response. Exercises use hypothetical scenarios, with no pressure to express interest in other participants."
+    perks:
+      - strong: 'Doors open at 6:30 pm'
+        text: 'Settle in and mingle before the workshop, which runs from 7:00 to 8:30 pm.'
+      - strong: 'Tickets'
+        text: '$25 per workshop.'
+      - strong: 'Please note'
+        text: 'These are educational and skill-building workshops, not therapy or matchmaking.'
+    link_label: 'Register and buy tickets'
+    link_url: 'https://www.tickettailor.com/events/connectedpnw/2466609'
   - date: '2026-07-31'
     display_date: 'Thursday, July 31, 2026'
     time: ''
@@ -27,3 +57,4 @@ events:
     link_label: 'RSVP on Luma'
     link_url: 'https://luma.com/itloxxxw'
 ---
+
