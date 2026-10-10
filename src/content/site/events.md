@@ -6,7 +6,9 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
-  - date: '2026-11-18'
+  - id: 'friendsgiving'
+    summary: 'Cook Thai cuisine together, then share a relaxed Friendsgiving dinner.'
+    date: '2026-11-18'
     display_date: 'Wednesday, November 18, 2026'
     time: '7:00 pm'
     name: 'ConnectEd Friendsgiving: Cook, Connect & Celebrate'
@@ -21,7 +23,9 @@ events:
         text: 'Ticket details will be available here when registration opens.'
     image: '/images/friendsgiving-event.jpg'
     image_alt: 'Connected Friendsgiving: six adults cooking together. November 18, 2026 at 7 pm, Taste Buds Kitchen, Bellevue. $95 per person.'
-  - date: '2026-10-26'
+  - id: 'making-friends'
+    summary: 'Move beyond small talk and practice building meaningful friendships.'
+    date: '2026-10-26'
     display_date: "Monday, October 26, 2026"
     time: '7:00–8:30 pm'
     name: "Workshop 1: From Meeting People to Making Friends"
@@ -38,7 +42,9 @@ events:
     link_url: 'https://www.tickettailor.com/events/connectedpnw/2466475'
     image: '/images/workshop-friendship.jpg'
     image_alt: 'Connected friendship workshop, October 26, 2026. Diverse adults talking in a welcoming workshop lounge.'
-  - date: '2026-11-02'
+  - id: 'first-date'
+    summary: 'Practice expressing interest and taking the next step with clarity and care.'
+    date: '2026-11-02'
     display_date: "Monday, November 2, 2026"
     time: '7:00–8:30 pm'
     name: "Workshop 2: From Mutual Interest to a First Date"

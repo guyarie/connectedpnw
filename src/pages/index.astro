@@ -7,6 +7,12 @@ import { getEntry } from 'astro:content';
 const home = await getEntry('site', 'home');
 const how  = await getEntry('site', 'how');
 
+const events = await getEntry('site', 'events');
+const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
+const upcoming = [...(events.data.events ?? [])]
+  .filter((ev) => ev.date >= today && ev.id && ev.summary)
+  .sort((a, b) => a.date.localeCompare(b.date))
+  .slice(0, 3);
 const h = home.data;
 const phases = how.data.phases ?? [];
 ---
@@ -41,6 +47,33 @@ const phases = how.data.phases ?? [];
       />
     </div>
   </section>
+
+  {upcoming.length > 0 && (
+    <section id="upcoming-events" aria-labelledby="upcoming-events-heading">
+      <div class="container">
+        <div class="page-intro">
+          <h2 id="upcoming-events-heading">{h.events_heading}</h2>
+          {h.events_intro && <p>{h.events_intro}</p>}
+        </div>
+        <div class="home-event-grid">
+          {upcoming.map((ev) => (
+            <article class="card home-event-card">
+              {ev.image && (
+                <img class="home-event-image" src={ev.image} alt={ev.image_alt || ev.name} loading="lazy" />
+              )}
+              <p class="mini event-date"><time datetime={ev.date}>{ev.display_date || ev.date}</time></p>
+              <h3>{ev.name}</h3>
+              {ev.time && <p class="muted home-event-time">{ev.time}</p>}
+              <p class="muted home-event-summary">{ev.summary}</p>
+              <a class="btn btn-secondary" href={`/events#${ev.id}`}>
+                {h.events_link_label}<span class="sr-only">: {ev.name}</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- ── Different starting points ── -->
   {h.audiences && h.audiences.length > 0 && (

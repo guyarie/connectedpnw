@@ -29,7 +29,7 @@ const past = all.filter((ev) => ev.date < today).reverse();
       {upcoming.length > 0 ? (
         <div class="event-list">
           {upcoming.map((ev) => (
-            <article class:list={["card", "event-card", { "has-event-image": ev.image }]}>
+            <article id={ev.id} class:list={["card", "event-card", { "has-event-image": ev.image }]}>
               {ev.image && (
                 <div class="event-image">
                   <img src={ev.image} alt={ev.image_alt || ev.name} loading="lazy" />
@@ -76,7 +76,7 @@ const past = all.filter((ev) => ev.date < today).reverse();
           <h2 class="event-past-heading">Past events</h2>
           <div class="event-list">
             {past.map((ev) => (
-              <article class="card event-card is-past">
+              <article id={ev.id} class="card event-card is-past">
                 <div class="event-content"><p class="mini event-date">
                   <time datetime={ev.date}>{ev.display_date || ev.date}</time>
                 </p>

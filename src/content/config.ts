@@ -49,6 +49,8 @@ const founderBio = z.object({
 });
 
 const event = z.object({
+  id: z.string().optional(), // Stable anchor for links from the homepage
+  summary: z.string().optional(), // Short homepage description
   date: z.string(), // YYYY-MM-DD — used for sorting and upcoming/past split
   display_date: z.string().optional(),
   time: z.string().optional(),
@@ -121,6 +123,9 @@ const site = defineCollection({
     facebook_url: z.string().optional(),
     contact_phone: z.string().optional(),
     // Events
+    events_heading: z.string().optional(),
+    events_intro: z.string().optional(),
+    events_link_label: z.string().optional(),
     events: z.array(event).optional(),
     events_empty_note: z.string().optional(),
     // Shown by a listing page when it has nothing to show
