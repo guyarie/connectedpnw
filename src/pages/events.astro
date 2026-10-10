@@ -29,13 +29,13 @@ const past = all.filter((ev) => ev.date < today).reverse();
       {upcoming.length > 0 ? (
         <div class="event-list">
           {upcoming.map((ev) => (
-            <article class="card event-card">
+            <article class:list={["card", "event-card", { "has-event-image": ev.image }]}>
               {ev.image && (
                 <div class="event-image">
                   <img src={ev.image} alt={ev.image_alt || ev.name} loading="lazy" />
                 </div>
               )}
-              <p class="mini event-date">
+              <div class="event-content"><p class="mini event-date">
                 <time datetime={ev.date}>{ev.display_date || ev.date}</time>
                 {ev.time && <span class="event-meta-sep">·</span>}
                 {ev.time}
@@ -63,6 +63,7 @@ const past = all.filter((ev) => ev.date < today).reverse();
                   {ev.link_label}
                 </a>
               )}
+              </div>
             </article>
           ))}
         </div>
@@ -76,11 +77,11 @@ const past = all.filter((ev) => ev.date < today).reverse();
           <div class="event-list">
             {past.map((ev) => (
               <article class="card event-card is-past">
-                <p class="mini event-date">
+                <div class="event-content"><p class="mini event-date">
                   <time datetime={ev.date}>{ev.display_date || ev.date}</time>
                 </p>
                 <h3>{ev.name}</h3>
-                {ev.location && <p class="event-location">{ev.location}</p>}
+                {ev.location && <p class="event-location">{ev.location}</p>}</div>
               </article>
             ))}
           </div>
@@ -95,3 +96,13 @@ const past = all.filter((ev) => ev.date < today).reverse();
   </section>
 
 </Base>
+
+<style>
+  .has-event-image { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+  .has-event-image .event-image { margin-bottom: 0; }
+  .has-event-image .event-image img { aspect-ratio: auto; height: auto; object-fit: contain; }
+  .event-content { min-width: 0; }
+  @media (min-width: 768px) {
+    .has-event-image { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+  }
+</style>
