@@ -119,6 +119,7 @@ const site = defineCollection({
     contact_form_action: z.string().optional(),
     mailerlite_form_action: z.string().optional(),
     contact_redirect_url: z.string().optional(),
+    tiktok_url: z.string().url().optional(),
     instagram_url: z.string().optional(),
     facebook_url: z.string().optional(),
     contact_phone: z.string().optional(),

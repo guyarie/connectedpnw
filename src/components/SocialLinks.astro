@@ -7,10 +7,10 @@ export interface Props {
 
 const { class: className = '' } = Astro.props;
 const contact = await getEntry('site', 'contact');
-const { instagram_url, facebook_url } = contact.data;
+const { instagram_url, facebook_url, tiktok_url } = contact.data;
 ---
 
-{(instagram_url || facebook_url) && (
+{(instagram_url || facebook_url || tiktok_url) && (
   <div class:list={['social-links', className]} aria-label="Follow us on social media">
     {instagram_url && (
       <a href={instagram_url} target="_blank" rel="noopener noreferrer" aria-label="Follow Connected PNW on Instagram">
@@ -25,6 +25,13 @@ const { instagram_url, facebook_url } = contact.data;
       <a href={facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Follow Connected PNW on Facebook">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
           <path d="M13.5 21v-8.1h2.72l.41-3.16h-3.13V7.7c0-.91.25-1.53 1.56-1.53h1.67V3.35A22.3 22.3 0 0 0 14.3 3.2c-2.32 0-3.91 1.42-3.91 4.02v2.24H7.66v3.16h2.73V21z" />
+        </svg>
+      </a>
+    )}
+    {tiktok_url && (
+      <a href={tiktok_url} target="_blank" rel="noopener noreferrer" aria-label="Follow Connected PNW on TikTok">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M16.7 1h-3.9v15.7a3.3 3.3 0 1 1-2.9-3.3V9.5a7.2 7.2 0 1 0 6.8 7.2V8.8A9.6 9.6 0 0 0 22 10.4V6.5A5.8 5.8 0 0 1 16.7 1Z" />
         </svg>
       </a>
     )}
