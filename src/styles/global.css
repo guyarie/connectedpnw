@@ -1044,3 +1044,16 @@ footer {
   border-radius: var(--radius-lg);
   font-size: var(--text-sm);
 }
+
+/* Homepage event previews */
+.home-event-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+.home-event-card { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.home-event-image { width: 100%; height: 10rem; object-fit: contain; margin-bottom: var(--space-5); border-radius: var(--radius-md); }
+.home-event-card h3 { font-size: var(--text-lg); }
+.home-event-time { font-size: var(--text-sm); }
+.home-event-summary { flex: 1; }
+.home-event-card .btn { margin-top: var(--space-3); }
+.event-card[id] { scroll-margin-top: 7rem; }
+@media (max-width: 980px) {
+  .home-event-grid { grid-template-columns: 1fr; }
+}

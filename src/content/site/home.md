@@ -16,6 +16,11 @@ hero_image_alt: "Participants talking together around a table"
 # Shown in place of the image if hero_image is left blank.
 hero_image_placeholder: "Warm candid image of a diverse cohort interacting"
 
+# ── Upcoming events ──────────────────────────────────────────────────
+events_heading: "Come connect with us"
+events_intro: "Explore practical workshops and shared experiences in Bellevue."
+events_link_label: "Learn more"
+
 # ── Different starting points ─────────────────────────────────────────
 audience_heading: "Different starting points. One guided experience."
 audiences:
