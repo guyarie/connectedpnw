@@ -4,9 +4,9 @@ description: "Connected is an in-person, guided, experiential and non-clinical r
 
 # ── Hero ──────────────────────────────────────────────────────────────
 eyebrow: "Seattle area • In person in Bellevue"
-hero_heading: "Hoping to build a lasting relationship?"
-hero_lead: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program where you can learn and practice new ways of connecting alongside a supportive community in Bellevue, serving the Seattle/Eastside area."
-hero_note: "A 5–6 month experience • Cohort 1 begins January 2027. Connected is not therapy, matchmaking, speed dating, or a traditional dating service."
+hero_heading: "Dating is something you do. Building a relationship is something you can learn."
+hero_lead: "Connected is a guided, in-person experience where singles learn, practice, and strengthen the skills that support lasting relationships—with coaching, community, and real opportunities to connect."
+hero_note: "January 2027 • Bellevue, WA • Free introductory conversation"
 cta_primary_label: "Schedule an Introductory Conversation"
 cta_primary_url: "/contact"
 cta_secondary_label: "See how it works"
@@ -60,3 +60,4 @@ cta_body: "Tell us a little about yourself, then schedule a free introductory co
 cta_label: "Schedule an Introductory Conversation"
 cta_url: "/contact"
 ---
+
