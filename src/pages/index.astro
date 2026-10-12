@@ -158,7 +158,7 @@ const phases = how.data.phases ?? [];
         {h.founder_intro_image && (
           <figure class="founder-intro-photo">
             <a href={h.founder_intro_link_url}><img src={h.founder_intro_image} alt={h.founder_intro_image_alt} loading="lazy" style="display:block;width:100%;height:auto;" /></a>
-            {h.founder_intro_image_caption && <figcaption style="margin-top:var(--space-3);"><a href={h.founder_intro_link_url}>{h.founder_intro_image_caption}</a></figcaption>}
+            {h.founder_intro_image_caption && <figcaption style="margin-top:var(--space-5);text-align:center;"><a class="btn btn-primary" href={h.founder_intro_link_url}>{h.founder_intro_image_caption}<span aria-hidden="true"> →</span></a></figcaption>}
           </figure>
         )}
         {h.founder_intro_video_url && <video controls preload="metadata" class="founder-intro-video" src={h.founder_intro_video_url} poster={h.founder_intro_image} />}
