@@ -77,6 +77,7 @@ const past = all.filter((ev) => ev.date < today).reverse();
           <div class="event-list">
             {past.map((ev) => (
               <article id={ev.id} class="card event-card is-past">
+                {ev.image && <img src={ev.image} alt={ev.image_alt || ev.name} loading="lazy" style="display:block;width:100%;height:auto;margin-bottom:var(--space-5);" />}
                 <div class="event-content"><p class="mini event-date">
                   <time datetime={ev.date}>{ev.display_date || ev.date}</time>
                 </p>
