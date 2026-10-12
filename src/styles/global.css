@@ -1077,3 +1077,8 @@ footer {
 .practice-week-box h3 { margin:0 0 var(--space-4); font-size:var(--text-lg); }
 .practice-week-box p { margin:0; color:var(--color-text-muted); }
 .practice-week-box p + p { margin-top:var(--space-4); }
+
+/* Keep the introductory copy, timeline, and program details close together. */
+.how-page-hero { padding-bottom:var(--space-6); }
+.program-timeline-section { padding-top:var(--space-5); padding-bottom:var(--space-6); }
+.program-details-section { padding-top:var(--space-6); }

@@ -10,7 +10,7 @@ const phases = w.phases ?? [];
 
 <Base title={`${w.title} — Connected PNW`} description={w.description}>
 
-  <div class="page-hero">
+  <div class="page-hero how-page-hero">
     <div class="container">
       <div class="page-intro" style="margin-bottom:0;">
         {w.kicker && <p class="kicker">{w.kicker}</p>}
@@ -21,7 +21,7 @@ const phases = w.phases ?? [];
   </div>
 
   {w.timeline_steps?.length > 0 && (
-    <section aria-labelledby="program-timeline-heading">
+    <section class="program-timeline-section" aria-labelledby="program-timeline-heading">
       <div class="container">
         <h2 id="program-timeline-heading" class="sr-only">{w.timeline_heading}</h2>
         {w.timeline_image && <img src={w.timeline_image} alt="" loading="lazy" class="program-timeline-image" />}
@@ -32,7 +32,7 @@ const phases = w.phases ?? [];
     </section>
   )}
 
-  <section>
+  <section class="program-details-section">
     <div class="container">
       <div class="phase-flow">
         {phases.map((p) => (
