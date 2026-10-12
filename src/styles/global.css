@@ -1082,3 +1082,8 @@ footer {
 .how-page-hero { padding-bottom:var(--space-6); }
 .program-timeline-section { padding-top:var(--space-5); padding-bottom:var(--space-6); }
 .program-details-section { padding-top:var(--space-6); }
+
+/* Bring the cohort invitation closer to the founder photo. */
+#meet-founders { padding-bottom:var(--space-6); }
+#meet-founders .founder-intro-photo { margin-bottom:0; }
+#join { padding-top:var(--space-6); }
