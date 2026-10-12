@@ -65,7 +65,7 @@ founder_intro_link_url: "/about#founders"
 founder_intro_video_url: ""
 founder_intro_image: "/images/miri-nina-video-placeholder.jpg"
 founder_intro_image_alt: "Nina and Miri, the founders of Connected, smiling together with Seattle’s Space Needle behind them."
-founder_intro_image_caption: "Learn more about Nina and Miri, the founders of Connected."
+founder_intro_image_caption: "Learn more about Nina and Miri"
 
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"
