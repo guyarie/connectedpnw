@@ -1068,3 +1068,22 @@ footer {
 
 .practice-comparison { width:100%; table-layout:fixed; border-collapse:collapse; margin-top:var(--space-5); }
 .practice-comparison th, .practice-comparison td { padding:var(--space-3); text-align:left; vertical-align:top; border-bottom:1px solid currentColor; overflow-wrap:break-word; }
+
+/* Compact program overview and founder media. */
+.program-timeline-image { display:block; width:100%; max-width:900px; height:auto; margin-inline:auto; }
+.founder-intro-photo { width:100%; max-width:560px; margin-inline:auto; }
+.founder-intro-video { display:block; width:100%; max-width:560px; margin-inline:auto; }
+.practice-week-box { margin-top:var(--space-5); padding:var(--space-6); background:var(--color-surface-offset); border-radius:var(--radius-lg); border:1px solid color-mix(in srgb, var(--color-text) 12%, transparent); }
+.practice-week-box h3 { margin:0 0 var(--space-4); font-size:var(--text-lg); }
+.practice-week-box p { margin:0; color:var(--color-text-muted); }
+.practice-week-box p + p { margin-top:var(--space-4); }
+
+/* Keep the introductory copy, timeline, and program details close together. */
+.how-page-hero { padding-bottom:var(--space-6); }
+.program-timeline-section { padding-top:var(--space-5); padding-bottom:var(--space-6); }
+.program-details-section { padding-top:var(--space-6); }
+
+/* Bring the cohort invitation closer to the founder photo. */
+#meet-founders { padding-bottom:var(--space-6); }
+#meet-founders .founder-intro-photo { margin-bottom:0; }
+#join { padding-top:var(--space-6); }
