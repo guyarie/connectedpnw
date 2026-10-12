@@ -54,10 +54,22 @@ actions:
   - label: "Questions about Connected"
     url: "/faq"
 
+
+# Founder introduction below the program overview. Add video when available.
+founder_intro_heading: "Meet the women behind Connected"
+founder_intro_paragraphs:
+  - "We're Miri and Nina. After years of helping people understand their relationship patterns, we created Connected to give people something that traditional advice often can't: a supportive place to practice new skills in real-life interactions."
+  - "We'd love to meet you, hear what you're looking for, and answer your questions."
+founder_intro_link_label: "Meet the Founders"
+founder_intro_link_url: "/about#founders"
+founder_intro_video_url: ""
+founder_intro_image: "/images/miri-nina-video-placeholder.jpg"
+founder_intro_image_alt: "Nina and Miri, the founders of Connected, smiling together with Seattle’s Space Needle behind them."
+founder_intro_image_caption: "Learn more about Nina and Miri, the founders of Connected."
+
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"
 cta_body: "Tell us a little about yourself, then schedule a free introductory conversation to learn more about Connected and see whether it might be a good fit. Cohort 1 is a 5–6 month experience for heterosexual adults approximately ages 26–45. In person in Bellevue, serving the Seattle/Eastside area."
 cta_label: "Schedule an Introductory Conversation"
 cta_url: "/contact"
 ---
-

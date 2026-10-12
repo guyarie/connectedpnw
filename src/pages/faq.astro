@@ -4,6 +4,7 @@ import { getEntry } from 'astro:content';
 
 const faq = await getEntry('site', 'faq');
 const f = faq.data;
+const categories = [...new Set((f.faqs ?? []).map(item => item.category ?? ''))];
 ---
 
 <Base title={`${f.title} — Connected PNW`} description={f.description ?? f.section_intro}>
@@ -21,17 +22,27 @@ const f = faq.data;
   <section>
     <div class="container" style="max-width:720px;">
       {f.faqs && (
-        <div class="faq-grid">
-          {f.faqs.map((item) => (
+        <>{categories.map(category => (<div class="faq-section" style="margin-bottom:var(--space-10);">
+          {category && <h2>{category}</h2>}
+          <div class="faq-grid">
+          {f.faqs.filter(item => (item.category ?? '') === category).map((item) => (
             <details class="faq-item">
               <summary>
                 <h3>{item.question}</h3>
                 <span class="faq-chevron" aria-hidden="true">▾</span>
               </summary>
-              <div class="faq-answer">{item.answer}</div>
+              <div class="faq-answer">
+                <p>{item.answer}</p>
+                {item.comparison_headings && item.comparison_rows && (
+                  <table class="practice-comparison">
+                    <thead><tr>{item.comparison_headings.map(heading => <th scope="col">{heading}</th>)}</tr></thead>
+                    <tbody>{item.comparison_rows.map(row => <tr><td>{row.is}</td><td>{row.is_not}</td></tr>)}</tbody>
+                  </table>
+                )}
+              </div>
             </details>
           ))}
-        </div>
+        </div></div>))}</>
       )}
       {f.actions && (
         <div class="actions" style="margin-top:var(--space-10);">

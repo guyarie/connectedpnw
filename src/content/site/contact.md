@@ -3,7 +3,12 @@ title: "Schedule an Introductory Conversation"
 description: "Schedule a free introductory conversation about Connected PNW: a 5–6 month relationship-skills program in Bellevue. Cohort 1 begins January 2027."
 kicker: "January 2027 • Bellevue, Washington • Ages approximately 26–45"
 section_heading: "Let’s get to know each other"
-section_intro: "Tell us a little about yourself, then choose a time for a free introductory conversation. We’ll hear what you’re looking for, introduce Connected, and answer your questions. There’s no commitment to join."
+section_intro: |-
+  Wondering if Connected is right for you?
+
+  Start with a free, relaxed 20-minute Zoom call with one of our founders. We'll learn a little about what you're hoping for, explain how the program works, and answer your questions.
+
+  You don't need to prepare anything, share your dating history in detail, or decide whether to join. This is simply an opportunity to explore whether Connected feels like a good fit.
 contact_note: "Your information will not be shared or used for marketing. We’ll use it to follow up about your introductory conversation and Connected PNW program availability."
 contact_form_action: "https://formspree.io/f/maqkzqvl"
 mailerlite_form_action: "https://assets.mailerlite.com/jsonp/2489001/forms/192032452080830159/subscribe"

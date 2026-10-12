@@ -32,7 +32,7 @@ const action = z.object({
   style: z.enum(['primary', 'secondary']).optional(),
 });
 
-const faqItem = z.object({ question: z.string(), answer: z.string() });
+const faqItem = z.object({ category: z.string().optional(), question: z.string(), answer: z.string(), comparison_headings: z.tuple([z.string(), z.string()]).optional(), comparison_rows: z.array(z.object({ is: z.string(), is_not: z.string() })).optional() });
 const founderSection = z.object({
   heading: z.string().optional(),
   paragraphs: z.array(z.string()),
@@ -94,12 +94,24 @@ const site = defineCollection({
     features_heading: z.string().optional(),
     features_intro: z.string().optional(),
     features: z.array(card).optional(),
+    timeline_heading: z.string().optional(),
+    timeline_image: z.string().optional(),
+    timeline_steps: z.array(card).optional(),
     // Program phases — short form on home, long form on /how-it-works
     phases_heading: z.string().optional(),
     phases_intro: z.string().optional(),
     phases: z.array(phase).optional(),
     // Buttons shown at the foot of a section/page
     actions: z.array(action).optional(),
+    // Homepage founder introduction
+    founder_intro_heading: z.string().optional(),
+    founder_intro_paragraphs: z.array(z.string()).optional(),
+    founder_intro_link_label: z.string().optional(),
+    founder_intro_link_url: z.string().optional(),
+    founder_intro_video_url: z.string().optional(),
+    founder_intro_image: z.string().optional(),
+    founder_intro_image_alt: z.string().optional(),
+    founder_intro_image_caption: z.string().optional(),
     // Closing CTA band
     cta_heading: z.string().optional(),
     cta_body: z.string().optional(),

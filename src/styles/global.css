@@ -1065,3 +1065,6 @@ footer {
   #upcoming-events { padding-top: var(--space-6); }
   #upcoming-events .page-intro { margin-bottom: var(--space-6); }
 }
+
+.practice-comparison { width:100%; table-layout:fixed; border-collapse:collapse; margin-top:var(--space-5); }
+.practice-comparison th, .practice-comparison td { padding:var(--space-3); text-align:left; vertical-align:top; border-bottom:1px solid currentColor; overflow-wrap:break-word; }

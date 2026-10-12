@@ -4,6 +4,18 @@ description: "How Connected works: three workshops and Social Nights, three mont
 kicker: "How It Works"
 section_heading: "The Connected Experience"
 section_intro: "A 5–6 month, in-person experience in Bellevue: learn together, practice with support, and stay connected. Cohort 1 begins January 2027."
+timeline_heading: "Illustrative program timeline"
+timeline_image: "/images/connected-program-timeline.jpg"
+timeline_steps:
+  - heading: "Beginning: Workshops and Social Nights"
+    body: "Three four-hour workshops, each followed by a social activity."
+  - heading: "Next: Meet potential practice partners"
+    body: "Guided introductions and opportunities to express preferences."
+  - heading: "Following three months: Practice and coaching"
+    body: "Repeated real-world practice with weekly coaching."
+  - heading: "After graduation: Optional Social Club"
+    body: "Opportunities to participate in future community events."
+
 # Buttons shown at the foot of the page.
 actions:
   - label: "Schedule an Introductory Conversation"
@@ -49,6 +61,12 @@ phases:
       - "Flexible practice outside coaching"
       - "Feedback introduced with care and guidance"
 
+    list_footnote: |-
+      What might a week at Connected look like?
+
+      You and your practice partner might arrange a casual activity, such as coffee or a walk. During the experience, you practice something you've been learning—perhaps expressing a preference, communicating a boundary, or navigating an awkward moment.
+
+      During your coaching session, you'll reflect on what happened, explore what felt challenging, and identify something to try next time.
   - num: "03"
     heading: "Keep the connection going"
     body: "After the program, graduates can join optional Social Club events and stay part of the community."

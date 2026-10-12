@@ -147,6 +147,25 @@ const phases = how.data.phases ?? [];
     </section>
   )}
 
+  {h.founder_intro_heading && (
+    <section id="meet-founders" aria-labelledby="founder-intro-heading">
+      <div class="container">
+        <div class="page-intro is-wide">
+          <h2 id="founder-intro-heading">{h.founder_intro_heading}</h2>
+          {h.founder_intro_paragraphs?.map(paragraph => <p>{paragraph}</p>)}
+          {h.founder_intro_link_label && <a class="btn btn-secondary" href={h.founder_intro_link_url}>{h.founder_intro_link_label}</a>}
+        </div>
+        {h.founder_intro_image && (
+          <figure style="max-width:960px;margin-inline:auto;">
+            <a href={h.founder_intro_link_url}><img src={h.founder_intro_image} alt={h.founder_intro_image_alt} loading="lazy" style="display:block;width:100%;height:auto;" /></a>
+            {h.founder_intro_image_caption && <figcaption style="margin-top:var(--space-3);"><a href={h.founder_intro_link_url}>{h.founder_intro_image_caption}</a></figcaption>}
+          </figure>
+        )}
+        {h.founder_intro_video_url && <video controls preload="metadata" style="display:block;width:100%;max-width:720px;margin-inline:auto;" src={h.founder_intro_video_url} poster={h.founder_intro_image} />}
+      </div>
+    </section>
+  )}
+
   <!-- ── Closing CTA ── -->
   {h.cta_heading && (
     <section id="join">

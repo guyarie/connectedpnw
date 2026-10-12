@@ -77,9 +77,8 @@ events:
       - strong: 'Win big'
         text: 'Meet us there for a chance at a free spot in the Connected program'
     # Optional photo — put the file in public/images/ and reference it as /images/your-file.jpg
-    image: ''
-    image_alt: ''
+    image: '/images/miri-nina-fika-collage.jpg'
+    image_alt: 'Miri and Nina, co-founders of Connected, at Fika’s Seattle launch party, alongside the Connected event table. Caption: celebrating new beginnings and opportunities to connect.'
     link_label: 'RSVP on Luma'
     link_url: 'https://luma.com/itloxxxw'
 ---
-

@@ -20,6 +20,18 @@ const phases = w.phases ?? [];
     </div>
   </div>
 
+  {w.timeline_steps?.length > 0 && (
+    <section aria-labelledby="program-timeline-heading">
+      <div class="container">
+        <h2 id="program-timeline-heading" class="sr-only">{w.timeline_heading}</h2>
+        {w.timeline_image && <img src={w.timeline_image} alt="" loading="lazy" style="display:block;width:100%;height:auto;" />}
+        <ol class="sr-only">
+          {w.timeline_steps.map(step => <li><h3>{step.heading}</h3><p>{step.body}</p></li>)}
+        </ol>
+      </div>
+    </section>
+  )}
+
   <section>
     <div class="container">
       <div class="phase-flow">
@@ -39,7 +51,7 @@ const phases = w.phases ?? [];
                 </>
               )}
 
-              {p.list_footnote && <p style="margin-top:var(--space-5);">{p.list_footnote}</p>}
+              {p.list_footnote && p.list_footnote.trim().split(/\n\s*\n/).map((paragraph, index, paragraphs) => (paragraphs.length > 1 && index === 0 ? <h3 style="margin-top:var(--space-5);">{paragraph}</h3> : <p style={index === 0 ? "margin-top:var(--space-5);" : undefined}>{paragraph}</p>))}
             </div>
             <div class="phase-media">
               <ImageSlot src={p.image} alt={p.image_alt} placeholder={p.image_placeholder} />
