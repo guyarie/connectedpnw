@@ -24,7 +24,7 @@ const phases = w.phases ?? [];
     <section aria-labelledby="program-timeline-heading">
       <div class="container">
         <h2 id="program-timeline-heading" class="sr-only">{w.timeline_heading}</h2>
-        {w.timeline_image && <img src={w.timeline_image} alt="" loading="lazy" style="display:block;width:100%;height:auto;" />}
+        {w.timeline_image && <img src={w.timeline_image} alt="" loading="lazy" class="program-timeline-image" />}
         <ol class="sr-only">
           {w.timeline_steps.map(step => <li><h3>{step.heading}</h3><p>{step.body}</p></li>)}
         </ol>
@@ -51,10 +51,15 @@ const phases = w.phases ?? [];
                 </>
               )}
 
-              {p.list_footnote && p.list_footnote.trim().split(/\n\s*\n/).map((paragraph, index, paragraphs) => (paragraphs.length > 1 && index === 0 ? <h3 style="margin-top:var(--space-5);">{paragraph}</h3> : <p style={index === 0 ? "margin-top:var(--space-5);" : undefined}>{paragraph}</p>))}
+              {p.num !== "02" && p.list_footnote && p.list_footnote.trim().split(/\n\s*\n/).map((paragraph, index, paragraphs) => (paragraphs.length > 1 && index === 0 ? <h3 style="margin-top:var(--space-5);">{paragraph}</h3> : <p style={index === 0 ? "margin-top:var(--space-5);" : undefined}>{paragraph}</p>))}
             </div>
             <div class="phase-media">
               <ImageSlot src={p.image} alt={p.image_alt} placeholder={p.image_placeholder} />
+              {p.num === "02" && p.list_footnote && (
+                <aside class="practice-week-box">
+                  {p.list_footnote.trim().split(/\n\s*\n/).map((paragraph, index) => index === 0 ? <h3>{paragraph}</h3> : <p>{paragraph}</p>)}
+                </aside>
+              )}
             </div>
           </article>
         ))}
