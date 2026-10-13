@@ -155,12 +155,19 @@ const phases = how.data.phases ?? [];
           {h.founder_intro_paragraphs?.map(paragraph => <p>{paragraph}</p>)}
           {h.founder_intro_link_label && <a class="btn btn-secondary" href={h.founder_intro_link_url}>{h.founder_intro_link_label}</a>}
         </div>
+        <div class={`founder-intro-media${h.founder_intro_image && h.founder_intro_video_url ? ' has-video' : ''}`}>
         {h.founder_intro_image && (
           <figure class="founder-intro-photo">
             <a href={h.founder_intro_link_url}><img src={h.founder_intro_image} alt={h.founder_intro_image_alt} loading="lazy" style="display:block;width:100%;height:auto;" /></a>
           </figure>
         )}
-        {h.founder_intro_video_url && <video controls preload="metadata" class="founder-intro-video" src={h.founder_intro_video_url} poster={h.founder_intro_image} />}
+        {h.founder_intro_video_url && (
+          <figure class="founder-intro-film">
+            <video controls playsinline preload="none" class="founder-intro-video" src={h.founder_intro_video_url} poster={h.founder_intro_video_poster} aria-label={h.founder_intro_video_caption} />
+            {h.founder_intro_video_caption && <figcaption>{h.founder_intro_video_caption}</figcaption>}
+          </figure>
+        )}
+        </div>
       </div>
     </section>
   )}

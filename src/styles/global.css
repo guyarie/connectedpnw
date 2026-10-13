@@ -1072,7 +1072,15 @@ footer {
 /* Compact program overview and founder media. */
 .program-timeline-image { display:block; width:100%; max-width:900px; height:auto; margin-inline:auto; }
 .founder-intro-photo { width:100%; max-width:560px; margin-inline:auto; }
-.founder-intro-video { display:block; width:100%; max-width:560px; margin-inline:auto; }
+.founder-intro-media { max-width:960px; margin-inline:auto; }
+.founder-intro-media.has-video { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:var(--space-6); align-items:center; }
+.founder-intro-film { margin:0; min-width:0; }
+.founder-intro-video { display:block; width:100%; max-width:560px; margin-inline:auto; aspect-ratio:4 / 5; border-radius:var(--radius-lg); background:var(--color-surface-offset); }
+.founder-intro-film figcaption { margin-top:var(--space-3); text-align:center; color:var(--color-text-muted); }
+@media (max-width:640px) {
+  .founder-intro-media.has-video { grid-template-columns:1fr; }
+  .founder-intro-film { width:100%; max-width:420px; margin-inline:auto; }
+}
 .practice-week-box { margin-top:var(--space-5); padding:var(--space-6); background:var(--color-surface-offset); border-radius:var(--radius-lg); border:1px solid color-mix(in srgb, var(--color-text) 12%, transparent); }
 .practice-week-box h3 { margin:0 0 var(--space-4); font-size:var(--text-lg); }
 .practice-week-box p { margin:0; color:var(--color-text-muted); }
