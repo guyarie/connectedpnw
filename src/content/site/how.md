@@ -5,7 +5,7 @@ kicker: "How It Works"
 section_heading: "The Connected Experience"
 section_intro: "A 5–6 month, in-person experience in Bellevue: learn together, practice with support, and stay connected. Cohort 1 begins January 2027."
 timeline_heading: "Illustrative program timeline"
-timeline_image: "/images/connected-program-timeline.jpg"
+timeline_image: "/images/connected-program-timeline-no-heading-v2.jpg"
 timeline_steps:
   - heading: "Beginning: Workshops and Social Nights"
     body: "Three four-hour workshops, each followed by a social activity."
