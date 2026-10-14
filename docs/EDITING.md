@@ -354,7 +354,7 @@ In `src/content/site/contact.md`, `section_heading` sets the page heading and `t
 
 ## Homepage founders, program timeline, and FAQ groups
 
-In home.md, founder_intro_heading and founder_intro_paragraphs control the section below the program overview. founder_intro_link_label and founder_intro_link_url control the founders link. founder_intro_image, founder_intro_image_alt, and founder_intro_image_caption control the linked photo and caption. Leave founder_intro_video_url blank until a video is available; when populated it uses the photo as its poster.
+In home.md, founder_intro_heading and founder_intro_paragraphs control the section below the program overview. founder_intro_link_label and founder_intro_link_url control the founders link. founder_intro_image, founder_intro_image_alt, and founder_intro_image_caption control the linked photo and caption. founder_intro_video_url points to the video in public/videos, founder_intro_video_poster sets its preview image, and founder_intro_video_caption sets its caption and accessible label. The photo and video appear side by side on larger screens and stack on phones. Leave founder_intro_video_url blank to show only the photo. Videos use playback controls and do not autoplay.
 
 In how.md, timeline_heading and timeline_image control the illustrated timeline. Keep timeline_steps (heading and body) synchronized with the JPEG; they provide an accessible text equivalent. list_footnote supports blank-line-separated paragraphs, with its first paragraph displayed as a subheading when multiple paragraphs are supplied.
 

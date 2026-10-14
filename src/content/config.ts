@@ -109,6 +109,8 @@ const site = defineCollection({
     founder_intro_link_label: z.string().optional(),
     founder_intro_link_url: z.string().optional(),
     founder_intro_video_url: z.string().optional(),
+    founder_intro_video_poster: z.string().optional(),
+    founder_intro_video_caption: z.string().optional(),
     founder_intro_image: z.string().optional(),
     founder_intro_image_alt: z.string().optional(),
     founder_intro_image_caption: z.string().optional(),
