@@ -18,7 +18,7 @@ events:
       - strong: 'Free to attend'
         text: 'Food and beverages available for purchase.'
       - strong: 'Please RSVP'
-        text: 'Just your name. Email is optional.'
+        text: 'Just your name and email.'
     link_label: 'RSVP'
     link_url: '/rsvp'
     image: '/images/meet-the-founders-sams-tavern.jpg'

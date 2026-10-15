@@ -20,5 +20,5 @@ contact_sending_label: "Sending…"
 contact_error_message: "Something went wrong — please try again."
 rsvp_success_heading: "You’re on the list!"
 rsvp_success_body: "Thanks for RSVPing. We can’t wait to meet you at Sam’s Tavern."
-contact_note: "Email is optional. If you share it, we’ll only use it to send reminders or updates about this event."
+contact_note: "We’ll only use your email to send reminders or updates about this event."
 ---
