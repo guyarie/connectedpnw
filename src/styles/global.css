@@ -450,6 +450,7 @@ h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
 section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
 
 /* Alternating section tint for rhythm down the home page. */
+#upcoming-events,
 #difference { background: var(--color-surface-offset); }
 
 /* ── Hero ── */
@@ -1105,7 +1106,7 @@ footer {
 @media (min-width: 981px) {
   #top.hero { padding-top: var(--space-8); padding-bottom: var(--space-4); }
   #top.hero .actions .btn-primary { display: none; }
-  #upcoming-events { padding-top: var(--space-6); }
+  #upcoming-events { padding-top: var(--space-10); }
   #upcoming-events .page-intro { margin-bottom: var(--space-6); }
 }
 
