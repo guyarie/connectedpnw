@@ -450,6 +450,7 @@ h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
 section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
 
 /* Alternating section tint for rhythm down the home page. */
+#upcoming-events,
 #difference { background: var(--color-surface-offset); }
 
 /* ── Hero ── */
@@ -1055,14 +1056,19 @@ footer {
 .home-event-card .btn { margin-top: var(--space-3); }
 .event-card[id] { scroll-margin-top: 7rem; }
 @media (max-width: 980px) {
-  .home-event-grid { grid-template-columns: 1fr; }
+  .home-event-track { grid-auto-columns: calc((100% - var(--space-6)) / 2); }
+}
+@media (max-width: 640px) {
+  /* Show most of one card with the next one peeking in, to signal swiping. */
+  .home-event-track { grid-auto-columns: 82%; gap: var(--space-4); }
+  .carousel-btn { display: none; }
 }
 
 /* Bring upcoming events into view on desktop; preserve the mobile layout. */
 @media (min-width: 981px) {
   #top.hero { padding-top: var(--space-8); padding-bottom: var(--space-4); }
   #top.hero .actions .btn-primary { display: none; }
-  #upcoming-events { padding-top: var(--space-6); }
+  #upcoming-events { padding-top: var(--space-10); }
   #upcoming-events .page-intro { margin-bottom: var(--space-6); }
 }
 
