@@ -12,7 +12,7 @@ const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_An
 const upcoming = [...(events.data.events ?? [])]
   .filter((ev) => ev.date >= today && ev.id && ev.summary)
   .sort((a, b) => a.date.localeCompare(b.date))
-  .slice(0, 8);
+  .slice(0, 4);
 const h = home.data;
 const phases = how.data.phases ?? [];
 ---
