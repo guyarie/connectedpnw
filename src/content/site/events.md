@@ -6,6 +6,23 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
+  - id: 'meet-the-founders'
+    summary: 'Drinks, Connection Bingo, and a chance to meet the founders. Free to attend.'
+    date: '2026-10-21'
+    display_date: 'Wednesday, October 21, 2026'
+    time: '7:00–8:30 pm'
+    name: 'Meet the Founders at Sam’s Tavern'
+    location: 'Sam’s Tavern – Capitol Hill · 1024 E. Pike Street, Seattle, WA 98122'
+    body: 'Come meet the two women behind Connected and learn more about our guided dating and relational skills experience. Play Connection Bingo, a fun, low-pressure way to meet new people, find shared interests, and win a prize. Come solo or with friends. Everyone’s welcome.'
+    perks:
+      - strong: 'Free to attend'
+        text: 'Food and beverages available for purchase.'
+      - strong: 'Please RSVP'
+        text: 'Just your name. Email is optional.'
+    link_label: 'RSVP'
+    link_url: '/rsvp'
+    image: '/images/meet-the-founders-sams-tavern.jpg'
+    image_alt: 'Meet the Founders at Sam’s Tavern. Connected and The Original Sam’s Tavern logos. Good drinks. New faces. Real connections.'
   - id: 'friendsgiving'
     summary: 'Cook Thai cuisine together, then share a relaxed Friendsgiving dinner.'
     date: '2026-11-18'
