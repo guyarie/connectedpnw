@@ -352,6 +352,10 @@ In `src/content/site/contact.md`, `section_heading` sets the page heading and `t
 
 `contact_phone` is the phone number shown site-wide in the footer (as a tap-to-call link). Leave it blank to hide it.
 
+### Event RSVP page (`/rsvp`)
+
+`src/content/site/rsvp.md` controls the RSVP page for the current free event (first name, last name and email, all required). `kicker`, `section_heading`, `title` and `section_intro` set the top of the page; `rsvp_details` is the bullet list above the form (same `strong:` / `text:` format as event perks). Submissions go to the same Formspree inbox as the introductory-conversation form, with the subject set by `contact_subject` and the event name (`title`) included in each submission. `rsvp_success_heading` / `rsvp_success_body` replace the form after a successful RSVP. To reuse the page for a new event, update these fields and point that event's `link_url` in `events.md` at `/rsvp`.
+
 ## Homepage founders, program timeline, and FAQ groups
 
 In home.md, founder_intro_heading and founder_intro_paragraphs control the section below the program overview. founder_intro_link_label and founder_intro_link_url control the founders link. founder_intro_image, founder_intro_image_alt, and founder_intro_image_caption control the linked photo and caption. founder_intro_video_url points to the video in public/videos, founder_intro_video_poster sets its preview image, and founder_intro_video_caption sets its caption and accessible label. The photo and video appear side by side on larger screens and stack on phones. Leave founder_intro_video_url blank to show only the photo. Videos use playback controls and do not autoplay.

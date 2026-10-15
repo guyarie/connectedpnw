@@ -143,6 +143,10 @@ const site = defineCollection({
     events_link_label: z.string().optional(),
     events: z.array(event).optional(),
     events_empty_note: z.string().optional(),
+    // Event RSVP page (/rsvp)
+    rsvp_details: z.array(bulletItem).optional(),
+    rsvp_success_heading: z.string().optional(),
+    rsvp_success_body: z.string().optional(),
     // Shown by a listing page when it has nothing to show
     empty_note: z.string().optional(),
     // Home page banner

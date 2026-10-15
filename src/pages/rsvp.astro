@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const rsvp = await getEntry('site', 'rsvp');
+const r = rsvp.data;
+---
+
+<Base title={`${r.title} — Connected PNW`} description={r.description}>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-intro" style="margin-bottom:0;">
+        {r.kicker && <p class="kicker">{r.kicker}</p>}
+        {r.section_heading && <h1>{r.section_heading}</h1>}
+        <h2>{r.title}</h2>
+        {r.section_intro && <p class="lead" style="margin-bottom:0;">{r.section_intro}</p>}
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container" style="max-width:640px;">
+      {r.rsvp_details && (
+        <ul class="event-perks" style="margin-bottom:var(--space-8);">
+          {r.rsvp_details.map((item) => (
+            <li>
+              <span class="dot" aria-hidden="true"></span>
+              <span><strong>{item.strong}</strong> — {item.text}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div class="panel">
+        <form
+          id="rsvp-form"
+          method="POST"
+          action={r.contact_form_action ?? '#'}
+          data-sending={r.contact_sending_label}
+          data-error={r.contact_error_message}
+        >
+          <input type="hidden" name="_subject" value={r.contact_subject} />
+          <input type="hidden" name="event" value={r.title} />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div style="display:grid;gap:var(--space-5);">
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="first_name">First name</label>
+                <input type="text" id="first_name" name="first_name" autocomplete="given-name" required />
+              </div>
+              <div class="form-field">
+                <label for="last_name">Last name</label>
+                <input type="text" id="last_name" name="last_name" autocomplete="family-name" required />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              {r.contact_button_label}
+            </button>
+
+          </div>
+        </form>
+
+        <div id="rsvp-success" role="status" hidden>
+          {r.rsvp_success_heading && <h3>{r.rsvp_success_heading}</h3>}
+          {r.rsvp_success_body && <p style="margin-bottom:0;">{r.rsvp_success_body}</p>}
+        </div>
+      </div>
+
+      {r.contact_note && (
+        <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-5);text-align:center;">
+          {r.contact_note}
+        </p>
+      )}
+    </div>
+  </section>
+
+</Base>
+
+<script>
+  const form = document.getElementById('rsvp-form') as HTMLFormElement;
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (btn.disabled) return;
+    const buttonLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = form.dataset.sending ?? buttonLabel;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.hidden = true;
+      document.getElementById('rsvp-success')?.removeAttribute('hidden');
+    } catch {
+      btn.disabled = false;
+      btn.textContent = buttonLabel;
+      alert(form.dataset.error);
+    }
+  });
+</script>
