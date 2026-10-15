@@ -141,6 +141,8 @@ const site = defineCollection({
     events_heading: z.string().optional(),
     events_intro: z.string().optional(),
     events_link_label: z.string().optional(),
+    events_prev_label: z.string().optional(), // Screen-reader label for the home carousel's back arrow
+    events_next_label: z.string().optional(),
     events: z.array(event).optional(),
     events_empty_note: z.string().optional(),
     // Event RSVP page (/rsvp)

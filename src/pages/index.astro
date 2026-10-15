@@ -12,7 +12,7 @@ const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_An
 const upcoming = [...(events.data.events ?? [])]
   .filter((ev) => ev.date >= today && ev.id && ev.summary)
   .sort((a, b) => a.date.localeCompare(b.date))
-  .slice(0, 4);
+  .slice(0, 8);
 const h = home.data;
 const phases = how.data.phases ?? [];
 ---
@@ -55,7 +55,11 @@ const phases = how.data.phases ?? [];
           <h2 id="upcoming-events-heading">{h.events_heading}</h2>
           {h.events_intro && <p>{h.events_intro}</p>}
         </div>
-        <div class="home-event-grid">
+        <div class="home-event-carousel" data-carousel>
+          <button type="button" class="carousel-btn carousel-prev" data-carousel-prev aria-label={h.events_prev_label} hidden>
+            <span aria-hidden="true">‹</span>
+          </button>
+          <div class="home-event-track" data-carousel-track tabindex="0" role="region" aria-label={h.events_heading}>
           {upcoming.map((ev) => (
             <article class="card home-event-card">
               {ev.image && (
@@ -70,6 +74,10 @@ const phases = how.data.phases ?? [];
               </a>
             </article>
           ))}
+          </div>
+          <button type="button" class="carousel-btn carousel-next" data-carousel-next aria-label={h.events_next_label} hidden>
+            <span aria-hidden="true">›</span>
+          </button>
         </div>
       </div>
     </section>
@@ -190,3 +198,30 @@ const phases = how.data.phases ?? [];
   )}
 
 </Base>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+    const prev = carousel.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    if (!track || !prev || !next) return;
+
+    const step = () => {
+      const card = track.firstElementChild as HTMLElement | null;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card ? card.offsetWidth + gap : track.clientWidth;
+    };
+    const update = () => {
+      const overflows = track.scrollWidth > track.clientWidth + 1;
+      prev.hidden = next.hidden = !overflows;
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+    };
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -step() }));
+    next.addEventListener('click', () => track.scrollBy({ left: step() }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
