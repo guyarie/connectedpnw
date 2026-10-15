@@ -18,7 +18,7 @@ hero_image_placeholder: "Warm candid image of a diverse cohort interacting"
 
 # ── Upcoming events ──────────────────────────────────────────────────
 events_heading: "Come connect with us"
-events_intro: "Explore practical workshops and shared experiences in Bellevue."
+events_intro: "Meet the founders, explore practical workshops, and connect at events in Seattle and Bellevue."
 events_link_label: "Learn more"
 
 # ── Different starting points ─────────────────────────────────────────
