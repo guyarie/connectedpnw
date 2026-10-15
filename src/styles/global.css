@@ -1046,7 +1046,7 @@ footer {
 }
 
 /* Homepage event previews */
-.home-event-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+.home-event-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
 .home-event-card { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
 .home-event-image { width: 100%; height: 10rem; object-fit: contain; margin-bottom: var(--space-5); border-radius: var(--radius-md); }
 .home-event-card h3 { font-size: var(--text-lg); }
