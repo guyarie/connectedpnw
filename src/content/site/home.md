@@ -18,7 +18,7 @@ hero_image_placeholder: "Warm candid image of a diverse cohort interacting"
 
 # ── Upcoming events ──────────────────────────────────────────────────
 events_heading: "Come connect with us"
-events_intro: "Meet the founders, explore practical workshops, and connect at events in Seattle and Bellevue."
+events_intro: "Join our clinician conversation on Zoom, build relationship skills at our Bellevue workshops, or connect over a Friendsgiving cooking experience."
 events_link_label: "Learn more"
 events_prev_label: "Previous events"
 events_next_label: "More events"

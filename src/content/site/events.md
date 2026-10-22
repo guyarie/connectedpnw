@@ -6,6 +6,18 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
+  - id: 'clinician-founders'
+    summary: 'Meet the founders and explore the move from personal insight to real-world dating and friendship skills.'
+    date: '2026-11-06'
+    display_date: 'Friday, November 6, 2026'
+    time: '10:00–11:00 am Pacific'
+    name: 'Meet the Founders for Clinicians'
+    location: 'Online via Zoom · Joining link provided after registration'
+    body: 'Join Miri Arie, PhD, CGP, and Nina Helms, MA, LMHC, to explore how direct skills development and structured peer practice can support clients who understand their relationship patterns but struggle with dating and building friendships. Learn how Connected pairs participants with practice partners and builds real-life community practice into the program, supporting generalization beyond the office. Bring your questions and consider how Connected may complement your clinical work.'
+    link_label: 'Learn more and register'
+    link_url: '/clinicians'
+    image: '/images/meet-the-founders-clinicians-november-6.jpg'
+    image_alt: 'Connected PNW Meet the Founders for Clinicians, November 6, 2026, 10–11 am Pacific, via Zoom.'
   - id: 'meet-founders-sams'
     summary: 'Meet Miri and Nina, learn about Connected, and join a relaxed evening of Connection Bingo.'
     date: '2026-10-21'
@@ -42,8 +54,8 @@ events:
     image_alt: 'Connected and Taste Buds Kitchen Friendsgiving cooking experience, November 18, 2026 at 7 pm in Bellevue. $95 per person.'
   - id: 'making-friends'
     summary: 'Move beyond small talk and practice building meaningful friendships.'
-    date: '2026-10-26'
-    display_date: "Monday, October 26, 2026"
+    date: '2026-11-16'
+    display_date: "Monday, November 16, 2026"
     time: '7:00–8:30 pm'
     name: "Workshop 1: From Meeting People to Making Friends"
     location: '14655 Bel Red Rd., Building F, Suite 203, Bellevue, WA 98007'
@@ -56,13 +68,13 @@ events:
       - strong: 'Please note'
         text: 'These are educational and skill-building workshops, not therapy or matchmaking.'
     link_label: 'Get tickets'
-    link_url: 'https://www.tickettailor.com/events/connectedpnw/2466475'
-    image: '/images/workshop-friendship.jpg'
-    image_alt: 'Connected friendship workshop, October 26, 2026. Diverse adults talking in a welcoming workshop lounge.'
+    link_url: 'https://www.tickettailor.com/events/connectedpnw/2484148'
+    image: '/images/workshop-friendship-november-16.jpg'
+    image_alt: 'Connected friendship workshop, November 16, 2026. Diverse adults talking in a welcoming workshop lounge.'
   - id: 'first-date'
     summary: 'Practice expressing interest and taking the next step with clarity and care.'
-    date: '2026-11-02'
-    display_date: "Monday, November 2, 2026"
+    date: '2026-12-07'
+    display_date: "Monday, December 7, 2026"
     time: '7:00–8:30 pm'
     name: "Workshop 2: From Mutual Interest to a First Date"
     location: '14655 Bel Red Rd., Building F, Suite 203, Bellevue, WA 98007'
@@ -75,9 +87,9 @@ events:
       - strong: 'Please note'
         text: 'These are educational and skill-building workshops, not therapy or matchmaking.'
     link_label: 'Get tickets'
-    link_url: 'https://www.tickettailor.com/events/connectedpnw/2466609'
-    image: '/images/workshop-first-date.jpg'
-    image_alt: 'Connected first-date workshop, November 2, 2026. Diverse adults practicing a guided hypothetical scenario.'
+    link_url: 'https://www.tickettailor.com/events/connectedpnw/2484151'
+    image: '/images/workshop-first-date-december-7.jpg'
+    image_alt: 'Connected first-date workshop, December 7, 2026. Diverse adults practicing a guided hypothetical scenario.'
   - date: '2026-07-31'
     display_date: 'Thursday, July 31, 2026'
     time: ''
