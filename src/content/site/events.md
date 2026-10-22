@@ -42,8 +42,8 @@ events:
     image_alt: 'Connected and Taste Buds Kitchen Friendsgiving cooking experience, November 18, 2026 at 7 pm in Bellevue. $95 per person.'
   - id: 'making-friends'
     summary: 'Move beyond small talk and practice building meaningful friendships.'
-    date: '2026-10-26'
-    display_date: "Monday, October 26, 2026"
+    date: '2026-11-16'
+    display_date: "Monday, November 16, 2026"
     time: '7:00–8:30 pm'
     name: "Workshop 1: From Meeting People to Making Friends"
     location: '14655 Bel Red Rd., Building F, Suite 203, Bellevue, WA 98007'
@@ -56,13 +56,13 @@ events:
       - strong: 'Please note'
         text: 'These are educational and skill-building workshops, not therapy or matchmaking.'
     link_label: 'Get tickets'
-    link_url: 'https://www.tickettailor.com/events/connectedpnw/2466475'
-    image: '/images/workshop-friendship.jpg'
-    image_alt: 'Connected friendship workshop, October 26, 2026. Diverse adults talking in a welcoming workshop lounge.'
+    link_url: 'https://www.tickettailor.com/events/connectedpnw/2484148'
+    image: '/images/workshop-friendship-november-16.jpg'
+    image_alt: 'Connected friendship workshop, November 16, 2026. Diverse adults talking in a welcoming workshop lounge.'
   - id: 'first-date'
     summary: 'Practice expressing interest and taking the next step with clarity and care.'
-    date: '2026-11-02'
-    display_date: "Monday, November 2, 2026"
+    date: '2026-12-07'
+    display_date: "Monday, December 7, 2026"
     time: '7:00–8:30 pm'
     name: "Workshop 2: From Mutual Interest to a First Date"
     location: '14655 Bel Red Rd., Building F, Suite 203, Bellevue, WA 98007'
@@ -75,9 +75,9 @@ events:
       - strong: 'Please note'
         text: 'These are educational and skill-building workshops, not therapy or matchmaking.'
     link_label: 'Get tickets'
-    link_url: 'https://www.tickettailor.com/events/connectedpnw/2466609'
-    image: '/images/workshop-first-date.jpg'
-    image_alt: 'Connected first-date workshop, November 2, 2026. Diverse adults practicing a guided hypothetical scenario.'
+    link_url: 'https://www.tickettailor.com/events/connectedpnw/2484151'
+    image: '/images/workshop-first-date-december-7.jpg'
+    image_alt: 'Connected first-date workshop, December 7, 2026. Diverse adults practicing a guided hypothetical scenario.'
   - date: '2026-07-31'
     display_date: 'Thursday, July 31, 2026'
     time: ''

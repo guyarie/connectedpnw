@@ -6,7 +6,7 @@ import { getEntry } from 'astro:content';
 const events = await getEntry('site', 'events');
 const e = events.data;
 
-const today = new Date().toISOString().slice(0, 10);
+const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
 const all = [...(e.events ?? [])].sort((a, b) => a.date.localeCompare(b.date));
 const upcoming = all.filter((ev) => ev.date >= today);
 const past = all.filter((ev) => ev.date < today).reverse();
