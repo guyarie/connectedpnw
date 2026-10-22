@@ -6,6 +6,18 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
+  - id: 'clinician-founders'
+    summary: 'Meet the founders and explore the move from personal insight to real-world dating and friendship skills.'
+    date: '2026-11-06'
+    display_date: 'Friday, November 6, 2026'
+    time: '10:00–11:00 am Pacific'
+    name: 'Meet the Founders for Clinicians'
+    location: 'Online via Zoom · Joining link provided after registration'
+    body: 'Join Miri Arie, PhD, CGP, and Nina Helms, MA, LMHC, to explore how direct skills development and structured peer practice can support clients who understand their relationship patterns but struggle with dating and building friendships. Learn how Connected pairs participants with practice partners and builds real-life community practice into the program, supporting generalization beyond the office. Bring your questions and consider how Connected may complement your clinical work.'
+    link_label: 'Learn more and register'
+    link_url: '/clinicians'
+    image: '/images/meet-the-founders-clinicians-november-6.jpg'
+    image_alt: 'Connected PNW Meet the Founders for Clinicians, November 6, 2026, 10–11 am Pacific, via Zoom.'
   - id: 'meet-founders-sams'
     summary: 'Meet Miri and Nina, learn about Connected, and join a relaxed evening of Connection Bingo.'
     date: '2026-10-21'

@@ -149,6 +149,11 @@ const site = defineCollection({
     rsvp_details: z.array(bulletItem).optional(),
     rsvp_success_heading: z.string().optional(),
     rsvp_success_body: z.string().optional(),
+    rsvp_first_name_label: z.string().optional(),
+    rsvp_last_name_label: z.string().optional(),
+    rsvp_email_label: z.string().optional(),
+    rsvp_success_link_label: z.string().optional(),
+    rsvp_success_link_url: z.string().url().optional(),
     // Shown by a listing page when it has nothing to show
     empty_note: z.string().optional(),
     // Home page banner
