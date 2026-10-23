@@ -19,7 +19,7 @@ events:
         text: 'Come solo or bring a single friend.'
     link_label: 'Learn more and register'
     link_url: '/meet-founders-november-4'
-    image: '/images/meet-founders-november-4.jpg'
+    image: '/images/meet-founders-november-4-portrait.jpg'
     image_alt: 'Connected Meet the Founders and Other Singles, November 4, 7–8:30 pm at Bellevue Brewing Company. Free event.'
   - id: 'clinician-founders'
     summary: 'Meet the founders and explore the move from personal insight to real-world dating and friendship skills.'

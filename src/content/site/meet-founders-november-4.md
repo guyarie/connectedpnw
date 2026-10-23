@@ -4,7 +4,7 @@ description: "A free singles evening with Connected PNW at Bellevue Brewing Comp
 kicker: "Singles event · Wednesday, November 4, 2026 · Bellevue"
 section_heading: "An evening for meaningful connections"
 section_intro: "Meet Miri and Nina, the founders of Connected PNW, and connect with other singles over a relaxed evening at Bellevue Brewing Company. Enjoy real conversations, learn about Connected and our community, and meet people who are interested in meaningful connections. Come solo or bring a single friend!"
-hero_image: "/images/meet-founders-november-4.jpg"
+hero_image: "/images/meet-founders-november-4-portrait.jpg"
 hero_image_alt: "Connected Meet the Founders and Other Singles, November 4, 7–8:30 pm at Bellevue Brewing Company. Free event."
 rsvp_details:
   - strong: "When"
