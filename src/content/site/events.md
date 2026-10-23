@@ -6,6 +6,21 @@ section_intro: "Workshops, launch nights, and meet-ups where you can meet the Co
 # Shown when there are no upcoming events listed.
 events_empty_note: "No events on the calendar right now. Curious about the program? Schedule a free introductory conversation to learn more."
 events:
+  - id: 'meet-founders-november-4'
+    summary: 'Meet the founders and other singles for a relaxed evening of real conversations at Bellevue Brewing Company.'
+    date: '2026-11-04'
+    display_date: 'Wednesday, November 4, 2026'
+    time: '7:00–8:30 pm'
+    name: 'Meet the Founders + Other Singles'
+    location: 'Bellevue Brewing Company · 12190 NE District Wy, Bellevue, WA 98005'
+    body: 'Meet Miri and Nina, the founders of Connected PNW, and connect with other singles over a relaxed evening at Bellevue Brewing Company. Enjoy real conversations, learn about Connected and our community, and meet people who are interested in meaningful connections. Come solo or bring a single friend!'
+    perks:
+      - strong: 'Free event'
+        text: 'Come solo or bring a single friend.'
+    link_label: 'Learn more and register'
+    link_url: '/meet-founders-november-4'
+    image: '/images/meet-founders-november-4.jpg'
+    image_alt: 'Connected Meet the Founders and Other Singles, November 4, 7–8:30 pm at Bellevue Brewing Company. Free event.'
   - id: 'clinician-founders'
     summary: 'Meet the founders and explore the move from personal insight to real-world dating and friendship skills.'
     date: '2026-11-06'
