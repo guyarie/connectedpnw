@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('site', 'meet-founders-november-4');
+const r = entry.data;
+---
+
+<Base title={`${r.title} — Connected PNW`} description={r.description}>
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-intro">
+        <p class="kicker">{r.kicker}</p>
+        <h1>{r.title}</h1>
+        <h2>{r.section_heading}</h2>
+        <p class="lead">{r.section_intro}</p>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="container meetup-layout">
+      <div>
+        <img src={r.hero_image} alt={r.hero_image_alt} class="meetup-art" />
+        {r.founder_intro_paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <div>
+        <ul class="event-perks meetup-details">
+          {r.rsvp_details?.map((item) => <li><span class="dot" aria-hidden="true"></span><span><strong>{item.strong}</strong> — {item.text}</span></li>)}
+        </ul>
+        <div class="panel">
+          <form id="meetup-form" method="POST" action={r.contact_form_action} data-sending={r.contact_sending_label} data-error={r.contact_error_message}>
+            <input type="hidden" name="_subject" value={r.contact_subject} />
+            <input type="hidden" name="event" value={r.title} />
+            <input type="hidden" name="event_date" value="2026-11-04" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <div class="meetup-fields">
+              <div class="form-grid">
+                <div class="form-field"><label for="first_name">{r.rsvp_first_name_label}</label><input id="first_name" name="first_name" autocomplete="given-name" required /></div>
+                <div class="form-field"><label for="last_name">{r.rsvp_last_name_label}</label><input id="last_name" name="last_name" autocomplete="family-name" required /></div>
+              </div>
+              <div class="form-field"><label for="email">{r.rsvp_email_label}</label><input type="email" id="email" name="email" autocomplete="email" required /></div>
+              <button type="submit" class="btn btn-primary">{r.contact_button_label}</button>
+              <p id="registration-error" role="alert" hidden></p>
+            </div>
+          </form>
+          <div id="meetup-success" role="status" tabindex="-1" hidden>
+            <h3>{r.rsvp_success_heading}</h3>
+            <p>{r.rsvp_success_body}</p>
+          </div>
+        </div>
+        <p class="muted meetup-note">{r.contact_note}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById('meetup-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (button.disabled) return;
+    const error = document.getElementById('registration-error')!;
+    const label = button.textContent;
+    error.hidden = true;
+    button.disabled = true;
+    button.textContent = form.dataset.sending ?? label;
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error(String(response.status));
+      form.hidden = true;
+      const success = document.getElementById('meetup-success')!;
+      success.hidden = false;
+      success.focus();
+    } catch {
+      button.disabled = false;
+      button.textContent = label;
+      error.textContent = form.dataset.error ?? '';
+      error.hidden = false;
+    }
+  });
+</script>
+
+<style>
+  .meetup-layout { display:grid;gap:var(--space-8);max-width:1040px; }
+  .meetup-art { display:block;width:100%;height:auto;border-radius:var(--radius-card, 12px);margin-bottom:var(--space-6); }
+  .meetup-details { margin-bottom:var(--space-8); }
+  .meetup-fields { display:grid;gap:var(--space-5); }
+  .meetup-note { font-size:var(--text-sm);margin-top:var(--space-5); }
+  [hidden] { display:none !important; }
+  @media(min-width:900px) { .meetup-layout { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start; } }
+</style>
