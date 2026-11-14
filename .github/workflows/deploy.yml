@@ -6,10 +6,10 @@ on:
 
 jobs:
   deploy:
-    # Runs on the self-hosted runner on holdens-box (home server).
+    # Runs on the self-hosted runner on eli (home mini PC).
     # The build uses the box's RAM and publishes straight to the Nginx web root
     # on the same machine — no SSH/rsync-over-network, no deploy secrets.
-    runs-on: [self-hosted, holdens]
+    runs-on: [self-hosted, eli]
 
     steps:
       - uses: actions/checkout@v4
