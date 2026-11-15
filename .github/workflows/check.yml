@@ -1,0 +1,25 @@
+name: Check
+
+# Builds every pull request so bad content shows a red ✗ before merging.
+# Nothing is deployed. Runs on GitHub's hosted runners, never on eli: the repo
+# is public, so PRs can come from anyone's fork.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
