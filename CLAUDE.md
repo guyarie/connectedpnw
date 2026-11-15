@@ -7,9 +7,9 @@ A multi-page static website for **Connected PNW**, a guided dating and relationa
 - **Framework**: Astro 5, static output (`npm run build` → `dist/`)
 - **Styling**: Tailwind CSS + custom CSS variables in `src/styles/global.css`
 - **Content**: Astro Content Collections — all user-facing text lives in `src/content/site/*.md`
-- **Hosting**: Self-hosted on **holdens-box** (home server, dynamic IP via DuckDNS `holdens-box.duckdns.org`), Nginx serves `dist/`. Site is behind Cloudflare (proxied / orange-cloud); `connectedpnw.com` + `www` are CNAMEs → `holdens-box.duckdns.org`.
-- **Deploy**: A **GitHub Actions self-hosted runner runs on holdens-box**. On push to `main` it builds on the box and publishes locally with `rsync` to `/var/www/connectedpnw/dist/` — no SSH, no deploy secrets (`.github/workflows/deploy.yml`).
-- **TLS**: Let's Encrypt via certbot (Nginx). ⚠️ Auto-renewal currently uses the HTTP-01 (`nginx`) authenticator, which **fails behind the Cloudflare proxy** — needs switching to DNS-01 with a Cloudflare API token before the cert expires (see `renewal .conf` / certbot).
+- **Hosting**: Self-hosted on **eli** (home mini PC). Nginx serves `dist/` on `127.0.0.1:8080` only. Visitors reach it through a **Cloudflare Tunnel** (`eli-connectedpnw`, service `cloudflared-connectedpnw` on eli) in the connectedpnw.com Cloudflare account — routes for `connectedpnw.com`, `www` and a test address `eli-test`. No port-forwards, no DuckDNS.
+- **Deploy**: A **GitHub Actions self-hosted runner runs on eli** (label `eli`). On push to `main` it builds on the box and publishes locally with `rsync` to `/var/www/connectedpnw/dist/` — no SSH, no deploy secrets (`.github/workflows/deploy.yml`).
+- **TLS**: Terminated by Cloudflare at the edge (Always Use HTTPS on); no origin certificate or certbot.
 - **Forms**: Formspree — form ID configured in `contact.md` (`contact_form_action`)
 - **Email**: Cloudflare Email Routing → personal Gmail accounts
 - **Analytics**: Plausible CE self-hosted at `analytics.16jets.com` (mini-PC, Docker, Cloudflare Tunnel)
@@ -65,4 +65,4 @@ Accent colours: `--color-primary` (forest green) for structure and links, `--col
 ## Documentation
 - `docs/EDITING.md` — for non-technical staff (text, images, colors)
 - `docs/DEV.md` — developer reference (adding pages, SSR, Decap CMS, blog)
-- `docs/DEPLOY.md` — hosting (self-hosted on holdens-box), self-hosted runner deploy, Nginx config, TLS/renewal
+- `docs/DEPLOY.md` — hosting (self-hosted on eli via Cloudflare Tunnel), self-hosted runner deploy, Nginx config, troubleshooting
