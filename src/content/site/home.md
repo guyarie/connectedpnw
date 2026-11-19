@@ -18,7 +18,7 @@ hero_image_placeholder: "Warm candid image of a diverse cohort interacting"
 
 # ── Upcoming events ──────────────────────────────────────────────────
 events_heading: "Come connect with us"
-events_intro: "Meet the founders and other singles, join our clinician conversation on Zoom, or connect through our Bellevue workshops and Friendsgiving cooking experience."
+events_intro: "Meet the founders to learn about Connected, connect with other singles, or practice relationship skills at our upcoming Bellevue workshop."
 events_link_label: "Learn more"
 events_prev_label: "Previous events"
 events_next_label: "More events"
@@ -73,7 +73,7 @@ founder_intro_image_caption: "Learn more about Nina and Miri"
 
 # ── Closing call to action ────────────────────────────────────────────
 cta_heading: "Interested in the January 2027 cohort?"
-cta_body: "Tell us a little about yourself, then schedule a free introductory conversation to learn more about Connected and see whether it might be a good fit. Cohort 1 is a 5–6 month experience for heterosexual adults approximately ages 26–45. In person in Bellevue, serving the Seattle/Eastside area."
+cta_body: "Tell us a little about yourself, then schedule a free introductory conversation to learn more about Connected and see whether it might be a good fit. Cohort 1 is a 5–6 month experience for heterosexual adults ages 26 and up. In person in Bellevue, serving the Seattle/Eastside area."
 cta_label: "Schedule an Introductory Conversation"
 cta_url: "/contact"
 ---

@@ -28,7 +28,7 @@ faqs:
     answer: "The first cohort is designed for heterosexual participants. Men and women learn in parallel groups and meet during Social Nights. Grouping and pairings are informed by the intake conversation, goals, participant preferences, age range, life stage, and overall fit."
   - category: "General questions"
     question: "What age range is Connected designed for?"
-    answer: "The first Connected cohort is designed primarily for adults approximately 26–45. Participants may be organized into groups based on age, life stage, dating experience, and overall group fit, with some flexibility around chronological age. Future cohorts are expected to serve a wider range of ages."
+    answer: "Connected is for adults ages 26 and up. Participants may be organized into groups based on age, life stage, dating experience, and overall group fit."
   - category: "General questions"
     question: "What is the investment for Cohort 1?"
     answer: "The Cohort 1 investment is $6,000 for the 5–6 month experience. The introductory conversation is free, with no commitment to join."

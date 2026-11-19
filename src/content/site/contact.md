@@ -1,7 +1,7 @@
 ---
 title: "Schedule an Introductory Conversation"
 description: "Schedule a free introductory conversation about Connected PNW: a 5–6 month relationship-skills program in Bellevue. Cohort 1 begins January 2027."
-kicker: "January 2027 • Bellevue, Washington • Ages approximately 26–45"
+kicker: "January 2027 • Bellevue, Washington • Ages 26 and up"
 section_heading: "Let’s get to know each other"
 section_intro: |-
   Wondering if Connected is right for you?
@@ -17,7 +17,7 @@ contact_phone: "(360) 797-5175"
 tiktok_url: "https://www.tiktok.com/@connectedpnw"
 instagram_url: "https://www.instagram.com/pnw.connected"
 facebook_url: "https://www.facebook.com/people/Connected-PNW/61590472781029/"
-contact_program_details: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program in Bellevue, serving the Seattle/Eastside area. Cohort 1 begins January 2027 and is for heterosexual adults approximately ages 26–45, with some flexibility based on life stage, dating experience and fit."
+contact_program_details: "Connected is an in-person, guided, experiential and non-clinical relationship-skills program in Bellevue, serving the Seattle/Eastside area. Cohort 1 begins January 2027 and is for heterosexual adults ages 26 and up. Group fit is informed by life stage, dating experience, and goals."
 contact_commitment: "The Connected experience lasts 5–6 months."
 contact_button_label: "Continue to schedule a conversation"
 contact_sending_label: "Sending…"
